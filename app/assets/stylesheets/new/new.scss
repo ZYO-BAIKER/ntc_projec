@@ -1,0 +1,54 @@
+h2.material-new-title {
+  text-align: center;
+}
+p.attention {
+  color: red;
+}
+.material-new-main {
+  input {
+    margin: 8px;
+    padding: 5px;
+  }
+  table {
+    background-color: #cdefff;  /* 背景色指定 */
+    border-collapse:  collapse;     /* セルの線を重ねる */
+    margin: 0 auto;
+    width: 100%;     /* 幅指定 */
+    th,td {
+      border: solid 1px;              /* 枠線指定 */
+      padding: 10px;      /* 余白指定 */
+    }
+    th {
+      background-color: #00e2cf;  /* 背景色指定 */
+      width:  100px;              /* 幅指定 */
+      text-align: left;           /* 文字の揃え位置指定 */
+    }
+    td {
+      text-align:  left;        /* 文字の揃え位置指定 */
+    }
+  }
+  form {
+    .register {
+      text-align: center;
+      .button {
+        display       : inline-block;
+        border-radius : 5%;          /* 角丸       */
+        font-size     : 18pt;        /* 文字サイズ */
+        text-align    : center;      /* 文字位置   */
+        cursor        : pointer;     /* カーソル   */
+        padding       : 12px 12px;   /* 余白       */
+        background    : #000066;     /* 背景色     */
+        color         : #ffffff;     /* 文字色     */
+        line-height   : 1em;         /* 1行の高さ  */
+        transition    : .3s;         /* なめらか変化 */
+        box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+        border        : 2px solid #000066;    /* 枠の指定 */
+      }
+      .button:hover {
+        box-shadow    : none;        /* カーソル時の影消去 */
+        color         : #000066;     /* 背景色     */
+        background    : #ffffff;     /* 文字色     */
+      }
+    }
+  }
+}
