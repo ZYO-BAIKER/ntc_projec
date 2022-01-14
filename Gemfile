@@ -33,6 +33,9 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "rubocop-rails", require: false # rubocop
   gem "rubocop-rspec", require: false # rubocop
+  gem "factory_bot_rails" # 追加
+  gem "faker" # 追加
+  gem "rspec-rails" # 追加
 end
 
 group :development do
