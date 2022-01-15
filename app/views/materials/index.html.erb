@@ -1,24 +1,30 @@
 <%= render "shared/header" %>
 <div class="filter" >
   <%= search_form_for @q, url: result_materials_path do |f| %>
-    <%= f.label :name_cont, '資産名：' %>
-    <%= f.text_field  :name_cont %>
-
-    <%= f.label :maker_cont, 'メーカー：' %>
-    <%= f.text_field :maker_cont %>
-
-    <%= f.label :place_cont, '場所：' %>
-    <%= f.collection_select :place_cont, PlaceSelect.all, :name, :name, {include_blank:'選択してください'} %>
-
-    <%= f.label :user_eq, '使用者：'%>
-    <%= f.collection_select :user_eq, UserSelect.all, :name, :name, {include_blank:'指定なし'} %>
-
-    <%= f.label :purchase_date_eq, '購入日：' %>
-    <%= f.date_field :purchase_date_eq %>
-
-    <%= f.label :inspection_date_eq, '修理点検日：' %>
-    <%= f.date_field :inspection_date_eq %>
-
+    <div class="user-search">
+      <%= f.label :name_cont, '資産名：' %>
+      <%= f.text_field  :name_cont %>
+    </div>
+    <div class="user-search">
+      <%= f.label :maker_cont, 'メーカー：' %>
+      <%= f.text_field :maker_cont %>
+    </div>
+    <div class="user-search">
+      <%= f.label :place_cont, '場所：' %>
+      <%= f.collection_select :place_cont, PlaceSelect.all, :name, :name, {include_blank:'選択してください'} %>
+    </div>
+    <div class="user-search">
+      <%= f.label :user_eq, '使用者：'%>
+      <%= f.collection_select :user_eq, UserSelect.all, :name, :name, {include_blank:'指定なし'} %>
+    </div>
+    <div class="user-search">
+      <%= f.label :purchase_date_eq, '購入日：' %>
+      <%= f.date_field :purchase_date_eq %>
+    </div>
+    <div class="user-search">
+      <%= f.label :inspection_date_eq, '修理点検日：' %>
+      <%= f.date_field :inspection_date_eq %>
+    </div>
     <%= f.submit '絞り込み' %>
   <% end %>
 </div>
