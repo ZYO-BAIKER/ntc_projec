@@ -53,6 +53,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem "active_hash" # 選択式化
 gem "devise" # ログイン機能の実装を簡単にするGem追加
 gem "kaminari" # ページネーション
 gem "rails-i18n" # 日本語の言語設定
