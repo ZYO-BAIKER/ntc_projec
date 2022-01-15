@@ -1,0 +1,28 @@
+<header>
+  <%= link_to image_tag("logo.png", class:"logo"), '/' %>
+  <%# if user_signed_in? %>
+    <nav class="pc-nav">
+      <ul class="header-menus">
+        <li><%= link_to "トップ", "/", class:"fas fa-list-ul" %></li>
+        <li><%= link_to "資材情報登録", new_material_path, class:"fas fa-wrench" %></li>
+        <li><%= link_to "ログアウト", "/", method: :delete, class:"fas fa-sign-out-alt" %></li>
+      </ul>
+    </nav>
+    <nav class="sp-nav">
+      <div id="hamburger">
+        <p class="btn-gNav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </p>
+        <nav id="gNav" class="">
+          <ul class="gNav-menu">
+            <li><%= link_to "トップ", "/", class:"fas fa-list-ul" %></li>
+            <li><%= link_to "資材情報登録", new_material_path, class:"fas fa-wrench" %></li>
+            <li><%= link_to "ログアウト", "/", method: :delete, class:"fas fa-sign-out-alt" %></li>
+          </ul>
+        </nav>
+      </div>
+    </nav>
+  <%# end %>
+</header>

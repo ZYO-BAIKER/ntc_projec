@@ -1,0 +1,28 @@
+.filter {
+  text-align: -webkit-center;
+  margin: 16px;
+}
+
+@media (min-width: 1484px) {
+  .filter {
+    margin: 16px;
+    form#material_search{
+      margin-top: 10px;
+      display: contents;
+    }
+  }
+}
+
+@media (max-width: 1484px) {
+  .filter {
+    text-align: -webkit-center;
+    margin: 16px;
+
+    form#material_search {
+      display: table-caption;
+    }
+    form input[type="submit"] {
+      margin-top: 10px;
+    }
+  }
+}
