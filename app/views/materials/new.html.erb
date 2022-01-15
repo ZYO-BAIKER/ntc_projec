@@ -21,14 +21,13 @@
 
       <tr style="font-size: 10pt;"><td>場所（※）</td>
         <td colspan="3">
-          <%= f.text_field :place, maxlength: "20" %>
+          <%= f.collection_select :place, PlaceSelect.all, :name, :name, {include_blank:'選択してください'} %>
         </td>
       </tr>
 
       <tr style="font-size: 10pt;"><td>使用者（※）</td>
         <td colspan="3">
-          <%#= f.collection_select :user, @user, :name, :name, {include_blank:'選択してください'} %>
-          <%= f.text_field :user, maxlength: "20" %>
+          <%= f.collection_select :user, UserSelect.all, :name, :name, {include_blank:'選択してください'} %>
         </td>
       </tr>
 
