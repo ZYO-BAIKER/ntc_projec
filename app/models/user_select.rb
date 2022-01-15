@@ -21,5 +21,5 @@ class UserSelect < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :materials
+  has_many :materials, dependent: :destroy
 end
