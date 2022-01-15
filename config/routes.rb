@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: "materials#index"
+  devise_for :users
   resources :materials, only: [:index, :new, :create, :edit, :update, :destroy] do
     collection do
       get :result
