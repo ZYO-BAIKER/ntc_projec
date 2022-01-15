@@ -8,10 +8,10 @@
     <%= f.text_field :maker_cont %>
 
     <%= f.label :place_cont, '場所：' %>
-    <%= f.text_field :place_cont %>
+    <%= f.collection_select :place_cont, PlaceSelect.all, :name, :name, {include_blank:'選択してください'} %>
 
-    <%= f.label :user, '使用者：'%>
-    <%= f.text_field  :user_eq %>
+    <%= f.label :user_eq, '使用者：'%>
+    <%= f.collection_select :user_eq, UserSelect.all, :name, :name, {include_blank:'指定なし'} %>
 
     <%= f.label :purchase_date_eq, '購入日：' %>
     <%= f.date_field :purchase_date_eq %>
@@ -56,7 +56,7 @@
             <%= material.purchase_date %>  <%# 購入日 %>
           </td>
           <td style="font-size: 10pt;">
-            <%= material.price %>  <%# 購入金額 %>
+            <%= material.price %> 円 <%# 購入金額 %>
           </td>
           <td style="font-size: 10pt;">
             <%= material.inspection_date %>  <%# 修理点検日 %>

@@ -17,7 +17,7 @@ class UserSelect < ActiveHash::Base
     { name: "聖和" },
     { name: "山形工業" },
     { name: "裕建" },
-    { name: "その他(入力)" },
+    { name: "その他" },
   ]
 
   include ActiveHash::Associations

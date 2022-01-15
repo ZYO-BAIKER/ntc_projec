@@ -1,1 +1,44 @@
 <%= render "shared/header" %>
+<%= paginate @results %>
+<div class="container-table">全資産：<%= @results.count %>
+  <table class="full-width" >
+      <tr>
+        <th style="font-size: 10pt;">資産名</th>
+        <th style="font-size: 10pt;">メーカー</th>
+        <th style="font-size: 10pt;">場所</th>
+        <th style="font-size: 10pt;">使用者</th>
+        <th style="font-size: 10pt;">使用期間</th>
+        <th style="font-size: 10pt;">購入日</th>
+        <th style="font-size: 10pt;">購入金額</th>
+        <th style="font-size: 10pt;">修理点検日</th>
+      </tr>
+      <% @results.each do |material| %>
+        <tr>
+          <td style="font-size: 10pt;">
+            <%= link_to material.name, edit_material_path(material.id) %>  <%# 資産名 %>
+          </td>
+          <td style="font-size: 10pt;">
+            <%= material.maker %>  <%# メーカー %>
+          </td>
+          <td style="font-size: 10pt;">
+            <%= material.place %>  <%# 場所 %>
+          </td>
+          <td style="font-size: 10pt;">
+            <%= material.user %>  <%# 使用者 %>
+          </td>
+          <td style="font-size: 10pt;">
+            <%= material.period %>  <%# 使用期間 %>
+          </td>
+          <td style="font-size: 10pt;">
+            <%= material.purchase_date %>  <%# 購入日 %>
+          </td>
+          <td style="font-size: 10pt;">
+            <%= material.price %> 円 <%# 購入金額 %>
+          </td>
+          <td style="font-size: 10pt;">
+            <%= material.inspection_date %>  <%# 修理点検日 %>
+          </td>
+        </tr>
+      <% end %>
+  </table>
+</div>
