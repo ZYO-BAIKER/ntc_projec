@@ -1,64 +1,11 @@
 <%= render "shared/header" %>
+
 <div class="material-new-main">
   <h2 class="material-new-title">資材の情報を入力</h2>
   <p class="attention">（※）は必須項目です</p>
 
   <%= form_with(model: @material, local: true) do |f| %>
-    <%= render 'shared/error_messages', model: f.object %>
-    <p class="attention"><%= flash[:alert] %></p>
-    <table class="full-width" >
-      <tr style="font-size: 10pt;"><td>資産名（※）</td>
-        <td colspan="3">
-          <%= f.text_field :name, maxlength: "30" %>
-        </td>
-      </tr>
-
-      <tr style="font-size: 10pt;"><td>メーカー</td>
-        <td colspan="3">
-          <%= f.text_field :maker, maxlength: "30" %>
-        </td>
-      </tr>
-
-      <tr style="font-size: 10pt;"><td>場所（※）</td>
-        <td colspan="3">
-          <%= f.collection_select :place, PlaceSelect.all, :name, :name, {include_blank:'選択してください'} %>
-        </td>
-      </tr>
-
-      <tr style="font-size: 10pt;"><td>使用者（※）</td>
-        <td colspan="3">
-          <%= f.collection_select :user, UserSelect.all, :name, :name, {include_blank:'選択してください'} %>
-        </td>
-      </tr>
-
-      <tr style="font-size: 10pt;"><td>使用期間（※）</td>
-        <td colspan="3">
-          <%= f.text_field :period %>
-        </td>
-      </tr>
-
-      <tr style="font-size: 10pt;"><td>購入日</td>
-        <td colspan="3">
-          <%= f.date_field :purchase_date %>
-        </td>
-      </tr>
-
-      <tr style="font-size: 10pt;"><td>購入金額</td>
-        <td colspan="3">
-          <%= f.text_field :price , class:"price-input", placeholder:"例）300" %>円
-        </td>
-      </tr>
-
-      <tr style="font-size: 10pt;"><td>修理点検日</td>
-        <td colspan="3">
-          <%= f.date_field :inspection_date %>
-        </td>
-      </tr>
-
-      <tr style="font-size: 10pt;"><td>メモ（※）</td>
-        <td colspan="3"><%= f.text_area :memo, maxlength: "200" %></td>
-      </tr>
-    </table>
+    <%= render partial: "shared/register", locals: {f: f} %> <%# 部分テンプレート %>
     <div class="register">
       <%= f.submit "変更", class:"button" %>
       <%= link_to "削除", material_path, method: :delete, data: { confirm: "この資材情報を消しますか？" }, class: "delete" %>
