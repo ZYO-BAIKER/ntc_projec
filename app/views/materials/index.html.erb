@@ -38,7 +38,7 @@
       <% @materials.each do |material| %>
         <tr>
           <td style="font-size: 10pt;">
-            <%= material.name %>  <%# 資産名 %>
+            <%= link_to material.name, edit_material_path(material.id) %>  <%# 資産名 %>
           </td>
           <td style="font-size: 10pt;">
             <%= material.maker %>  <%# メーカー %>
