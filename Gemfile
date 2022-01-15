@@ -31,14 +31,14 @@ gem "bootsnap", ">= 1.4.2", require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-  gem "rubocop-rails", require: false # rubocop
-  gem "rubocop-rspec", require: false # rubocop
   gem "factory_bot_rails" # テスト
   gem "faker" # テスト
-  gem "rspec-rails" # テスト
   gem "pry-byebug" # デバック
   gem "pry-doc" # デバック
   gem "pry-rails" # デバック
+  gem "rspec-rails" # テスト
+  gem "rubocop-rails", require: false # rubocop
+  gem "rubocop-rspec", require: false # rubocop
 end
 
 group :development do
