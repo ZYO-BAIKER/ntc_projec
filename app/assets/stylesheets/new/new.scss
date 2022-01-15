@@ -39,6 +39,12 @@ p.attention {
     }
   }
   form {
+    input#material_purchase_date {
+      width: auto;
+    }
+    input#material_inspection_date {
+      width: auto;
+    }
     .register {
       text-align: center;
       .button {
