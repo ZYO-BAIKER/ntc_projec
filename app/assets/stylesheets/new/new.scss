@@ -1,11 +1,18 @@
 h2.material-new-title {
   text-align: center;
 }
+.error-alert {
+  color: red;
+}
 p.attention {
   color: red;
 }
 .material-new-main {
   input {
+    margin: 8px;
+    padding: 5px;
+  }
+  textarea#material_memo {
     margin: 8px;
     padding: 5px;
   }

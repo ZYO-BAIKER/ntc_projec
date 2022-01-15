@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        account: アカウント名
+      material:
+        name: 資産名
+        place: 場所
+        user: 使用者
+        period: 使用期間
+        memo: メモ

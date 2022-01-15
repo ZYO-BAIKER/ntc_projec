@@ -43,5 +43,7 @@ module NTCMaterialManagment
                        controller_specs: false,
                        request_specs: true
     end
+    # 日本語の言語設定
+    config.i18n.default_locale = :ja
   end
 end

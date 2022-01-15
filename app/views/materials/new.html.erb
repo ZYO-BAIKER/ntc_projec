@@ -4,6 +4,7 @@
   <p class="attention">（※）は必須項目です</p>
 
   <%= form_with(model: @material, local: true) do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
     <p class="attention"><%= flash[:alert] %></p>
     <table class="full-width" >
       <tr style="font-size: 10pt;"><td>資産名（※）</td>
