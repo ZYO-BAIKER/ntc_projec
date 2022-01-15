@@ -21,12 +21,13 @@ class MaterialsController < ApplicationController
   end
 
   def edit
+    @@request_referer = request.referer
   end
 
   def update
     if @material.update(material_params)
       @material.save!
-      redirect_to root_path
+      redirect_to @@request_referer
     else
       render :edit
     end
@@ -34,7 +35,7 @@ class MaterialsController < ApplicationController
 
   def destroy
     @material.destroy!
-    redirect_to root_path
+    redirect_to @@request_referer
   end
 
   def result
@@ -52,6 +53,6 @@ class MaterialsController < ApplicationController
     end
 
     def search_material
-      @q = Material.ransack(session[:q])
+      @q = Material.ransack(params[:q])
     end
 end
