@@ -5,6 +5,9 @@
     form#material_search{
       margin-top: 10px;
       display: contents;
+      .user-search {
+        margin: 5px;
+      }
       input[type="submit"] {
         margin-left: 10px;
       }
