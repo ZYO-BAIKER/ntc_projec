@@ -1,0 +1,20 @@
+a.delete {
+  display: inline-block;
+  border-radius: 5%;
+  font-size: 18pt;
+  text-align: center;
+  cursor: pointer;
+  padding: 12px 12px;
+  background: #000066;
+  color: #ffffff;
+  line-height: 1em;
+  transition: .3s;
+  box-shadow: 6px 6px 3px #666666;
+  border: 2px solid #000066;
+}
+
+a.delete:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #000066;     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
+}
