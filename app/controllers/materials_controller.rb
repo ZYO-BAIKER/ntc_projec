@@ -3,7 +3,8 @@ class MaterialsController < ApplicationController
   before_action :search_material, only: [:index, :result]  # 検索オブジェクトを生成
 
   def index
-    @materials = Material.all.order("created_at DESC").page(params[:page]).per(20)
+    @materials = Material.all.order("created_at DESC").page(params[:page]).per(10)
+    @materials_count = Material.all.count
   end
 
   def new
@@ -39,7 +40,8 @@ class MaterialsController < ApplicationController
   end
 
   def result
-    @results = @q.result.order("created_at DESC").page(params[:page]).per(20)
+    @results = @q.result.order("created_at DESC").page(params[:page]).per(10)
+    @results_count = @q.result.count
   end
 
   private

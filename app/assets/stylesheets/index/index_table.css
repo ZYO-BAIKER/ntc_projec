@@ -19,3 +19,7 @@ th {
 td {
   text-align:  center;        /* 文字の揃え位置指定 */
 }
+
+nav.pagination {
+  text-align: center;
+}
