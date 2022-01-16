@@ -16,9 +16,14 @@
       <tr style="font-size: 10pt;"><td>場所（※）</td>
         <td colspan="3">
           <%= f.label :車庫： %>
-          <%= f.radio_button :place, :車庫, checked: "checked" %>
+          <%= f.radio_button :place, :車庫 %>
           <%= f.label :現場： %>
-          <%= f.radio_button :place, :現場 %>
+          <%= f.radio_button :place, :現場, onClick:"changeDisabled()" %>
+          <%= f.text_field :other_places, class: 'other_places-input', placeholder: '現場の場合入力' %>
+
+          <% if @material.place == "現場" && @material.other_places != nil %>
+            <%= f.text_field :other_places, id: 'other_places', placeholder: '現場の場合入力' %>
+          <% end %>
         </td>
       </tr>
 

@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_060939) do
     t.string "name", null: false
     t.string "maker"
     t.string "place", null: false
+    t.string "other_places"
     t.string "user", null: false
     t.string "other_users"
     t.string "period", null: false

@@ -49,9 +49,15 @@
           <td style="font-size: 10pt;">
             <%= material.maker %>  <%# メーカー %>
           </td>
-          <td style="font-size: 10pt;">
-            <%= material.place %>  <%# 場所 %>
-          </td>
+          <% if material.place == "現場" && material.other_places != nil %>
+            <td style="font-size: 10pt;">
+              <%= material.other_places %>  <%# 場所(車庫以外) %>
+            </td>
+          <% else %>
+            <td style="font-size: 10pt;">
+              <%= material.place %>  <%# 場所(車庫) %>
+            </td>
+          <% end %>
           <td style="font-size: 10pt;">
             <%= material.user %>  <%# 使用者 %>
           </td>
