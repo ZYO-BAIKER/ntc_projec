@@ -15,19 +15,23 @@
 
       <tr style="font-size: 10pt;"><td>場所（※）</td>
         <td colspan="3">
-          <%= f.collection_select :place, PlaceSelect.all, :name, :name, {include_blank:'選択してください'} %>
+          <%= f.label :車庫： %>
+          <%= f.radio_button :place, :車庫, checked: "checked" %>
+          <%= f.label :現場： %>
+          <%= f.radio_button :place, :現場 %>
         </td>
       </tr>
 
       <tr style="font-size: 10pt;"><td>使用者（※）</td>
         <td colspan="3">
           <%= f.collection_select :user, UserSelect.all, :name, :name, {include_blank:'選択してください'} %>
+          <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他の場合入力' %>
         </td>
       </tr>
 
       <tr style="font-size: 10pt;"><td>使用期間（※）</td>
         <td colspan="3">
-          <%= f.text_field :period %>
+          <%= f.text_field :period, placeholder:"例）2010/12/23~2021/03/06" %>
         </td>
       </tr>
 
