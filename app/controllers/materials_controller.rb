@@ -14,6 +14,12 @@ class MaterialsController < ApplicationController
   def create
     @material = Material.new(material_params)
     if @material.valid?
+      if @material.place == "車庫"
+        @material.other_places = ""
+      end
+      if @material.user != "その他"
+        @material.other_users = ""
+      end
       @material.save!
       redirect_to root_path
     else
@@ -27,6 +33,12 @@ class MaterialsController < ApplicationController
 
   def update
     if @material.update(material_params)
+      if @material.place == "車庫"
+        @material.other_places = ""
+      end
+      if @material.user != "その他"
+        @material.other_users = ""
+      end
       @material.save!
       redirect_to @@request_referer
     else
