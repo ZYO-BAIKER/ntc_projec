@@ -16,6 +16,10 @@ th {
   text-align: left;           /* 文字の揃え位置指定 */
 }
 
+.container-table tr:hover {
+  background: gray;
+}
+
 td {
   text-align:  center;        /* 文字の揃え位置指定 */
 }

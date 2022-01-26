@@ -1,4 +1,4 @@
-@media (min-width: 1484px) {
+@media (min-width: 1000px) {
   .filter {
     margin: 16px;
     display: flex;
@@ -15,7 +15,7 @@
   }
 }
 
-@media (max-width: 1484px) {
+@media (max-width: 1000px) {
   .filter {
     text-align: -webkit-center;
     margin: 16px;
