@@ -11,7 +11,7 @@
     </div>
     <div class="user-search">
       <%= f.label :place_cont, '場所：' %>
-      <%= f.collection_select :place_cont, PlaceSelect.all, :name, :name, {include_blank:'選択してください'} %>
+      <%= f.text_field :place_cont %>
     </div>
     <div class="user-search">
       <%= f.label :user_eq, '使用者：'%>
@@ -29,7 +29,11 @@
   <% end %>
 </div>
 <%= paginate @materials %>
-<div class="container-table">全資産：<%= @materials_count %>
+<div class="container-table">
+    <ul class="count">
+        <li>全資産：<%= @materials_count %></li>
+        <li>車庫：<%= @materials.where(place: "車庫").count %></li>
+    </ul>
   <table class="full-width" >
       <tr>
         <th style="font-size: 10pt;">資産名</th>
@@ -42,9 +46,9 @@
         <th style="font-size: 10pt;">修理点検日</th>
       </tr>
       <% @materials.each do |material| %>
-        <tr>
+        <tr onclick= window.location="<%= "/materials/" + material.id.to_s + "/edit" %>"  role="link" class="record">
           <td style="font-size: 10pt;">
-            <%= link_to material.name, edit_material_path(material.id) %>  <%# 資産名 %>
+            <%= material.name %>  <%# 資産名 %>
           </td>
           <td style="font-size: 10pt;">
             <%= material.maker %>  <%# メーカー %>
