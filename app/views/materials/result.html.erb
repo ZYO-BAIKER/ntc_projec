@@ -13,7 +13,7 @@
         <th style="font-size: 10pt;">修理点検日</th>
       </tr>
       <% @results.each do |material| %>
-        <tr>
+        <tr onclick= window.location="<%= "/materials/" + material.id.to_s + "/edit" %>"  role="link" class="record">
           <td style="font-size: 10pt;">
             <%= link_to material.name, edit_material_path(material.id) %>  <%# 資産名 %>
           </td>

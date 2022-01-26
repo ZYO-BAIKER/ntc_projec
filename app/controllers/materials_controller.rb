@@ -16,6 +16,7 @@ class MaterialsController < ApplicationController
     if @material.valid?
       if @material.place == "車庫"
         @material.other_places = ""
+        @material.user == "車庫"
       end
       if @material.user != "その他"
         @material.other_users = ""
@@ -35,6 +36,7 @@ class MaterialsController < ApplicationController
     if @material.update(material_params)
       if @material.place == "車庫"
         @material.other_places = ""
+        @material.user == "車庫"
       end
       if @material.user != "その他"
         @material.other_users = ""
