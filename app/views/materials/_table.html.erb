@@ -1,0 +1,76 @@
+<ul class="count">
+    <li>車庫：<%= @materials.where(place: "車庫").count %></li>
+    <li>吉久保：<%= @materials.where(user: "吉久保").count %></li>
+    <li>加藤：<%= @materials.where(user: "加藤").count %></li>
+    <li>小沢：<%= @materials.where(user: "小沢").count %></li>
+    <li>近藤：<%= @materials.where(user: "近藤").count %></li>
+    <li>石川：<%= @materials.where(user: "石川").count %></li>
+  </ul>
+  <ul class="count">
+    <li>笹沼：<%= @materials.where(user: "笹沼").count %></li>
+    <li>小川：<%= @materials.where(user: "小川").count %></li>
+    <li>宮下：<%= @materials.where(user: "宮下").count %></li>
+    <li>古川：<%= @materials.where(user: "古川").count %></li>
+    <li>大越：<%= @materials.where(user: "大越").count %></li>
+    <li>山品：<%= @materials.where(user: "山品").count %></li>
+  </ul>
+  <ul class="count">
+    <li>長谷川：<%= @materials.where(user: "長谷川").count %></li>
+    <li>皆川：<%= @materials.where(user: "皆川").count %></li>
+    <li>大友：<%= @materials.where(user: "小川").count %></li>
+    <li>聖和：<%= @materials.where(user: "聖和").count %></li>
+    <li>裕建：<%= @materials.where(user: "裕建").count %></li>
+    <li>山形工業：<%= @materials.where(user: "山形工業").count %></li>
+</ul>
+<table class="full-width" >
+    <tr>
+      <th style="font-size: 10pt;">資産名</th>
+      <th style="font-size: 10pt;">メーカー</th>
+      <th style="font-size: 10pt;">場所</th>
+      <th style="font-size: 10pt;">使用者</th>
+      <th style="font-size: 10pt;">使用期間</th>
+      <th style="font-size: 10pt;">購入日</th>
+      <th style="font-size: 10pt;">購入金額</th>
+      <th style="font-size: 10pt;">修理点検日</th>
+    </tr>
+    <% @materials.each do |material| %>
+      <tr onclick= window.location="<%= "/materials/" + material.id.to_s + "/edit" %>"  role="link" class="record">
+        <td style="font-size: 10pt;">
+          <%= material.name %>  <%# 資産名 %>
+        </td>
+        <td style="font-size: 10pt;">
+          <%= material.maker %>  <%# メーカー %>
+        </td>
+        <% if material.place == "現場" && material.other_places != nil %>
+          <td style="font-size: 10pt;">
+            <%= material.other_places %>  <%# 場所(車庫以外) %>
+          </td>
+        <% else %>
+          <td style="font-size: 10pt;">
+            <%= material.place %>  <%# 場所(車庫) %>
+          </td>
+        <% end %>
+        <% if material.user == "その他" && material.other_users != nil %>
+          <td style="font-size: 10pt;">
+            <%= material.other_users %>  <%# その他使用者 %>
+          </td>
+        <% else %>
+          <td style="font-size: 10pt;">
+            <%= material.user %>  <%# 使用者 %>
+          </td>
+        <% end %>
+        <td style="font-size: 10pt;">
+          <%= material.period %>  <%# 使用期間 %>
+        </td>
+        <td style="font-size: 10pt;">
+          <%= material.purchase_date %>  <%# 購入日 %>
+        </td>
+        <td style="font-size: 10pt;">
+          <%= material.price %> 円 <%# 購入金額 %>
+        </td>
+        <td style="font-size: 10pt;">
+          <%= material.inspection_date %>  <%# 修理点検日 %>
+        </td>
+      </tr>
+    <% end %>
+</table>

@@ -4,7 +4,6 @@ class MaterialsController < ApplicationController
 
   def index
     @materials = Material.all.order("created_at DESC").page(params[:page]).per(10)
-    @materials_count = Material.all.count
   end
 
   def new
@@ -54,8 +53,7 @@ class MaterialsController < ApplicationController
   end
 
   def result
-    @results = @q.result.order("created_at DESC").page(params[:page]).per(10)
-    @results_count = @q.result.count
+    @materials = @q.result.order("created_at DESC").page(params[:page]).per(10)
   end
 
   private

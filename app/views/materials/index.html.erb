@@ -29,61 +29,6 @@
   <% end %>
 </div>
 <%= paginate @materials %>
-<div class="container-table">
-    <ul class="count">
-        <li>全資産：<%= @materials_count %></li>
-        <li>車庫：<%= @materials.where(place: "車庫").count %></li>
-    </ul>
-  <table class="full-width" >
-      <tr>
-        <th style="font-size: 10pt;">資産名</th>
-        <th style="font-size: 10pt;">メーカー</th>
-        <th style="font-size: 10pt;">場所</th>
-        <th style="font-size: 10pt;">使用者</th>
-        <th style="font-size: 10pt;">使用期間</th>
-        <th style="font-size: 10pt;">購入日</th>
-        <th style="font-size: 10pt;">購入金額</th>
-        <th style="font-size: 10pt;">修理点検日</th>
-      </tr>
-      <% @materials.each do |material| %>
-        <tr onclick= window.location="<%= "/materials/" + material.id.to_s + "/edit" %>"  role="link" class="record">
-          <td style="font-size: 10pt;">
-            <%= material.name %>  <%# 資産名 %>
-          </td>
-          <td style="font-size: 10pt;">
-            <%= material.maker %>  <%# メーカー %>
-          </td>
-          <% if material.place == "現場" && material.other_places != nil %>
-            <td style="font-size: 10pt;">
-              <%= material.other_places %>  <%# 場所(車庫以外) %>
-            </td>
-          <% else %>
-            <td style="font-size: 10pt;">
-              <%= material.place %>  <%# 場所(車庫) %>
-            </td>
-          <% end %>
-          <% if material.user == "その他" && material.other_users != nil %>
-            <td style="font-size: 10pt;">
-              <%= material.other_users %>  <%# その他使用者 %>
-            </td>
-          <% else %>
-            <td style="font-size: 10pt;">
-              <%= material.user %>  <%# 使用者 %>
-            </td>
-          <% end %>
-          <td style="font-size: 10pt;">
-            <%= material.period %>  <%# 使用期間 %>
-          </td>
-          <td style="font-size: 10pt;">
-            <%= material.purchase_date %>  <%# 購入日 %>
-          </td>
-          <td style="font-size: 10pt;">
-            <%= material.price %> 円 <%# 購入金額 %>
-          </td>
-          <td style="font-size: 10pt;">
-            <%= material.inspection_date %>  <%# 修理点検日 %>
-          </td>
-        </tr>
-      <% end %>
-  </table>
+<div class="container-table">全資産：<%= Material.all.count %>
+  <%= render "table" %>
 </div>

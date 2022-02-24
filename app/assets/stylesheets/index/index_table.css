@@ -1,3 +1,7 @@
+ul.count {
+  display: flex;
+  justify-content: space-around;
+}
 table {
   background-color: #cdefff;  /* 背景色指定 */
   border-collapse:  collapse;     /* セルの線を重ねる */
