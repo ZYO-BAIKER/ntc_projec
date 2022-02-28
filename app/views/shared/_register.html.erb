@@ -40,7 +40,7 @@
 
       <tr style="font-size: 10pt;"><td>使用期間（※）</td>
         <td colspan="3">
-          <%= f.text_field :period, placeholder:"例）2010/12~2021/03" %>
+          <%= f.date_field :period_start %> ~ <%= f.date_field :period_end %>
         </td>
       </tr>
 

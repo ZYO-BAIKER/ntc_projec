@@ -7,7 +7,8 @@ class CreateMaterials < ActiveRecord::Migration[6.0]
       t.string  :other_places          # 現場時の場所
       t.string  :user,    null: false  # 使用者(必須)
       t.string  :other_users           # その他使用者
-      t.string  :period,  null: false  # 使用期間(必須)
+      t.date    :period_start,  null: false  # 使用期間(必須)
+      t.date    :period_end                  # 使用期間(必須)
       t.date    :purchase_date         # 購入日
       t.integer :price                 # 購入金額
       t.date    :inspection_date       # 修理点検日
