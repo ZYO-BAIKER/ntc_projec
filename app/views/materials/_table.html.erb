@@ -60,7 +60,7 @@
           </td>
         <% end %>
         <td style="font-size: 10pt;">
-          <%= material.period %>  <%# 使用期間 %>
+          <%= material&.period_start %> ~ <%= material&.period_end %>  <%# 使用期間 %>
         </td>
         <td style="font-size: 10pt;">
           <%= material.purchase_date %>  <%# 購入日 %>

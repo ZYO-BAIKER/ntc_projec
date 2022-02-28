@@ -7,5 +7,5 @@ ja:
         name: 資産名
         place: 場所
         user: 使用者
-        period: 使用期間
+        period_start: 使用開始期間
         memo: メモ
