@@ -13,6 +13,7 @@ class MaterialsController < ApplicationController
   def create
     @material = Material.new(material_params)
     if @material.valid?
+      binding.pry
       if @material.place == "車庫"
         @material.other_places = ""
         @material.user == "車庫"
@@ -33,11 +34,11 @@ class MaterialsController < ApplicationController
 
   def update
     if @material.update(material_params)
-      if @material.place == "車庫"
+      if @material.place == "車庫" #場所が「車庫」なら、「現場」の値を消去して、使用者は車庫になる
         @material.other_places = ""
-        @material.user == "車庫"
+        @material.user = "車庫"
       end
-      if @material.user != "その他"
+      if @material.user != "その他" #使用者が「その他」でないなら、「その他」の値を消去
         @material.other_users = ""
       end
       @material.save!

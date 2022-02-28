@@ -1,5 +1,6 @@
 class UserSelect < ActiveHash::Base
   self.data = [
+    { name: "車庫" },
     { name: "吉久保" },
     { name: "加藤" },
     { name: "小沢" },
