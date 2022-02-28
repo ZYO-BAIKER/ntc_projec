@@ -22,7 +22,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_060939) do
     t.string "other_places"
     t.string "user", null: false
     t.string "other_users"
-    t.string "period", null: false
+    t.date "period_start", null: false
+    t.date "period_end"
     t.date "purchase_date"
     t.integer "price"
     t.date "inspection_date"
