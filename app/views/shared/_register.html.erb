@@ -19,10 +19,11 @@
           <%= f.radio_button :place, :車庫 %>
           <%= f.label :現場： %>
           <%= f.radio_button :place, :現場, onClick:"changeDisabled()" %>
-          <%= f.text_field :other_places, class: 'other_places-input', placeholder: '現場の場合入力' %>
 
-          <% if @material.place == "現場" && @material.other_places != nil %>
-            <%= f.text_field :other_places, id: 'other_places', placeholder: '現場の場合入力' %>
+          <% if current_page?(new_material_path) || @material.place == "車庫"  %> <%# 登録画面で[未選択 or 編集画面で車庫の場合]は非表示  %>
+            <%= f.text_field :other_places, class: 'other_places-input', placeholder: '現場の場合入力', style:"display: none" %>
+          <% else @material.place == "現場" && @material.other_places != nil %> <%# 編集画面で[現場選択 and その他欄がある場合]は表示  %>
+            <%= f.text_field :other_places, class: 'other_places-input', placeholder: '現場の場合入力' %>
           <% end %>
         </td>
       </tr>
@@ -32,7 +33,7 @@
           <%= f.collection_select :user, UserSelect.all, :name, :name, {include_blank:'選択してください'} %>
           <% if current_page?(new_material_path) ||  @material.user != "その他" %>
             <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他の場合入力', style:"display: none" %>
-          <% else  @material.user == "その他" %>
+          <% elsif  @material.user == "その他" %>
             <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他の場合入力' %>
           <% end %>
         </td>
@@ -52,7 +53,7 @@
 
       <tr style="font-size: 10pt;"><td>購入金額</td>
         <td colspan="3">
-          <%= f.text_field :price , class:"price-input", placeholder:"例）300" %>円
+          <%= f.text_field :price , class:"price-input", placeholder:"例）3000" %>円
         </td>
       </tr>
 
