@@ -30,7 +30,11 @@
       <tr style="font-size: 10pt;"><td>使用者（※）</td>
         <td colspan="3">
           <%= f.collection_select :user, UserSelect.all, :name, :name, {include_blank:'選択してください'} %>
-          <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他の場合入力' %>
+          <% if current_page?(new_material_path) ||  @material.user != "その他" %>
+            <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他の場合入力', style:"display: none" %>
+          <% else  @material.user == "その他" %>
+            <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他の場合入力' %>
+          <% end %>
         </td>
       </tr>
 
