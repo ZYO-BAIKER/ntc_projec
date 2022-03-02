@@ -39,9 +39,10 @@
         </td>
       </tr>
 
-      <tr style="font-size: 10pt;"><td>使用期間（※）</td>
+      <tr style="font-size: 10pt;"><td>使用期間<br>（開始のみ※）</td>
         <td colspan="3">
-          <%= f.date_field :period_start %> ~ <%= f.date_field :period_end %>
+          <%= f.label :使用開始： %> <%= f.date_field :period_start %><br>
+          <%= f.label :使用終了： %> <%= f.date_field :period_end %>
         </td>
       </tr>
 
