@@ -1,0 +1,76 @@
+    <%= render 'shared/error_messages', model: f.object %>
+    <p class="attention"><%= flash[:alert] %></p>
+    <table class="full-width" >
+      <tr style="font-size: 10pt;"><td>資産名（※）</td>
+        <td colspan="3">
+          <%= f.text_field :name, maxlength: "30" %>
+        </td>
+      </tr>
+
+      <tr style="font-size: 10pt;"><td>メーカー</td>
+        <td colspan="3">
+          <%= f.text_field :maker, maxlength: "30" %>
+        </td>
+      </tr>
+
+      <tr style="font-size: 10pt;"><td>場所（※）</td>
+        <td colspan="3">
+          <%= f.collection_select :place, PlaceSelect.all, :name, :name, {include_blank:'選択してください'} %>
+
+          <% if current_page?(new_material_path) || @material.place == "車庫"  %> <%# 登録画面で[未選択 or 編集画面で車庫の場合]は非表示  %>
+            <%= f.text_field :other_places, class: 'other_places-input', placeholder: '現場の場合入力', style:"display: none" %>
+          <% else @material.place == "現場" && @material.other_places != nil %> <%# 編集画面で[現場選択 and その他欄がある場合]は表示  %>
+            <%= f.text_field :other_places, class: 'other_places-input', placeholder: '現場の場合入力' %>
+          <% end %>
+        </td>
+      </tr>
+
+      <tr style="font-size: 10pt;"><td>使用者（※）</td>
+        <td colspan="3">
+          <%= f.collection_select :user, UserSelect.all, :name, :name, {include_blank:'選択してください'} %>
+          <% if current_page?(new_material_path) ||  @material.user != "その他" %>
+            <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他の場合入力', style:"display: none" %>
+          <% elsif  @material.user == "その他" %>
+            <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他の場合入力' %>
+          <% end %>
+        </td>
+      </tr>
+
+      <tr style="font-size: 10pt;"><td>使用期間<br>（開始のみ※）</td>
+        <td colspan="3">
+          <%= f.label :使用開始： %> <%= f.date_field :period_start %><br>
+          <%= f.label :使用終了： %> <%= f.date_field :period_end %>
+        </td>
+      </tr>
+
+      <% if current_user.authority == 0 %>
+        <tr style="font-size: 10pt;"><td>購入日</td>
+          <td colspan="3">
+            <%= f.date_field :purchase_date %>
+          </td>
+        </tr>
+
+        <tr style="font-size: 10pt;"><td>購入金額</td>
+          <td colspan="3">
+            <%= f.text_field :purchase_price , class:"price-input", placeholder:"例）3000" %>円
+          </td>
+        </tr>
+
+        <tr style="font-size: 10pt;"><td>購入場所</td>
+          <td colspan="3">
+            <%= f.text_field :purchase_place, maxlength: "30" %>
+          </td>
+        </tr>
+      <% end %>
+
+      <tr style="font-size: 10pt;"><td>前回修理点検日</td>
+        <td colspan="3">
+          <%= f.date_field :inspection_date %>
+          <%= f.text_area :inspection_content, maxlength: "200" %>
+        </td>
+      </tr>
+
+      <tr style="font-size: 10pt;"><td>メモ（※）</td>
+        <td colspan="3"><%= f.text_area :memo, maxlength: "200" %></td>
+      </tr>
+    </table>
