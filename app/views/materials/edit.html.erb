@@ -5,7 +5,7 @@
   <p class="attention">（※）は必須項目です</p>
 
   <%= form_with(model: @material, local: true) do |f| %>
-    <%= render partial: "shared/register", locals: {f: f} %> <%# 部分テンプレート %>
+    <%= render partial: "register", locals: {f: f} %> <%# 部分テンプレート %>
     <div class="register">
       <%= f.submit "変更", class:"button" %>
       <%= link_to "削除", material_path, method: :delete, data: { confirm: "この資材情報を消しますか？" }, class: "delete" %>
