@@ -12,6 +12,7 @@ class CreateMaterials < ActiveRecord::Migration[6.0]
       t.date    :purchase_date         # 購入日
       t.integer :price                 # 購入金額
       t.date    :inspection_date       # 修理点検日
+      t.string  :inspection_content    # 修理点検内容
       t.text    :memo,    null: false  # メモ(必須)
       t.timestamps
     end

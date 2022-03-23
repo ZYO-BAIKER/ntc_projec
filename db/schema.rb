@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_060939) do
     t.date "purchase_date"
     t.integer "price"
     t.date "inspection_date"
+    t.string "inspection_content"
     t.text "memo", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_060939) do
 
   create_table "users", force: :cascade do |t|
     t.string "account", default: "", null: false
+    t.integer "authority", default: 1, null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
