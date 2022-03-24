@@ -2,8 +2,8 @@
 <div class="filter" >
   <%= search_form_for @q, url: result_materials_path do |f| %>
     <div class="user-search">
-      <%= f.label :name_cont, '資産名：' %>
-      <%= f.text_field  :name_cont %>
+      <%= f.label :material_name_cont, '資産名：' %>
+      <%= f.text_field  :material_name_cont %>
     </div>
     <div class="user-search">
       <%= f.label :maker_cont, 'メーカー：' %>

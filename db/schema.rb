@@ -16,7 +16,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_060939) do
   enable_extension "plpgsql"
 
   create_table "materials", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "material_name", null: false
+    t.integer "material_count", null: false
     t.string "maker"
     t.string "place", null: false
     t.string "other_places"
@@ -25,8 +26,10 @@ ActiveRecord::Schema.define(version: 2022_01_15_060939) do
     t.date "period_start", null: false
     t.date "period_end"
     t.date "purchase_date"
-    t.integer "price"
+    t.integer "purchase_price"
+    t.integer "purchase_place"
     t.date "inspection_date"
+    t.string "inspection_content"
     t.text "memo", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -34,6 +37,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_060939) do
 
   create_table "users", force: :cascade do |t|
     t.string "account", default: "", null: false
+    t.integer "authority", default: 1, null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false

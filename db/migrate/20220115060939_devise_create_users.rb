@@ -4,8 +4,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :users do |t|
       ## Database authenticatable
-      t.string :account,            null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string  :account,            null: false, default: ""
+      t.integer :authority,          null: false, default: "1" # 権限
+      t.string  :encrypted_password, null: false, default: ""
 
       ## Rememberable
       t.datetime :remember_created_at
