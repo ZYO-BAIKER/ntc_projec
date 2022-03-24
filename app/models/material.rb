@@ -1,5 +1,4 @@
 class Material < ApplicationRecord
-
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user_select
   belongs_to :place_select

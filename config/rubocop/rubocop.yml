@@ -422,3 +422,7 @@ Style/HashTransformKeys:
 # version 1 からは強制 true
 Style/HashTransformValues:
   Enabled: true
+
+# クラス変数のチェック無効化
+Style/ClassVars:
+  Enabled: false
