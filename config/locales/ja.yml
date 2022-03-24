@@ -4,7 +4,8 @@ ja:
       user:
         account: アカウント名
       material:
-        name: 資産名
+        material_name: 資産名
+        material_count: 数量
         place: 場所
         user: 使用者
         period_start: 使用開始期間

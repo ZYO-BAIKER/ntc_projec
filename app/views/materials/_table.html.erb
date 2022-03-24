@@ -34,7 +34,7 @@
     <% @materials.each do |material| %>
       <tr onclick= window.location="<%= "/materials/" + material.id.to_s + "/edit" %>"  role="link" class="record">
         <td style="font-size: 10pt;">
-          <%= material.name %>  <%# 資産名 %>
+          <%= material.material_name %>  <%# 資産名 %>
         </td>
         <td style="font-size: 10pt;">
           <%= material.maker %>  <%# メーカー %>

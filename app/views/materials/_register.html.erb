@@ -3,7 +3,13 @@
     <table class="full-width" >
       <tr style="font-size: 10pt;"><td>資産名（※）</td>
         <td colspan="3">
-          <%= f.text_field :name, maxlength: "30" %>
+          <%= f.text_field :material_name, maxlength: "30" %>
+        </td>
+      </tr>
+
+      <tr style="font-size: 10pt;"><td>数量（※）</td>
+        <td colspan="3">
+          <%= f.number_field :material_count %>
         </td>
       </tr>
 
