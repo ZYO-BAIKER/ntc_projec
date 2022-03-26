@@ -40,29 +40,5 @@ RSpec.describe Material, type: :model do
         expect(material).not_to be_valid
       end
     end
-
-    context "userがない場合" do
-      let(:material) { build(:material, user: nil) }
-
-      it "エラーする" do
-        expect(material).not_to be_valid
-      end
-    end
-
-    context "period_startがない場合" do
-      let(:material) { build(:material, period_start: nil) }
-
-      it "エラーする" do
-        expect(material).not_to be_valid
-      end
-    end
-
-    context "memoがない場合" do
-      let(:material) { build(:material, memo: nil) }
-
-      it "エラーする" do
-        expect(material).not_to be_valid
-      end
-    end
   end
 end

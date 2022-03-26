@@ -31,7 +31,7 @@
         </td>
       </tr>
 
-      <tr style="font-size: 10pt;"><td>使用者（※）</td>
+      <tr style="font-size: 10pt;"><td>使用者</td>
         <td colspan="3">
           <%= f.collection_select :user, UserSelect.all, :name, :name, {include_blank:'選択してください'} %>
           <% if current_page?(new_material_path) ||  @material.user != "その他" %>
@@ -42,7 +42,7 @@
         </td>
       </tr>
 
-      <tr style="font-size: 10pt;"><td>使用期間<br>（開始のみ※）</td>
+      <tr style="font-size: 10pt;"><td>使用期間</td>
         <td colspan="3">
           <%= f.label :使用開始： %> <%= f.date_field :period_start %><br>
           <%= f.label :使用終了： %> <%= f.date_field :period_end %>
@@ -76,7 +76,7 @@
         </td>
       </tr>
 
-      <tr style="font-size: 10pt;"><td>メモ（※）</td>
+      <tr style="font-size: 10pt;"><td>メモ</td>
         <td colspan="3"><%= f.text_area :memo, maxlength: "200" %></td>
       </tr>
     </table>
