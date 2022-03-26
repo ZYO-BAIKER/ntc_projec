@@ -4,6 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, authentication_keys: [:account]
 
+  with_options presence: true do
+    validates :account, :authority
+  end
+  validates :authority, inclusion: { in: 0..1 }
+
   # No use email
   def email_required?
     false

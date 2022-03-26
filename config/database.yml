@@ -26,6 +26,10 @@ development:
   <<: *default
   database: NTC_Material_Managment_development
 
+test:
+  <<: *default
+  database: NTC_Material_Managment_test
+
 production:
   <<: *default
   database: NTC_Material_Managment_production
