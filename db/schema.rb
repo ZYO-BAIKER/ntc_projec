@@ -21,16 +21,17 @@ ActiveRecord::Schema.define(version: 2022_01_15_060939) do
     t.string "maker"
     t.string "place", null: false
     t.string "other_places"
-    t.string "user", null: false
+    t.string "user"
     t.string "other_users"
-    t.date "period_start", null: false
+    t.string "repair_request"
+    t.date "period_start"
     t.date "period_end"
     t.date "purchase_date"
     t.integer "purchase_price"
     t.integer "purchase_place"
     t.date "inspection_date"
     t.string "inspection_content"
-    t.text "memo", null: false
+    t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
