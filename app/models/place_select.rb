@@ -3,8 +3,8 @@ class PlaceSelect < ActiveHash::Base
     { name: "車庫" },
     { name: "第二倉庫" },
     { name: "舞台工場" },
-    { name: "修理中" },
     { name: "現場" },
+    { name: "修理中" },
   ]
 
   include ActiveHash::Associations
