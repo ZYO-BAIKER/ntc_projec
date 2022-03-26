@@ -23,10 +23,16 @@
         <td colspan="3">
           <%= f.collection_select :place, PlaceSelect.all, :name, :name, {include_blank:'選択してください'} %>
 
-          <% if current_page?(new_material_path) || @material.place == "車庫"  %> <%# 登録画面で[未選択 or 編集画面で車庫の場合]は非表示  %>
+          <% if current_page?(new_material_path) || @material.place != "現場"  %> <%# 登録画面で[未選択 or 編集画面で現場以外の場合]は非表示  %>
             <%= f.text_field :other_places, class: 'other_places-input', placeholder: '現場の場合入力', style:"display: none" %>
-          <% else @material.place == "現場" && @material.other_places != nil %> <%# 編集画面で[現場選択 and その他欄がある場合]は表示  %>
+          <% elsif @material.place == "現場" && @material.other_places != nil %> <%# 編集画面で[現場選択 and その他欄がある場合]は表示  %>
             <%= f.text_field :other_places, class: 'other_places-input', placeholder: '現場の場合入力' %>
+          <% end %>
+
+          <% if current_page?(new_material_path) || @material.place != "修理中"  %> <%# 登録画面で[未選択 or 編集画面で修理中以外の場合]は非表示  %>
+            <%= f.text_field :repair_request, class: 'repair_request-input', placeholder: '修理依頼先の入力', style:"display: none" %>
+          <% elsif @material.place == "修理中" && @material.other_places != nil %> <%# 編集画面で[修理中選択 and その他欄がある場合]は表示  %>
+            <%= f.text_field :repair_request, class: 'repair_request-input', placeholder: '修理依頼先の入力' %>
           <% end %>
         </td>
       </tr>

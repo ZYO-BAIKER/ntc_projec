@@ -13,6 +13,12 @@ class MaterialsController < ApplicationController
   def create
     @material = Material.new(material_params)
     if @material.valid?
+      if @material.place != "現場" # 場所が「現場」でないなら、「現場」の値を消去
+        @material.other_places = ""
+      end
+      if @material.place != "修理中" # 場所が「修理中」でないなら、「修理中」の値を消去
+        @material.repair_request = ""
+      end
       if @material.user != "その他" # 使用者が「その他」でないなら、「その他」の値を消去
         @material.other_users = ""
       end
@@ -29,6 +35,12 @@ class MaterialsController < ApplicationController
 
   def update
     if @material.update(material_params)
+      if @material.place != "現場" # 場所が「現場」でないなら、「現場」の値を消去
+        @material.other_places = ""
+      end
+      if @material.place != "修理中" # 場所が「修理中」でないなら、「修理中」の値を消去
+        @material.repair_request = ""
+      end
       if @material.user != "その他" # 使用者が「その他」でないなら、「その他」の値を消去
         @material.other_users = ""
       end
@@ -51,8 +63,8 @@ class MaterialsController < ApplicationController
   private
 
     def material_params
-      params.require(:material).permit(:material_name, :material_count, :maker, :place, :other_places, :repair_request, :user, :other_users, :period_start, :period_end,
-                                       :purchase_date, :purchase_price, :purchase_place, :inspection_date, :inspection_content, :memo)
+      params.require(:material).permit(:material_name, :material_count, :maker, :place, :other_places, :repair_request, :user, :other_users, :period_start,
+                                       :period_end, :purchase_date, :purchase_price, :purchase_place, :inspection_date, :inspection_content, :memo)
     end
 
     def set_material
