@@ -36,22 +36,25 @@
         <td style="font-size: 10pt;">
           <%= material.material_name %>  <%# 資産名 %>
         </td>
+
         <td style="font-size: 10pt;">
           <%= material.maker %>  <%# メーカー %>
         </td>
+
         <% if material.place == "現場" && material.other_places != nil %>
           <td style="font-size: 10pt;">
             <%= material.other_places %>  <%# 場所(現場) %>
           </td>
-        <% elsif material.place == "修理中" && material.repair_request != nil %>
+        <% elsif material.place == "修理中"%>
           <td style="font-size: 10pt;">
-            <%= material.repair_request %>  <%# 場所(修理依頼先) %>
+            <%= "修理中" %>  <%# 場所(修理中) %>
           </td>
         <% else %>
           <td style="font-size: 10pt;">
             <%= material.place %>  <%# 場所 %>
           </td>
         <% end %>
+
         <% if material.user == "その他" && material.other_users != nil %>
           <td style="font-size: 10pt;">
             <%= material.other_users %>  <%# その他使用者 %>
@@ -61,9 +64,11 @@
             <%= material.user %>  <%# 使用者 %>
           </td>
         <% end %>
+
         <td style="font-size: 10pt;">
           <%= material&.period_start %> ~ <%= material&.period_end %>  <%# 使用期間 %>
         </td>
+
         <td style="font-size: 10pt;">
           <%= material.inspection_date %>  <%# 修理点検日 %>
         </td>
