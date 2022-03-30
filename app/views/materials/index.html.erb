@@ -10,20 +10,12 @@
       <%= f.text_field :maker_cont %>
     </div>
     <div class="user-search">
-      <%= f.label :place_cont, '場所：' %>
-      <%= f.text_field :place_cont %>
+      <%= f.label :place_or_place_2_or_place_3_cont, '場所：' %>
+      <%= f.text_field :place_or_place_2_or_place_3_cont %>
     </div>
     <div class="user-search">
-      <%= f.label :user_eq, '使用者：'%>
-      <%= f.collection_select :user_eq, UserSelect.all, :name, :name, {include_blank:'指定なし'} %>
-    </div>
-    <div class="user-search">
-      <%= f.label :purchase_date_eq, '購入日：' %>
-      <%= f.date_field :purchase_date_eq %>
-    </div>
-    <div class="user-search">
-      <%= f.label :inspection_date_eq, '修理点検日：' %>
-      <%= f.date_field :inspection_date_eq %>
+      <%= f.label :user_or_user_2_or_user_3_eq, '使用者：'%>
+      <%= f.collection_select :user_or_user_2_or_user_3_eq, UserSelect.all, :name, :name, {include_blank:'指定なし'} %>
     </div>
     <%= f.submit '絞り込み' %>
   <% end %>

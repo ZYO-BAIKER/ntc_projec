@@ -426,3 +426,13 @@ Style/HashTransformValues:
 # クラス変数のチェック無効化
 Style/ClassVars:
   Enabled: false
+
+
+Naming/VariableNumber:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false

@@ -8,5 +8,6 @@ ja:
         material_count: 数量
         place: 場所
         user: 使用者
+        use_count: 使用数
         period_start: 使用開始期間
         memo: メモ
