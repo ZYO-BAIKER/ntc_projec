@@ -22,5 +22,6 @@
 </div>
 <%= paginate @materials %>
 <div class="container-table">全資産：<%= Material.all.count %>
+  <%= render "count" %>
   <%= render "table" %>
 </div>
