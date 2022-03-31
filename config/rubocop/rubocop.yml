@@ -427,10 +427,6 @@ Style/HashTransformValues:
 Style/ClassVars:
   Enabled: false
 
-
-Naming/VariableNumber:
-  Enabled: false
-
 Metrics/BlockLength:
   Enabled: false
 
