@@ -10,39 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_15_060939) do
+ActiveRecord::Schema.define(version: 2022_01_16_145958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "materials", force: :cascade do |t|
     t.string "material_name", null: false
-    t.integer "material_count", null: false
     t.string "maker"
-    t.string "place", null: false
-    t.string "other_places"
-    t.string "place_2"
-    t.string "other_places_2"
-    t.string "place_3"
-    t.string "other_places_3"
+    t.integer "all_count", null: false
+    t.integer "garage_count"
+    t.integer "garage2_count"
+    t.integer "garage3_count"
+    t.string "place"
     t.string "user"
     t.string "other_users"
-    t.string "repair_request"
-    t.string "user_2"
-    t.string "other_users_2"
-    t.string "repair_request_2"
-    t.string "user_3"
-    t.string "other_users_3"
-    t.string "repair_request_3"
-    t.integer "use_count", null: false
-    t.integer "use_count_2"
-    t.integer "use_count_3"
+    t.integer "use_count"
     t.date "period_start"
     t.date "period_end"
-    t.date "period_start_2"
-    t.date "period_end_2"
-    t.date "period_start_3"
-    t.date "period_end_3"
+    t.string "place2"
+    t.string "user2"
+    t.string "other_users2"
+    t.integer "use_count2"
+    t.date "period_start2"
+    t.date "period_end2"
+    t.string "place3"
+    t.string "user3"
+    t.string "other_users3"
+    t.integer "use_count3"
+    t.date "period_start3"
+    t.date "period_end3"
+    t.string "repair_request"
+    t.integer "repair_count"
     t.date "purchase_date"
     t.integer "purchase_price"
     t.integer "purchase_place"
