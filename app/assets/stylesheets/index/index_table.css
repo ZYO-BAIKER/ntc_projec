@@ -12,12 +12,14 @@ table {
 th,td {
   border: solid 1px;              /* 枠線指定 */
   padding: 10px;      /* 余白指定 */
+  font-size: 10pt;
 }
 
 th {
   background-color: #00e2cf;  /* 背景色指定 */
   width:  100px;              /* 幅指定 */
   text-align: left;           /* 文字の揃え位置指定 */
+  font-size: 10pt;
 }
 
 .container-table tr:hover {
@@ -26,6 +28,10 @@ th {
 
 td {
   text-align:  center;        /* 文字の揃え位置指定 */
+}
+
+td.period {
+  font-size: 10px;
 }
 
 nav.pagination {

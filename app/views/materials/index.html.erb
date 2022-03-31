@@ -1,34 +1,6 @@
 <%= render "shared/header" %>
-<div class="filter" >
-  <%= search_form_for @q, url: result_materials_path do |f| %>
-    <div class="user-search">
-      <%= f.label :material_name_cont, '資産名：' %>
-      <%= f.text_field  :material_name_cont %>
-    </div>
-    <div class="user-search">
-      <%= f.label :maker_cont, 'メーカー：' %>
-      <%= f.text_field :maker_cont %>
-    </div>
-    <div class="user-search">
-      <%= f.label :place_cont, '場所：' %>
-      <%= f.text_field :place_cont %>
-    </div>
-    <div class="user-search">
-      <%= f.label :user_eq, '使用者：'%>
-      <%= f.collection_select :user_eq, UserSelect.all, :name, :name, {include_blank:'指定なし'} %>
-    </div>
-    <div class="user-search">
-      <%= f.label :purchase_date_eq, '購入日：' %>
-      <%= f.date_field :purchase_date_eq %>
-    </div>
-    <div class="user-search">
-      <%= f.label :inspection_date_eq, '修理点検日：' %>
-      <%= f.date_field :inspection_date_eq %>
-    </div>
-    <%= f.submit '絞り込み' %>
-  <% end %>
-</div>
-<%= paginate @materials %>
-<div class="container-table">全資産：<%= Material.all.count %>
+<%= render "search" %>
+<div class="container-table">全資産：<%= Material.all.count %> 修理中：<%= Material.where.not(repair_request:nil, repair_count:nil).count %>
+  <%= paginate @materials %>
   <%= render "table" %>
 </div>
