@@ -1,88 +1,125 @@
-    <%= render 'shared/error_messages', model: f.object %>
-    <p class="attention"><%= flash[:alert] %></p>
-    <table class="full-width" >
-      <tr style="font-size: 10pt;"><td>資産名（※）</td>
-        <td colspan="3">
-          <%= f.text_field :material_name, maxlength: "30" %>
-        </td>
+<%= render 'shared/error_messages', model: f.object %>
+<p class="attention"><%= flash[:alert] %></p>
+<table class="full-width" >
+  <tr style="font-size: 10pt;"><td>資産名（※）</td>
+    <td colspan="3">
+      <%= f.text_field :material_name, maxlength: "20", placeholder:"資産名入力" %>
+    </td>
+  </tr>
+  <tr style="font-size: 10pt;"><td>メーカー</td>
+    <td colspan="3">
+      <%= f.text_field :maker, maxlength: "20",  placeholder:"メーカー名入力" %>
+    </td>
+  </tr>
+  <tr style="font-size: 10pt;"><td>全数量（※）</td>
+    <td colspan="3">
+      <%= f.number_field :all_count,  placeholder:"全数量入力", min:"0"%>
+    </td>
+  </tr>
+  <tr style="font-size: 10pt;"><td>会社</td>
+    <td colspan="3">
+      <div>車庫:<%= f.number_field :garage_count,  placeholder:"数量入力", min:"0" %></div>
+      <div>第二倉庫：<%= f.number_field :garage2_count, placeholder:"数量入力", min:"0" %></div>
+      <div>舞台工場: <%= f.number_field :garage3_count, placeholder:"数量入力", min:"0" %></div>
       </tr>
+    </td>
+  </tr>
+  <tr style="font-size: 10pt;"><td>現場①</td>
+    <td colspan="3">
+      <div><%= f.text_field :place, placeholder: '現場名を入力' %></div>
+      <div><%= f.number_field :use_count,  placeholder:"数量入力", min:"0" %></div>
+      <div>
+        <%= f.collection_select :user, UserSelect.all, :name, :name, {include_blank:'使用者選択'} %>
+        <% if current_page?(new_material_path) ||  @material.user != "その他" %>
+          <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他入力', style:"display: none" %>
+        <% elsif  @material.user == "その他" %>
+          <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他入力' %>
+        <% end %>
+      </div>
+      <div>
+        <%= f.label :使用開始： %> <%= f.date_field :period_start %><br>
+        <%= f.label :使用終了： %> <%= f.date_field :period_end %>
+      </div>
+    </td>
+  </tr>
+  <tr style="font-size: 10pt;"><td>現場②</td>
+    <td colspan="3">
+      <div><%= f.text_field :place2, placeholder: '現場名を入力' %></div>
+      <div><%= f.number_field :use_count2,  placeholder:"数量入力", min:"0" %></div>
+      <div>
+        <%= f.collection_select :user2, UserSelect.all, :name, :name, {include_blank:'使用者選択'} %>
+        <% if current_page?(new_material_path) ||  @material.user2 != "その他" %>
+          <%= f.text_field :other_users2, class: 'other_users-input2', placeholder: 'その他入力', style:"display: none" %>
+        <% elsif  @material.user2 == "その他" %>
+          <%= f.text_field :other_users2, class: 'other_users-input2', placeholder: 'その他入力' %>
+        <% end %>
+      </div>
+      <div>
+        <%= f.label :使用開始： %> <%= f.date_field :period_start2 %><br>
+        <%= f.label :使用終了： %> <%= f.date_field :period_end2 %>
+      </div>
+    </td>
+  </tr>
+  <tr style="font-size: 10pt;"><td>現場③</td>
+    <td colspan="3">
+      <div><%= f.text_field :place3, placeholder: '現場名を入力' %></div>
+      <div><%= f.number_field :use_count3,  placeholder:"数量入力", min:"0" %></div>
+      <div>
+        <%= f.collection_select :user3, UserSelect.all, :name, :name, {include_blank:'使用者選択'} %>
+        <% if current_page?(new_material_path) ||  @material.user3 != "その他" %>
+          <%= f.text_field :other_users3, class: 'other_users-input3', placeholder: 'その他入力', style:"display: none" %>
+        <% elsif  @material.user3 == "その他" %>
+          <%= f.text_field :other_users3, class: 'other_users-input3', placeholder: 'その他入力' %>
+        <% end %>
+      </div>
+      <div>
+        <%= f.label :使用開始： %> <%= f.date_field :period_start3 %><br>
+        <%= f.label :使用終了： %> <%= f.date_field :period_end3 %>
+      </div>
+    </td>
+  </tr>
+  <tr style="font-size: 10pt;"><td>修理中</td>
+    <td colspan="3">
+      <%= f.text_field :repair_request, placeholder: '修理依頼先入力' %>
+      <%= f.number_field :repair_count, placeholder: "修理数量入力", min:"0" %>
+    </td>
+  </tr>
 
-      <tr style="font-size: 10pt;"><td>数量（※）</td>
-        <td colspan="3">
-          <%= f.number_field :material_count %>
-        </td>
-      </tr>
+  <% if current_user.authority == 0 %>
+    <tr style="font-size: 10pt;"><td>購入日</td>
+      <td colspan="3">
+        <%= f.date_field :purchase_date %>
+      </td>
+    </tr>
+    <tr style="font-size: 10pt;"><td>購入金額</td>
+      <td colspan="3">
+        <%= f.text_field :purchase_price , class:"price-input", placeholder:"例）3000", min:"0" %>円
+      </td>
+    </tr>
+    <tr style="font-size: 10pt;"><td>購入場所</td>
+      <td colspan="3">
+        <%= f.text_field :purchase_place, maxlength: "30" %>
+      </td>
+    </tr>
+  <% end %>
 
-      <tr style="font-size: 10pt;"><td>メーカー</td>
-        <td colspan="3">
-          <%= f.text_field :maker, maxlength: "30" %>
-        </td>
-      </tr>
+  <tr style="font-size: 10pt;"><td>修理履歴</td>
+    <td colspan="3">
+      <div><%= f.date_field :inspection_date %></div>
+      <div><%= f.text_area :inspection_content, maxlength: "200", placeholder:"修理内容入力" %></div>
+    </td>
+  </tr>
 
-      <tr style="font-size: 10pt;"><td>場所（※）</td>
-        <td colspan="3">
-          <%= f.collection_select :place, PlaceSelect.all, :name, :name, {include_blank:'選択してください'} %>
+  <tr style="font-size: 10pt;"><td>メモ</td>
+    <td colspan="3">
+      <%= f.text_area :memo, maxlength: "200" %>
+    </td>
+  </tr>
+</table>
 
-          <% if current_page?(new_material_path) || @material.place != "現場"  %> <%# 登録画面で[未選択 or 編集画面で現場以外の場合]は非表示  %>
-            <%= f.text_field :other_places, class: 'other_places-input', placeholder: '現場の場合入力', style:"display: none" %>
-          <% elsif @material.place == "現場" && @material.other_places != nil %> <%# 編集画面で[現場選択 and その他欄がある場合]は表示  %>
-            <%= f.text_field :other_places, class: 'other_places-input', placeholder: '現場の場合入力' %>
-          <% end %>
 
-          <% if current_page?(new_material_path) || @material.place != "修理中"  %> <%# 登録画面で[未選択 or 編集画面で修理中以外の場合]は非表示  %>
-            <%= f.text_field :repair_request, class: 'repair_request-input', placeholder: '修理依頼先の入力', style:"display: none" %>
-          <% elsif @material.place == "修理中" && @material.other_places != nil %> <%# 編集画面で[修理中選択 and その他欄がある場合]は表示  %>
-            <%= f.text_field :repair_request, class: 'repair_request-input', placeholder: '修理依頼先の入力' %>
-          <% end %>
-        </td>
-      </tr>
-
-      <tr style="font-size: 10pt;"><td>使用者</td>
-        <td colspan="3">
-          <%= f.collection_select :user, UserSelect.all, :name, :name, {include_blank:'選択してください'} %>
-          <% if current_page?(new_material_path) ||  @material.user != "その他" %>
-            <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他の場合入力', style:"display: none" %>
-          <% elsif  @material.user == "その他" %>
-            <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他の場合入力' %>
-          <% end %>
-        </td>
-      </tr>
-
-      <tr style="font-size: 10pt;"><td>使用期間</td>
-        <td colspan="3">
-          <%= f.label :使用開始： %> <%= f.date_field :period_start %><br>
-          <%= f.label :使用終了： %> <%= f.date_field :period_end %>
-        </td>
-      </tr>
-
-      <% if current_user.authority == 0 %>
-        <tr style="font-size: 10pt;"><td>購入日</td>
-          <td colspan="3">
-            <%= f.date_field :purchase_date %>
-          </td>
-        </tr>
-
-        <tr style="font-size: 10pt;"><td>購入金額</td>
-          <td colspan="3">
-            <%= f.text_field :purchase_price , class:"price-input", placeholder:"例）3000" %>円
-          </td>
-        </tr>
-
-        <tr style="font-size: 10pt;"><td>購入場所</td>
-          <td colspan="3">
-            <%= f.text_field :purchase_place, maxlength: "30" %>
-          </td>
-        </tr>
-      <% end %>
-
-      <tr style="font-size: 10pt;"><td>前回修理点検日</td>
-        <td colspan="3">
-          <%= f.date_field :inspection_date %>
-          <%= f.text_area :inspection_content, maxlength: "200" %>
-        </td>
-      </tr>
-
-      <tr style="font-size: 10pt;"><td>メモ</td>
-        <td colspan="3"><%= f.text_area :memo, maxlength: "200" %></td>
-      </tr>
-    </table>
+<%# <details>
+  <summary>Case3</summary>
+  <table>
+  </table>
+</details> %>
