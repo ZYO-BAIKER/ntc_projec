@@ -20,23 +20,24 @@ RSpec.describe Material, type: :model do
       end
     end
 
-    context "material_countに異常" do
-      let(:material) { build(:material, material_count: nil) }
+    context "all_countがない場合" do
+      let(:material) { build(:material, all_count: nil) }
 
       it "空欄でエラーする" do
         expect(material).not_to be_valid
       end
-
-      it "全角で入力でエラーする" do
-        material.material_count = "１２３２"
-        expect(material).not_to be_valid
-      end
     end
 
-    context "placeがない場合" do
-      let(:material) { build(:material, place: nil) }
+    context "数値系が半角自然数でない場合" do
+      let(:material) { build(:material) }
 
-      it "エラーする" do
+      it "全角入力でエラーする" do
+        material.all_count = "１２３２"
+        expect(material).not_to be_valid
+      end
+
+      it "0未満でエラーする" do
+        material.garage_count = "-1"
         expect(material).not_to be_valid
       end
     end
