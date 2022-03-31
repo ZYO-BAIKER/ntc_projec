@@ -4,7 +4,7 @@ class Material < ApplicationRecord
 
   validates :material_name, :all_count, presence: true # 必須設定
 
-  with_options numericality: { with: /\A[0-9]+\z/, message: "は半角で入力して下さい" } do
-    validates :all_count
+  with_options numericality: { allow_blank: true, only_integer: true, message: "は半角で入力して下さい" } do
+    validates :all_count, :garage_count, :garage2_count, :garage3_count, :use_count, :use_count2, :use_count3, :repair_count
   end
 end

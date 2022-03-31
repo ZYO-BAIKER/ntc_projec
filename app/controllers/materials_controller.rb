@@ -65,7 +65,7 @@ class MaterialsController < ApplicationController
     def material_params
       params.require(:material).permit(:material_name, :maker, :all_count, :garage_count, :garage2_count, :garage3_count, :place, :place2, :place3,
                                        :user, :user2, :user3, :other_users, :other_users2, :other_users3, :use_count, :use_count2, :use_count3,
-                                       :period_start, :period_end, :period_start2, :period_end2, :period_start3, :period_end3,:repair_request, :repair_count,
+                                       :period_start, :period_end, :period_start2, :period_end2, :period_start3, :period_end3, :repair_request, :repair_count,
                                        :purchase_date, :purchase_price, :purchase_place, :inspection_date, :inspection_content, :memo)
     end
 
