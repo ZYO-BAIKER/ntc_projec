@@ -30,6 +30,10 @@ td {
   text-align:  center;        /* 文字の揃え位置指定 */
 }
 
+td.period {
+  font-size: 10px;
+}
+
 nav.pagination {
   text-align: center;
 }

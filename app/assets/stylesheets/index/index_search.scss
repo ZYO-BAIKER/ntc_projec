@@ -1,45 +1,14 @@
-@media (min-width: 1000px) {
-  .filter {
-    margin: 16px;
-    display: flex;
-    form#material_search{
-      margin-top: 10px;
-      display: contents;
-      .user-search {
-        margin: 5px;
-      }
-      input[type="submit"] {
-        margin-left: 10px;
-      }
+.filter {
+  margin: 16px;
+  display: flex;
+  form#material_search{
+    margin-top: 10px;
+    display: contents;
+    .user-search {
+      margin: 5px;
     }
-  }
-}
-
-@media (max-width: 1000px) {
-  .filter {
-    text-align: -webkit-center;
-    margin: 16px;
-
-    form#material_search {
-      display: table-caption;
-      select#q_place_cont {
-        text-align: center;
-      }
-      select#q_user_eq {
-        text-align: center;
-      }
-      .user-search {
-        display: grid;
-        input#q_inspection_date_eq {
-          margin: 0 auto;
-        }
-        input#q_purchase_date_eq {
-          margin: 0 auto;
-        }
-      }
-    }
-    form input[type="submit"] {
-      margin-top: 10px;
+    input[type="submit"] {
+      margin-left: 10px;
     }
   }
 }
