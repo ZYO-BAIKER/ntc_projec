@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2022_01_16_145958) do
     t.integer "repair_count"
     t.date "purchase_date"
     t.integer "purchase_price"
-    t.integer "purchase_place"
+    t.string "purchase_place"
     t.date "inspection_date"
     t.string "inspection_content"
     t.text "memo"

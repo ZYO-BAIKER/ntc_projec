@@ -29,7 +29,7 @@ class CreateMaterials < ActiveRecord::Migration[6.0]
       t.integer :repair_count                 # 修理数
       t.date    :purchase_date                # 購入日
       t.integer :purchase_price               # 購入金額
-      t.integer :purchase_place               # 購入場所
+      t.string  :purchase_place               # 購入場所
       t.date    :inspection_date              # 修理点検日
       t.string  :inspection_content           # 修理点検内容
       t.text    :memo                         # メモ
