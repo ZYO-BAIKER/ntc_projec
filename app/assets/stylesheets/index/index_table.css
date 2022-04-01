@@ -20,6 +20,7 @@ th {
   width:  100px;              /* 幅指定 */
   text-align: left;           /* 文字の揃え位置指定 */
   font-size: 10pt;
+  text-align: center;
 }
 
 .container-table tr:hover {
