@@ -1,63 +1,63 @@
 <table class="full-width" >
   <tr class="first_row">
-    <th colspan="2"></th>
-    <th colspan="3">会社</th>
-    <th colspan="4">現場①</th>
-    <th colspan="4">現場②</th>
-    <th colspan="4">現場③</th>
-    <th>修理中</th>
+    <th colspan="2" class="border border-dark"></th>
+    <th colspan="3" class="border border-dark">会社</th>
+    <th colspan="4" class="border border-dark">現場①</th>
+    <th colspan="4" class="border border-dark">現場②</th>
+    <th colspan="4" class="border border-dark">現場③</th>
+    <th class="border border-dark">修理中</th>
   </tr>
   <tr class="second_row">
-    <th>資産名</th>
-    <th>メーカー</th>
+    <th class="border border-dark">資産名</th>
+    <th class="border border-dark">メーカー</th>
     <%# 会社 %>
-    <th>車庫</th>
-    <th>第二倉庫</th>
-    <th>舞台倉庫</th>
+    <th class="border border-dark">車庫</th>
+    <th class="border border-dark">第二倉庫</th>
+    <th class="border border-dark">舞台倉庫</th>
     <%# 現場① %>
-    <th>現場名</th>
-    <th>使用数</th>
-    <th>使用者</th>
-    <th>使用期間</th>
+    <th class="border border-dark">現場名</th>
+    <th class="border border-dark">使用数</th>
+    <th class="border border-dark">使用者</th>
+    <th class="border border-dark">使用期間</th>
     <%# 現場② %>
-    <th>現場名</th>
-    <th>使用数</th>
-    <th>使用者</th>
-    <th>使用期間</th>
+    <th class="border border-dark">現場名</th>
+    <th class="border border-dark">使用数</th>
+    <th class="border border-dark">使用者</th>
+    <th class="border border-dark">使用期間</th>
     <%# 現場③ %>
-    <th>現場名</th>
-    <th>使用数</th>
-    <th>使用者</th>
-    <th>使用期間</th>
+    <th class="border border-dark">現場名</th>
+    <th class="border border-dark">使用数</th>
+    <th class="border border-dark">使用者</th>
+    <th class="border border-dark">使用期間</th>
     <%# 修理中 %>
-    <th>数量</th>
+    <th class="border border-dark">数量</th>
   </tr>
   <% @materials.each do |material| %>
-    <tr onclick= window.location="<%= "/materials/" + material.id.to_s + "/edit" %>"  role="link" class="record">
-      <td>
+    <tr class="border border-dark" onclick= window.location="<%= "/materials/" + material.id.to_s + "/edit" %>"  role="link" class="record">
+      <td class="border border-dark">
         <%= material.material_name %>  <%# 資産名 %>
       </td>
-      <td>
+      <td class="border border-dark">
         <%= material.maker %>  <%# メーカー %>
       </td>
     <%# 会社 %>
-      <td>
+      <td class="border border-dark">
         <%= material.garage_count %>  <%# 車庫 %>
       </td>
-      <td>
+      <td class="border border-dark">
         <%= material.garage2_count %>  <%# 第二倉庫 %>
       </td>
-      <td>
+      <td class="border border-dark">
         <%= material.garage3_count %>  <%# 舞台倉庫 %>
       </td>
     <%# 現場① %>
-      <td>
+      <td class="border border-dark">
         <%= material.place %>  <%# 現場名① %>
       </td>
-      <td>
+      <td class="border border-dark">
         <%= material.use_count %>  <%# 使用数① %>
       </td>
-      <td>
+      <td class="border border-dark">
         <% if material.user == "その他" && material.other_users != nil %>
           <%= material.other_users %>  <%# その他使用者① %>
         <% else %>
@@ -70,13 +70,13 @@
         <%= material&.period_end %>  <%# 使用期間① %>
       </td>
     <%# 現場② %>
-      <td>
+      <td class="border border-dark">
         <%= material.place2 %>  <%# 現場名② %>
       </td>
-      <td>
+      <td class="border border-dark">
         <%= material.use_count2 %>  <%# 使用数② %>
       </td>
-      <td>
+      <td class="border border-dark">
         <% if material.user2 == "その他" && material.other_users2 != nil %>
           <%= material.other_users2 %>  <%# その他使用者② %>
         <% else %>
@@ -89,13 +89,13 @@
         <%= material&.period_end2 %>  <%# 使用期間② %>
       </td>
     <%# 現場③ %>
-      <td>
+      <td class="border border-dark">
         <%= material.place3 %>  <%# 現場名③ %>
       </td>
-      <td>
+      <td class="border border-dark">
         <%= material.use_count3 %>  <%# 使用数③ %>
       </td>
-      <td>
+      <td class="border border-dark">
         <% if material.user3 == "その他" && material.other_users3 != nil %>
           <%= material.other_users3 %>  <%# その他使用者③ %>
         <% else %>
@@ -108,7 +108,7 @@
         <%= material&.period_end3 %>  <%# 使用期間③ %>
       </td>
     <%# 修理中 %>
-      <td>
+      <td class="border border-dark">
         <%= material.repair_count %> <%# 修理数 %>
       </td>
     </tr>
