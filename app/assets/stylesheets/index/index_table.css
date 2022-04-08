@@ -33,3 +33,7 @@ th {
 td.period {
   font-size: 10px;
 }
+
+th.border.border-dark.mat {
+  width: 300px;
+}
