@@ -7,4 +7,15 @@ class Material < ApplicationRecord
   with_options numericality: { allow_blank: true, only_integer: true, greater_than_or_equal_to: 0, message: "は半角で入力して下さい" } do
     validates :all_count, :garage_count, :garage2_count, :garage3_count, :use_count, :use_count2, :use_count3, :repair_count
   end
+
+  validate :sum_count
+
+  def sum_count
+    sum = [garage_count, garage2_count, garage3_count,
+           use_count, use_count2, use_count3, repair_count]
+
+    if all_count < sum.compact.inject(:+)
+      errors.add(:all_count, "を上回っています")
+    end
+  end
 end

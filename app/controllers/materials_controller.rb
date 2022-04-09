@@ -12,6 +12,7 @@ class MaterialsController < ApplicationController
 
   def create
     @material = Material.new(material_params)
+
     if @material.valid?
       if @material.user != "その他" # 使用者が「その他」でないなら、「その他」の値を消去
         @material.other_users = ""
@@ -22,6 +23,7 @@ class MaterialsController < ApplicationController
       if @material.user3 != "その他"
         @material.other_users3 = ""
       end
+
       @material.save!
       redirect_to root_path
     else
