@@ -14,8 +14,8 @@ class Material < ApplicationRecord
     sum = [garage_count, garage2_count, garage3_count,
            use_count, use_count2, use_count3, repair_count]
 
-    if all_count < sum.compact.inject(:+)
-      errors.add(:all_count, "を上回っています")
+    if all_count != sum.compact.inject(:+)
+      errors.add(:all_count, "と各数量の合計が合っていません")
     end
   end
 end
