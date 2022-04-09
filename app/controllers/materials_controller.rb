@@ -12,18 +12,8 @@ class MaterialsController < ApplicationController
 
   def create
     @material = Material.new(material_params)
-
+    other_users
     if @material.valid?
-      if @material.user != "その他" # 使用者が「その他」でないなら、「その他」の値を消去
-        @material.other_users = ""
-      end
-      if @material.user2 != "その他"
-        @material.other_users2 = ""
-      end
-      if @material.user3 != "その他"
-        @material.other_users3 = ""
-      end
-
       @material.save!
       redirect_to root_path
     else
@@ -37,15 +27,7 @@ class MaterialsController < ApplicationController
 
   def update
     if @material.update(material_params)
-      if @material.user != "その他"
-        @material.other_users = ""
-      end
-      if @material.user2 != "その他"
-        @material.other_users2 = ""
-      end
-      if @material.user3 != "その他"
-        @material.other_users3 = ""
-      end
+      other_users
       @material.save!
       redirect_to @@request_referer
     else
@@ -77,5 +59,17 @@ class MaterialsController < ApplicationController
 
     def search_material
       @q = Material.ransack(params[:q])
+    end
+
+    def other_users
+      if @material.user != "その他" # 使用者が「その他」でないなら、「その他」の値を消去
+        @material.other_users = ""
+      end
+      if @material.user2 != "その他"
+        @material.other_users2 = ""
+      end
+      if @material.user3 != "その他"
+        @material.other_users3 = ""
+      end
     end
 end
