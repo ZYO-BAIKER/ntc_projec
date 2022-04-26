@@ -37,7 +37,7 @@ RSpec.describe Material, type: :model do
       end
 
       it "0未満でエラーする" do
-        material.garage_count = "-1"
+        material.company_count = "-1"
         expect(material).not_to be_valid
       end
     end

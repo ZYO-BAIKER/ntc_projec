@@ -3,9 +3,7 @@ FactoryBot.define do
     material_name  { Faker::Lorem.word }
     maker          { Faker::Name.initials }
     all_count      { Faker::Number.number }
-    garage_count   { Faker::Number.number }
-    garage2_count  { Faker::Number.number }
-    garage3_count  { Faker::Number.number }
+    company_count  { Faker::Number.number }
     place { Faker::Address.state }
     user { Faker::Name.name }
     period_start { Faker::Date.between(from: 5.days.ago, to: Time.zone.today).strftime("%Y-%m-%d") }
