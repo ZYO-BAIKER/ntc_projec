@@ -19,9 +19,7 @@ ActiveRecord::Schema.define(version: 2022_01_16_145958) do
     t.string "material_name", null: false
     t.string "maker"
     t.integer "all_count", null: false
-    t.integer "garage_count"
-    t.integer "garage2_count"
-    t.integer "garage3_count"
+    t.integer "company_count"
     t.string "place"
     t.string "user"
     t.string "other_users"
