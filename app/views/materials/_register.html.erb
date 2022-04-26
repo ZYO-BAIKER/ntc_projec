@@ -13,7 +13,7 @@
   </tr>
   <tr><td>全数量（※）</td>
     <td colspan="3">
-      <%= f.number_field :all_count,  placeholder:"全数量入力", min:"0"%>
+      <%= f.number_field :all_count,  placeholder:"全数量入力", min:"0", readonly: current_user.authority == 1 %>
     </td>
   </tr>
   <tr><td>会社</td>
