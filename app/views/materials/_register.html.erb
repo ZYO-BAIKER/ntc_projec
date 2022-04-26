@@ -16,12 +16,9 @@
       <%= f.number_field :all_count,  placeholder:"全数量入力", min:"0", readonly: current_user.authority == 1 %>
     </td>
   </tr>
-  <tr><td>会社</td>
+  <tr><td>会社数量</td>
     <td colspan="3">
-      <div>車庫:<%= f.number_field :garage_count,  placeholder:"数量入力", min:"0" %></div>
-      <div>第二倉庫：<%= f.number_field :garage2_count, placeholder:"数量入力", min:"0" %></div>
-      <div>舞台工場: <%= f.number_field :garage3_count, placeholder:"数量入力", min:"0" %></div>
-      </tr>
+      <%= f.number_field :company_count,  placeholder:"会社数量入力", min:"0" %>
     </td>
   </tr>
   <tr><td>現場①</td>
