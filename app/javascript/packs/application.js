@@ -11,7 +11,7 @@ require('jquery')
 require("../header")
 require("../register_select")
 require("../company_count")
-
+require("../reset")
 
 import "bootstrap"; //追加
 import "../stylesheets/application"; //追加
