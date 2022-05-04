@@ -4,9 +4,7 @@ class CreateMaterials < ActiveRecord::Migration[6.0]
       t.string  :material_name,  null: false  # 資産名(必須)
       t.string  :maker                        # メーカー
       t.integer :all_count,      null: false  # 全数量(必須)
-      t.integer :garage_count                 # 車庫数量
-      t.integer :garage2_count                # 第二倉庫数量
-      t.integer :garage3_count                # 舞台工場数量
+      t.integer :company_count                # 会社数量
       t.string  :place                        # 現場①
       t.string  :user                         # 使用者①
       t.string  :other_users                  # その他使用者①

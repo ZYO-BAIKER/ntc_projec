@@ -10,6 +10,7 @@ require("channels")
 require('jquery')
 require("../header")
 require("../register_select")
+require("../company_count")
 
 
 import "bootstrap"; //追加

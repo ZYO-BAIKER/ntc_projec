@@ -14,6 +14,7 @@ ja:
       material:
         material_name: 資産名
         all_count: 全数量
+        company_count: 会社数量
         place: 場所
         user: 使用者
         use_count: 使用数
