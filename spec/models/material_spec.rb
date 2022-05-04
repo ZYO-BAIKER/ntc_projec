@@ -48,6 +48,5 @@ RSpec.describe Material, type: :model do
         expect(material).not_to be_valid
       end
     end
-
   end
 end
