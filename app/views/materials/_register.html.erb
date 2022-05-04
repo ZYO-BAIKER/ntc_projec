@@ -13,18 +13,18 @@
   </tr>
   <tr><td>全数量（※）</td>
     <td colspan="3">
-      <%= f.number_field :all_count,  placeholder:"全数量入力", min:"0", readonly: current_user.authority == 1 %>
+      <%= f.text_field :all_count,  placeholder:"全数量入力", min:"0", readonly: current_user.authority == 1 %>
     </td>
   </tr>
   <tr><td>会社数量</td>
     <td colspan="3">
-      <%= f.number_field :company_count,  placeholder:"会社数量入力", min:"0" %>
+      <%= f.text_field :company_count,  placeholder:"入力不可", min:"0", readonly:"readonly" %>
     </td>
   </tr>
   <tr><td>現場①</td>
     <td colspan="3">
       <div><%= f.text_field :place, placeholder: '現場名を入力' %></div>
-      <div><%= f.number_field :use_count,  placeholder:"数量入力", min:"0" %></div>
+      <div><%= f.text_field :use_count,  placeholder:"数量入力", min:"0" %></div>
       <div>
         <%= f.collection_select :user, UserSelect.all, :name, :name, {include_blank:'使用者選択'} %>
         <% if current_page?(new_material_path) ||  @material.user != "その他" %>
@@ -42,7 +42,7 @@
   <tr><td>現場②</td>
     <td colspan="3">
       <div><%= f.text_field :place2, placeholder: '現場名を入力' %></div>
-      <div><%= f.number_field :use_count2,  placeholder:"数量入力", min:"0" %></div>
+      <div><%= f.text_field :use_count2,  placeholder:"数量入力", min:"0" %></div>
       <div>
         <%= f.collection_select :user2, UserSelect.all, :name, :name, {include_blank:'使用者選択'} %>
         <% if current_page?(new_material_path) ||  @material.user2 != "その他" %>
@@ -60,7 +60,7 @@
   <tr><td>現場③</td>
     <td colspan="3">
       <div><%= f.text_field :place3, placeholder: '現場名を入力' %></div>
-      <div><%= f.number_field :use_count3,  placeholder:"数量入力", min:"0" %></div>
+      <div><%= f.text_field :use_count3,  placeholder:"数量入力", min:"0" %></div>
       <div>
         <%= f.collection_select :user3, UserSelect.all, :name, :name, {include_blank:'使用者選択'} %>
         <% if current_page?(new_material_path) ||  @material.user3 != "その他" %>
@@ -78,7 +78,7 @@
   <tr><td>修理中</td>
     <td colspan="3">
       <%= f.text_field :repair_request, placeholder: '修理依頼先入力' %>
-      <%= f.number_field :repair_count, placeholder: "修理数量入力", min:"0" %>
+      <%= f.text_field :repair_count, placeholder: "修理数量入力", min:"0" %>
     </td>
   </tr>
 
