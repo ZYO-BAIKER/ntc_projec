@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: NTC_Material_Managment
+    name: wonderful-editor
     env: ruby
     region: singapore
     plan: free
@@ -14,12 +14,12 @@ services:
         sync: false
       - key: DATABASE_URL
         fromDatabase:
-          name: postgresql-NTC_Material_Managment
+          name: postgresql-wonderful-editor
           property: connectionString
     autoDeploy: false
 
 databases:
-  - name: postgresql-NTC_Material_Managment
+  - name: postgresql-wonderful-editor
     region: singapore
     plan: free
     ipAllowList:
