@@ -44,5 +44,6 @@ module NTCMaterialManagment
     end
     # 日本語の言語設定
     config.i18n.default_locale = :ja
+    config.hosts << 'xxx.onrender.com'
   end
 end
