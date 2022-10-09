@@ -32,6 +32,6 @@ test:
 
 production:
   <<: *default
-  database: NTC_Material_Managment_production
-  username: NTC_Material_Managment
+  database: postgresql_ntc_material_managment_8q9s
+  username: postgresql_ntc_material_managment_8q9s_user
   password: <%= ENV['NTC_MATERIAL_MANAGMENT_DATABASE_PASSWORD'] %>
