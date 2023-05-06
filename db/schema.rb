@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_16_145958) do
+ActiveRecord::Schema.define(version: 2023_05_06_144256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendance_workers", force: :cascade do |t|
+    t.bigint "attendance_id", null: false
+    t.bigint "worker_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["attendance_id"], name: "index_attendance_workers_on_attendance_id"
+    t.index ["worker_id"], name: "index_attendance_workers_on_worker_id"
+  end
+
+  create_table "attendances", force: :cascade do |t|
+    t.string "client", null: false
+    t.string "construction_site", null: false
+    t.time "departure_time"
+    t.time "arrival_time"
+    t.string "remark"
+    t.string "vehicle"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "materials", force: :cascade do |t|
     t.string "material_name", null: false
@@ -59,4 +79,13 @@ ActiveRecord::Schema.define(version: 2022_01_16_145958) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "workers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "group", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "attendance_workers", "attendances"
+  add_foreign_key "attendance_workers", "workers"
 end
