@@ -1,0 +1,8 @@
+<%= render "shared/header" %>
+  <div class="container">
+    <h1>トップページ</h1>
+    <div class="list-group">
+      <%= link_to "資産管理", materials_path, class: "list-group-item list-group-item-action" %>
+      <%= link_to "勤怠表", attendances_path, class: "list-group-item list-group-item-action" %>
+    </div>
+  </div>
