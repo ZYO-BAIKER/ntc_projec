@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2023_05_06_144256) do
   end
 
   create_table "attendances", force: :cascade do |t|
+    t.date "date", null: false
     t.string "client", null: false
     t.string "construction_site", null: false
     t.time "departure_time"
@@ -80,8 +81,8 @@ ActiveRecord::Schema.define(version: 2023_05_06_144256) do
   end
 
   create_table "workers", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "group", null: false
+    t.string "name"
+    t.string "group"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

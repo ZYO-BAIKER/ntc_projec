@@ -1,8 +1,8 @@
 class CreateWorkers < ActiveRecord::Migration[6.0]
   def change
     create_table :workers do |t|
-      t.string :name, null: false
-      t.string :group, null: false
+      t.string :name
+      t.string :group
       t.timestamps
     end
   end
