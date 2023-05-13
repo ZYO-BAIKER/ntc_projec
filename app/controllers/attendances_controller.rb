@@ -19,6 +19,22 @@ class AttendancesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @attendance.update(attendance_params)
+      redirect_to attendances_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @attendance.destroy!
+    redirect_to attendances_path
+  end
+
   def top
   end
 
@@ -29,6 +45,6 @@ class AttendancesController < ApplicationController
   end
 
   def attendance_params
-    params.require(:attendance).permit(:client,:construction_site,:departure_time,:arrival_time,:remark,:vehicle)
+    params.require(:attendance).permit(:date,:client,:construction_site,:departure_time,:arrival_time,:remark,:vehicle)
   end
 end
