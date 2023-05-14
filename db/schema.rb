@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 2023_05_06_144256) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "attendance_workers", force: :cascade do |t|
+    t.bigint "attendance_id", null: false
+    t.bigint "worker_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["attendance_id"], name: "index_attendance_workers_on_attendance_id"
+    t.index ["worker_id"], name: "index_attendance_workers_on_worker_id"
+  end
+
   create_table "attendances", force: :cascade do |t|
     t.date "date", null: false
     t.string "client", null: false
@@ -25,15 +34,6 @@ ActiveRecord::Schema.define(version: 2023_05_06_144256) do
     t.string "vehicle"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "attendances_workers", force: :cascade do |t|
-    t.bigint "attendance_id", null: false
-    t.bigint "worker_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["attendance_id"], name: "index_attendances_workers_on_attendance_id"
-    t.index ["worker_id"], name: "index_attendances_workers_on_worker_id"
   end
 
   create_table "materials", force: :cascade do |t|
@@ -81,12 +81,12 @@ ActiveRecord::Schema.define(version: 2023_05_06_144256) do
   end
 
   create_table "workers", force: :cascade do |t|
-    t.string "name"
-    t.string "group"
+    t.string "name", null: false
+    t.integer "group", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "attendances_workers", "attendances"
-  add_foreign_key "attendances_workers", "workers"
+  add_foreign_key "attendance_workers", "attendances"
+  add_foreign_key "attendance_workers", "workers"
 end

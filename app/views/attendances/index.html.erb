@@ -1,6 +1,21 @@
 <%= render "shared/header" %>
-
-<div class="container-table">
-  <%= link_to "勤怠表作成", new_attendance_path, class:"fas fa-wrench text-decoration-none link-dark" %>
-  <%= @materials %>
-</div>
+<%= link_to "勤怠表作成", new_attendance_path, class:"fas fa-wrench text-decoration-none link-dark" %>
+<%= paginate @attendances %>
+<table class="full-width">
+  <thead>
+    <tr>
+      <th>日付</th>
+      <th>依頼主</th>
+      <th>工事場所</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @attendances.each do |attendance| %>
+      <tr class="border border-dark" onclick= window.location="<%= "/attendances/" + attendance.id.to_s + "/edit" %>"  role="link" class="record">
+        <td class="border border-dark"><%= attendance.date %></td>
+        <td class="border border-dark"><%= attendance.client %></td>
+        <td class="border border-dark"><%= attendance.construction_site %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
