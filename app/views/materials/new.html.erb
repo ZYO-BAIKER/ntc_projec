@@ -1,11 +1,11 @@
-<%= render "shared/header" %>
+<%= render "header" %>
 
 <div class="material-new-main">
   <h2 class="material-new-title">資材の情報を入力</h2>
   <p class="attention">（※）は必須項目です</p>
 
   <%= form_with(model: @material, local: true) do |f| %>
-    <%= render partial: "register", locals: {f: f} %> <%# 部分テンプレート %>
+    <%= render partial: "register", locals: {f: f} %>
     <div class="register"><%= f.submit "登録", class:"button" %></div>
   <% end %>
 </div>

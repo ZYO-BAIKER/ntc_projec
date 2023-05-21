@@ -1,11 +1,12 @@
-<%= render "shared/header" %>
+<%= render "header" %>
 
 <div class="material-new-main">
   <h2 class="material-new-title">勤怠表編集</h2>
 
   <%= form_with(model: @attendance, local: true) do |f| %>
+    <%= render partial: "register", locals: {f: f} %>
     <div class="register">
-      <%= f.submit "変更", class:"button" %>
+      <%= f.submit "更新", class:"button" %>
       <%= link_to "削除", attendance_path, method: :delete, data: { confirm: "この勤怠情報を消しますか？" }, class: "delete" %>
     </div>
   <% end %>
