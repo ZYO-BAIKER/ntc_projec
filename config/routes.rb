@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :attendances, only: [:index, :new, :create, :edit, :update, :destroy] do
     collection do
       get :top
+      get :show_date
     end
   end
 end

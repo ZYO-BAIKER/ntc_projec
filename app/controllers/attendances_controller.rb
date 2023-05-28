@@ -37,6 +37,11 @@ class AttendancesController < ApplicationController
   def top
   end
 
+  def show_date
+    @date = Date.parse(params[:date])
+    @attendances = Attendance.where(date: @date)
+  end
+
   private
 
   def set_attendance

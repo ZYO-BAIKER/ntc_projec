@@ -12,6 +12,7 @@ require("../header")
 require("../register_select")
 require("../company_count")
 require("../reset")
+require("../date")
 
 import "bootstrap"; //追加
 import "../stylesheets/application"; //追加

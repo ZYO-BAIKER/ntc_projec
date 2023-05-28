@@ -1,5 +1,10 @@
 <%= render "header" %>
 
+<%= form_with url: show_date_attendances_path, method: :get do |f| %>
+  <%= f.date_field :date %>
+  <%= f.submit 'Show', id: 'show_button' %>
+<% end %>
+
 <table class="full-width">
   <thead>
     <tr>
