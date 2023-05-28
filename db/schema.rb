@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2023_05_06_144256) do
     t.date "date", null: false
     t.string "client", null: false
     t.string "construction_site", null: false
+    t.string "work_content", null: false
     t.time "departure_time"
     t.time "arrival_time"
     t.string "remark"
