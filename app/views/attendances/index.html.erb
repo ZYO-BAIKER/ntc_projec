@@ -1,6 +1,5 @@
 <%= render "header" %>
 
-<%= paginate @attendances %>
 <table class="full-width">
   <thead>
     <tr>
@@ -11,7 +10,7 @@
   </thead>
   <tbody>
     <% @attendances.each do |attendance| %>
-      <tr class="border border-dark" onclick= window.location="<%= "/attendances/" + attendance.id.to_s + "/edit" %>"  role="link" class="record">
+      <tr class="border border-dark record" onclick= window.location="<%= "/attendances/" + attendance.id.to_s + "/edit" %>"  role="link">
         <td class="border border-dark"><%= attendance.date %></td>
         <td class="border border-dark"><%= attendance.client %></td>
         <td class="border border-dark"><%= attendance.construction_site %></td>
@@ -19,3 +18,4 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @attendances %>

@@ -29,7 +29,7 @@
     <th class="border border-dark">数量</th>
   </tr>
   <% @materials.each do |material| %>
-    <tr class="border border-dark" onclick= window.location="<%= "/materials/" + material.id.to_s + "/edit" %>"  role="link" class="record">
+    <tr class="border border-dark record" onclick= window.location="<%= "/materials/" + material.id.to_s + "/edit" %>"  role="link">
       <td class="border border-dark">
         <%= material.material_name %>  <%# 資産名 %>
       </td>
