@@ -1,26 +1,8 @@
 <%= render "header" %>
 
-<%= form_with url: show_date_attendances_path, method: :get do |f| %>
-  <%= f.date_field :date %>
-  <%= f.submit 'Show', id: 'show_button' %>
-<% end %>
-
-<table class="full-width">
-  <thead>
-    <tr>
-      <th>日付</th>
-      <th>依頼主</th>
-      <th>工事場所</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @attendances.each do |attendance| %>
-      <tr class="border border-dark record" onclick= window.location="<%= "/attendances/" + attendance.id.to_s + "/edit" %>"  role="link">
-        <td class="border border-dark"><%= attendance.date %></td>
-        <td class="border border-dark"><%= attendance.client %></td>
-        <td class="border border-dark"><%= attendance.construction_site %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @attendances %>
+<div class="calendar container d-flex justify-content-center">
+  <%= form_with url: show_date_attendances_path, method: :get, class: 'form-inline' do |f| %>
+    <%= f.date_field :date, value: Date.today, class: 'form-control mx-auto', style: "max-width:300px;" %>
+    <%= f.submit '日付を選択', id: 'show_button', class: 'btn btn-primary' %>
+  <% end %>
+</div>

@@ -1,9 +1,4 @@
 class AttendancesController < ApplicationController
-  before_action :set_attendance, only: [:edit, :update, :destroy]
-
-  def index
-    @attendances = Attendance.all.order(date: :desc).page(params[:page]).per(10)
-  end
 
   def new
     @attendance = Attendance.new
@@ -18,39 +13,30 @@ class AttendancesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-    if @attendance.update(attendance_params)
-      redirect_to attendances_path
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @attendance.destroy!
-    redirect_to attendances_path
-  end
-
-  def top
-  end
-
   def show_date
     @date = Date.parse(params[:date])
-    @attendances = Attendance.where(date: @date)
+    @attendances = Attendance.where(date: @date).order(:id)
+  end
+
+  def update_multiple
+    @attendances = Attendance.where(id: params[:attendances].keys).order(:id)
+
+    @attendances.each do |attendance|
+      attendance.update!(attendance_params_for_update(attendance.id.to_s))
+    end
+
+    redirect_to attendances_path
   end
 
   private
 
-  def set_attendance
-    @attendance = Attendance.find(params[:id])
-  end
-
   def attendance_params
-    params.require(:attendance).permit(:date, :client, :construction_site, :departure_time, :arrival_time, :remark, :vehicle, worker_ids: []).tap do |whitelisted|
+    params.require(:attendance).permit(:date, :client, :construction_site, :work_content, :departure_time, :arrival_time, :remark, :vehicle, worker_ids: []).tap do |whitelisted|
       whitelisted[:worker_ids] = whitelisted[:worker_ids].reject(&:blank?)
     end
+  end
+
+  def attendance_params_for_update(id)
+    params.require(:attendances).permit(id => [:client, :construction_site, :work_content, :departure_time, :arrival_time, :remark, :vehicle, worker_ids: []])[id]
   end
 end

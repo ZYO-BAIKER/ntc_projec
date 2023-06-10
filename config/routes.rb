@@ -6,10 +6,11 @@ Rails.application.routes.draw do
       get :result
     end
   end
-  resources :attendances, only: [:index, :new, :create, :edit, :update, :destroy] do
+  resources :attendances, only: [:index, :new, :create, :destroy] do
     collection do
       get :top
       get :show_date
+      patch :update_multiple
     end
   end
 end
