@@ -1,0 +1,54 @@
+/* CSS */
+.attendances-table {
+  width: 100%;
+  table-layout: fixed;
+  margin-bottom: 80px;  /* 必要な余白量に調整します */
+}
+
+.attendances-table input,
+.attendances-table select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.attendances-table .time-field {
+  width: 70px;
+  margin-top: 10px;
+}
+
+.attendances-table th:nth-child(1),
+.attendances-table th:nth-child(2),
+.attendances-table th:nth-child(3),
+.attendances-table th:nth-child(7),
+.attendances-table td:nth-child(1),
+.attendances-table td:nth-child(2),
+.attendances-table td:nth-child(3),
+.attendances-table td:nth-child(7) {
+  width: 7%;
+}
+
+.attendances-table th:nth-child(4),
+.attendances-table th:nth-child(5),
+.attendances-table th:nth-child(8),
+.attendances-table td:nth-child(4),
+.attendances-table td:nth-child(5),
+.attendances-table td:nth-child(8){
+  width: 5%;
+}
+
+/* 作業員 */
+.attendances-table th:nth-child(5),
+.attendances-table td:nth-child(5) {
+  width: 20%;
+}
+
+/* 備考 */
+.attendances-table th:nth-child(6),
+.attendances-table td:nth-child(6) {
+  width: 8%;
+}
+
+.attendances-table th,
+.attendances-table td {
+  border: 1px solid #000;  /* 線の太さ、スタイル、色を設定します。 */
+}
