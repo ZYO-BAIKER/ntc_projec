@@ -19,16 +19,21 @@ class AttendancesController < ApplicationController
   end
 
   def update_multiple
-    @attendances = Attendance.where(id: params[:attendances].keys)
-    @attendances.each do |attendance|
-      if params[:attendances][attendance.id.to_s][:_destroy] == '1'
-        attendance.destroy!
-      else
-        attendance.update!(attendance_params_for_update(attendance.id.to_s))
+    begin
+      @attendances = Attendance.where(id: params[:attendances].keys)
+      @attendances.each do |attendance|
+        if params[:attendances][attendance.id.to_s][:_destroy] == '1'
+          attendance.destroy!
+        else
+          attendance.update!(attendance_params_for_update(attendance.id.to_s))
+        end
       end
-    end
 
-    redirect_to attendances_path
+      redirect_to attendances_path
+    rescue ActiveRecord::RecordInvalid => e
+      flash[:error] = e.record.errors.full_messages
+      render :show_date
+    end
   end
 
   private

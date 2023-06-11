@@ -1,38 +1,7 @@
 <%= render "header" %>
-<h1><%= @date %></h1>
+<h1 class="d-flex justify-content-center"><%= @date %></h1>
 
 <%= form_with(url: update_multiple_attendances_path, method: :patch, local: true) do |f| %>
-
-  <table>
-    <thead>
-      <th>依頼主</th>
-      <th>工事場所</th>
-      <th>作業内容</th>
-      <th>出発時間</th>
-      <th>到着時間</th>
-      <th>作業員</th>
-      <th>備考</th>
-      <th>使用車両</th>
-      <th>削除</th>
-    </thead>
-    <tbody>
-      <% @attendances.each do |attendance| %>
-        <%= fields_for "attendances[#{attendance.id}]", attendance do |attendance_fields| %>
-          <tr>
-            <td><%= attendance_fields.text_field :client %></td>
-            <td><%= attendance_fields.text_field :construction_site %></td>
-            <td><%= attendance_fields.text_field :work_content %></td>
-            <td><%= attendance_fields.time_field :departure_time, step: 60 %></td>
-            <td><%= attendance_fields.time_field :arrival_time, step: 60 %></td>
-            <td><%= attendance_fields.collection_select(:worker_ids, Worker.all, :id, :name, {}, { multiple: true }) %></td>
-            <td><%= attendance_fields.text_field :remark %></td>
-            <td><%= attendance_fields.text_field :vehicle %></td>
-            <td><%= attendance_fields.check_box :_destroy %></td>
-          </tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
-
-  <%= f.submit 'Update' %>
+  <%= render partial: "table", locals: {f: f} %>
+  <%= f.submit '更新', class: "btn btn-primary btn-lg position-fixed bottom-0 end-0 m-3" %>
 <% end %>
