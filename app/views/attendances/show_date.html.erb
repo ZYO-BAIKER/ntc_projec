@@ -13,6 +13,7 @@
       <th>作業員</th>
       <th>備考</th>
       <th>使用車両</th>
+      <th>削除</th>
     </thead>
     <tbody>
       <% @attendances.each do |attendance| %>
@@ -26,6 +27,7 @@
             <td><%= attendance_fields.collection_select(:worker_ids, Worker.all, :id, :name, {}, { multiple: true }) %></td>
             <td><%= attendance_fields.text_field :remark %></td>
             <td><%= attendance_fields.text_field :vehicle %></td>
+            <td><%= attendance_fields.check_box :_destroy %></td>
           </tr>
         <% end %>
       <% end %>

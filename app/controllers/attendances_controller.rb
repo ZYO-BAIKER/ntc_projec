@@ -19,10 +19,13 @@ class AttendancesController < ApplicationController
   end
 
   def update_multiple
-    @attendances = Attendance.where(id: params[:attendances].keys).order(:id)
-
+    @attendances = Attendance.where(id: params[:attendances].keys)
     @attendances.each do |attendance|
-      attendance.update!(attendance_params_for_update(attendance.id.to_s))
+      if params[:attendances][attendance.id.to_s][:_destroy] == '1'
+        attendance.destroy!
+      else
+        attendance.update!(attendance_params_for_update(attendance.id.to_s))
+      end
     end
 
     redirect_to attendances_path
@@ -37,6 +40,6 @@ class AttendancesController < ApplicationController
   end
 
   def attendance_params_for_update(id)
-    params.require(:attendances).permit(id => [:client, :construction_site, :work_content, :departure_time, :arrival_time, :remark, :vehicle, worker_ids: []])[id]
+    params.require(:attendances).permit(id => [:client, :construction_site, :work_content, :departure_time, :arrival_time, :remark, :vehicle, :delete, worker_ids: []])[id]
   end
 end
