@@ -1,7 +1,13 @@
 <%= render "header" %>
-<h1 class="d-flex justify-content-center"><%= @date %></h1>
+
+<div class="d-flex justify-content-center">
+  <%= link_to '<i class="fas fa-arrow-left fa-lg"></i>'.html_safe, show_date_attendances_path(date: @date.prev_day), class: "align-self-center me-3 px-3" %>
+  <h1><%= @date %></h1>
+  <%= link_to '<i class="fas fa-arrow-right fa-lg"></i>'.html_safe, show_date_attendances_path(date: @date.next_day), class: "align-self-center ms-3 px-3" %>
+</div>
 
 <%= form_with(url: update_multiple_attendances_path, method: :patch, local: true) do |f| %>
   <%= render partial: "show_table", locals: {f: f} %>
   <%= f.submit '更新', class: "btn btn-primary btn-lg position-fixed bottom-0 end-0 m-3" %>
 <% end %>
+
