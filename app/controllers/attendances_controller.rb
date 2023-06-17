@@ -1,4 +1,6 @@
 class AttendancesController < ApplicationController
+  include WorkersHelper
+
   def new
     @attendance_form = AttendanceForm.new
     @attendance_form.attendances << Attendance.new
