@@ -22,13 +22,11 @@ class AttendanceForm
   end
 
   def save
-    all_blank = true
     ActiveRecord::Base.transaction do
       @attendances.each do |attendance|
-        all_blank &= attendance.attributes.all? {|_, v| v.blank? }
         return false unless attendance.save
       end
     end
-    !all_blank
+    true
   end
 end
