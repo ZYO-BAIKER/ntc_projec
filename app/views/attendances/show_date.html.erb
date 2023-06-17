@@ -2,6 +2,6 @@
 <h1 class="d-flex justify-content-center"><%= @date %></h1>
 
 <%= form_with(url: update_multiple_attendances_path, method: :patch, local: true) do |f| %>
-  <%= render partial: "table", locals: {f: f} %>
+  <%= render partial: "show_table", locals: {f: f} %>
   <%= f.submit '更新', class: "btn btn-primary btn-lg position-fixed bottom-0 end-0 m-3" %>
 <% end %>

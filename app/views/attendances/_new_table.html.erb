@@ -1,0 +1,19 @@
+<table class="attendances-table-create">
+  <thead>
+    <th>日付</th>
+    <th>依頼主</th>
+    <th>工事場所</th>
+    <th>作業内容</th>
+    <th>発着時間</th>
+    <th>作業員</th>
+    <th>備考</th>
+    <th>使用車両</th>
+  </thead>
+  <tbody id="attendance-forms">
+    <% @attendance_form.attendances.each_with_index do |attendance, index| %>
+      <%= render 'attendance_fields', f: f, attendance: attendance, index: index %>
+    <% end %>
+    <% new_index = @attendance_form.attendances.length %>
+    <%= render 'attendance_fields', f: f, attendance: Attendance.new, index: new_index, style: 'display: none' %>
+  </tbody>
+</table>
