@@ -24,9 +24,12 @@ class AttendanceForm
   def save
     ActiveRecord::Base.transaction do
       @attendances.each do |attendance|
-        return false unless attendance.save
+        next if attendance.attributes.all? { |_, v| v.blank? }
+        attendance.save!
       end
     end
     true
+  rescue ActiveRecord::RecordInvalid
+    false
   end
 end
