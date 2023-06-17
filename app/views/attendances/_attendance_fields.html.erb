@@ -1,0 +1,15 @@
+<% index = local_assigns.fetch(:index) %>
+<% style = local_assigns.fetch(:style, '') %>
+<tr id="attendance_<%= index %>" style="<%= style %>">
+  <%= f.fields_for "attendances_attributes[#{index}]", attendance do |attendance_fields| %>
+    <%= render 'shared/error_messages', model: attendance %>
+    <td><%= attendance_fields.date_field :date %></td>
+    <td><%= attendance_fields.text_field :client %></td>
+    <td><%= attendance_fields.text_field :construction_site %></td>
+    <td><%= attendance_fields.text_field :work_content %></td>
+    <td><%= attendance_fields.time_field :departure_time, step: 60, class: 'time-field' %><%= attendance_fields.time_field :arrival_time, step: 60, class: 'time-field' %></td>
+    <td><%= attendance_fields.collection_select(:worker_ids, Worker.all, :id, :name, {}, { multiple: true }) %></td>
+    <td><%= attendance_fields.text_field :remark %></td>
+    <td><%= attendance_fields.text_field :vehicle %></td>
+  <% end %>
+</tr>
