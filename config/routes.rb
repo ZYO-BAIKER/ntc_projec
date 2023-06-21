@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :workers, only: [:index]
+
   resources :attendances, only: [:index, :new] do
     collection do
       get :top

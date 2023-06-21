@@ -14,6 +14,7 @@ require("../company_count")
 require("../reset")
 require("../date")
 require("../attendance_fields")
+require("../worker_select")
 
 import "bootstrap"; //追加
 import "../stylesheets/application"; //追加

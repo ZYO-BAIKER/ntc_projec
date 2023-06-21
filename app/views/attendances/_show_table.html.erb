@@ -18,7 +18,7 @@
           <td><%= attendance_fields.text_field :construction_site %></td>
           <td><%= attendance_fields.text_field :work_content %></td>
           <td><%= attendance_fields.time_field :departure_time, step: 60, class: 'time-field' %><%= attendance_fields.time_field :arrival_time, step: 60, class: 'time-field' %></td>
-          <td><%= attendance_fields.collection_select(:worker_ids, Worker.all, :id, :name, {}, { multiple: true, class: 'select2' }) %></td>
+          <td><%= attendance_fields.select :worker_ids, grouped_workers_for_select, {}, { class: 'js-searchable-multiple', multiple: true } %></td>
           <td><%= attendance_fields.text_field :remark %></td>
           <td><%= attendance_fields.text_field :vehicle %></td>
           <td><%= attendance_fields.check_box :_destroy %></td>
