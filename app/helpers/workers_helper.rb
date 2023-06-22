@@ -1,18 +1,18 @@
 module WorkersHelper
   def group_label(group)
     case group
-    when 'ntc'
-      'NTC'
-    when 'jsc'
-      'JSC'
-    when 'yamagata'
-      '山形工業'
-    when 'part_time'
-      'アルバイト'
-    when 'seiwah'
-      '聖和'
+    when "ntc"
+      "NTC"
+    when "jsc"
+      "JSC"
+    when "yamagata"
+      "山形工業"
+    when "part_time"
+      "アルバイト"
+    when "seiwah"
+      "聖和"
     else
-      'Unknown Group'
+      "Unknown Group"
     end
   end
 
