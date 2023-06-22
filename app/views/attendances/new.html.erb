@@ -2,7 +2,25 @@
 <h1 class="d-flex justify-content-center">勤怠表作成</h1>
 
 <%= form_with(model: @attendance_form, url: create_multiple_attendances_path, local: true) do |f| %>
-  <%= render partial: "new_table", locals: {f: f} %>
+  <table class="attendances-table-create">
+    <thead>
+      <th>日付</th>
+      <th>依頼主</th>
+      <th>工事場所</th>
+      <th>作業内容</th>
+      <th>発着時間</th>
+      <th>作業員</th>
+      <th>備考</th>
+      <th>使用車両</th>
+    </thead>
+    <tbody id="attendance-forms">
+      <% @attendance_form.attendances.each_with_index do |attendance, index| %>
+        <%= render 'attendance_fields', f: f, attendance: attendance, index: index %>
+      <% end %>
+      <% new_index = @attendance_form.attendances.length %>
+      <%= render 'attendance_fields', f: f, attendance: Attendance.new, index: new_index, style: 'display: none' %>
+    </tbody>
+  </table>
   <div class="register text-center my-3"><%= f.submit "登録", class:"button" %></div>
 <% end %>
 <button id="add-row" data-index="<%= @attendance_form.attendances.length %>" class="btn btn-primary">行を追加</button>

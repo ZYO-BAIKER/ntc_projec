@@ -51,3 +51,7 @@ Rails/UnknownEnv:
     - test # rubocop default.yml
     - production # rubocop default.yml
     - staging
+
+# has_many :through to has_and_belongs_to_manyのアソシエーション有効化
+Rails/HasAndBelongsToMany:
+  Enabled: false
