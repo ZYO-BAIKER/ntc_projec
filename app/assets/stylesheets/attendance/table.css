@@ -124,3 +124,17 @@
 .attendances-table-update td {
   border: 1px solid #000;
 }
+
+
+.select2-container .select2-search--inline .select2-search__field {
+  min-width: 100px !important;
+}
+
+ul.select2-selection__rendered {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+ul.select2-selection__rendered li {
+  flex: 1 0 20% !important;
+}
