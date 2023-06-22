@@ -9,6 +9,7 @@ class AttendanceForm
     if attributes["attendances_attributes"]
       attributes["attendances_attributes"].each do |_, attendance_attributes|
         attendance_attributes["worker_ids"] = attendance_attributes["worker_ids"].map(&:to_i)
+        attendance_attributes["vehicle_ids"] = attendance_attributes["vehicle_ids"].map(&:to_i)
         @attendances << Attendance.new(attendance_attributes)
       end
     end

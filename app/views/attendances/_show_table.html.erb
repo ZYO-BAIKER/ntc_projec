@@ -20,7 +20,7 @@
           <td><%= attendance_fields.time_field :departure_time, step: 60, class: 'time-field' %><%= attendance_fields.time_field :arrival_time, step: 60, class: 'time-field' %></td>
           <td><%= attendance_fields.select :worker_ids, grouped_workers_for_select, {}, { class: 'js-searchable-multiple', multiple: true } %></td>
           <td><%= attendance_fields.text_field :remark %></td>
-          <td><%= attendance_fields.text_field :vehicle %></td>
+          <td><%= attendance_fields.select :vehicle_ids, grouped_vehicles_for_select, {}, { class: 'js-searchable-multiple', multiple: true } %></td>
           <td><%= attendance_fields.check_box :_destroy %></td>
         </tr>
       <% end %>

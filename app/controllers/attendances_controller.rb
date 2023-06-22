@@ -1,5 +1,6 @@
 class AttendancesController < ApplicationController
   include WorkersHelper
+  include VehiclesHelper
 
   def new
     @attendance_form = AttendanceForm.new
@@ -40,15 +41,15 @@ class AttendancesController < ApplicationController
 
     def attendance_form_params
       params.require(:attendance_form).permit(
-        attendances_attributes: [:date, :client, :construction_site, :work_content, :departure_time, :arrival_time, :remark, :vehicle, { worker_ids: [] }],
+        attendances_attributes: [:date, :client, :construction_site, :work_content, :departure_time, :arrival_time, :remark, :vehicle, { worker_ids: [], vehicle_ids: [] }],
       ).tap do |whitelisted|
-        whitelisted[:attendances_attributes].each {|_, attributes| attributes[:worker_ids] = (attributes[:worker_ids] || []).reject(&:blank?) }
+        whitelisted[:attendances_attributes].each {|_, attributes| attributes[:worker_ids] = (attributes[:worker_ids] || []).reject(&:blank?); attributes[:vehicle_ids] = (attributes[:vehicle_ids] || []).reject(&:blank?) }
       end
     end
 
     def attendance_params_for_update(id)
       params.require(:attendances).permit(id => [:client, :construction_site, :work_content, :departure_time, :arrival_time, :remark, :vehicle, :delete, {
-        worker_ids: [],
+        worker_ids: [], vehicle_ids: []
       }])[id]
     end
 end
