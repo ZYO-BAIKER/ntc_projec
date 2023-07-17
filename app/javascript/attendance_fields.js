@@ -35,7 +35,11 @@ $(document).ready(function () {
     newRow.attr("id", "attendance_" + (index + 1));
     newRow.find('input, select').each(function() {
       if (!$(this).hasClass('js-searchable-multiple')) {
-        $(this).val('');  // reset the value
+        if (!$(this).is('[name$="[date]"]')) {
+          $(this).val('');  // reset the value
+        }
+      } else {
+        $(this).val([]);  // reset the value for multiple select elements
       }
       let name = $(this).attr('name').replace(/\[\d+\]/, '[' + (index + 1) + ']');
       $(this).attr('name', name);
@@ -67,4 +71,3 @@ $(document).ready(function () {
     });
   });
 });
-
