@@ -43,6 +43,8 @@ class AttendancesController < ApplicationController
     redirect_to attendances_path
   rescue ActiveRecord::RecordInvalid => e
     flash[:error] = e.record.errors.full_messages
+    @date = @attendances.first.date
+    @rendered_from_create = true
     render :show_date
   end
 
