@@ -3,6 +3,7 @@ class AttendancesController < ApplicationController
   include VehiclesHelper
 
   def new
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
     @attendance_form = AttendanceForm.new
     @attendance_form.attendances << Attendance.new
   end
