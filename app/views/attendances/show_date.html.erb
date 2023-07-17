@@ -4,6 +4,7 @@
   <%= link_to '<i class="fas fa-arrow-left fa-lg"></i>'.html_safe, show_date_attendances_path(date: @date.prev_day), class: "align-self-center me-3 px-3" %>
   <h1><%= @date %></h1>
   <%= link_to '<i class="fas fa-arrow-right fa-lg"></i>'.html_safe, show_date_attendances_path(date: @date.next_day), class: "align-self-center ms-3 px-3" %>
+  <%= link_to '勤怠追加', new_attendance_path(date: @date), class: "btn btn-primary align-self-center ms-3 px-3" %>
 </div>
 
 <%= form_with(url: update_multiple_attendances_path, method: :patch, local: true) do |f| %>
