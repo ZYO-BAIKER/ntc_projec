@@ -17,6 +17,9 @@ class AttendancesController < ApplicationController
       redirect_to show_date_attendances_path(date: date)
     else
       @date = @attendance_form.attendances.first.date
+      @attendances = Attendance.where(date: @date).order(:id)
+      failed_attendances = @attendance_form.attendances.reject { |a| @attendances.include?(a) }
+      @attendance_form.attendances = @attendances + failed_attendances
       @rendered_from_create = true
       render :new
     end
