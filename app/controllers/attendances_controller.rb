@@ -16,6 +16,8 @@ class AttendancesController < ApplicationController
       date = @attendance_form.attendances[0].date
       redirect_to show_date_attendances_path(date: date)
     else
+      @date = @attendance_form.attendances.first.date
+      @rendered_from_create = true
       render :new
     end
   end
