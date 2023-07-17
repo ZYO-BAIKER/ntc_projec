@@ -4,14 +4,17 @@ class AttendancesController < ApplicationController
 
   def new
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
+    @attendances = Attendance.where(date: @date).order(:id)
     @attendance_form = AttendanceForm.new
-    @attendance_form.attendances << Attendance.new
+    @attendance_form.attendances.concat(@attendances)
+    @attendance_form.attendances << Attendance.new(date: @date)
   end
 
   def create_multiple
     @attendance_form = AttendanceForm.new(attendance_form_params)
     if @attendance_form.save
-      redirect_to attendances_path
+      date = @attendance_form.attendances[0].date
+      redirect_to show_date_attendances_path(date: date)
     else
       render :new
     end

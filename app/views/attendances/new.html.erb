@@ -1,10 +1,18 @@
 <%= render "header" %>
-<h1 class="d-flex justify-content-center">勤怠表作成</h1>
+
+<div class="d-flex justify-content-center">
+  <% if !@rendered_from_create %>
+    <%= link_to '<i class="fas fa-arrow-left fa-lg"></i>'.html_safe, new_attendance_path(date: @date.prev_day), class: "align-self-center me-3 px-3" %>
+    <h1><%= @date %></h1>
+    <%= link_to '<i class="fas fa-arrow-right fa-lg"></i>'.html_safe, new_attendance_path(date: @date.next_day), class: "align-self-center ms-3 px-3" %>
+  <% else %>
+    <h1><%= @date %></h1>
+  <% end %>
+</div>
 
 <%= form_with(model: @attendance_form, url: create_multiple_attendances_path, local: true) do |f| %>
-  <table class="attendances-table-create">
+  <table class="attendances-table-update">
     <thead>
-      <th>日付</th>
       <th>依頼主</th>
       <th>工事場所</th>
       <th>作業内容</th>
