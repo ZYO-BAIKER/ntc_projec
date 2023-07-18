@@ -2,17 +2,14 @@
 
 <div class="d-flex justify-content-center">
   <% if !@rendered_from_create %>
-    <%= link_to '<i class="fas fa-arrow-left fa-lg"></i>'.html_safe, show_date_attendances_path(date: @date.prev_day), class: "align-self-center me-3 px-3" %>
-    <h1><%= @date %></h1>
-    <%= link_to '<i class="fas fa-arrow-right fa-lg"></i>'.html_safe, show_date_attendances_path(date: @date.next_day), class: "align-self-center ms-3 px-3" %>
-    <%= link_to '勤怠追加', new_attendance_path(date: @date), class: "btn btn-primary align-self-center ms-3 px-3" %>
+    <%= render 'navigation_links', prev_path: show_date_attendances_path(date: @date.prev_day), next_path: show_date_attendances_path(date: @date.next_day), action_name: '勤怠追加', action_path: new_attendance_path(date: @date) %>
   <% else %>
     <h1><%= @date %></h1>
   <% end %>
 </div>
 
 <%= form_with(url: update_multiple_attendances_path, method: :patch, local: true) do |f| %>
-  <table class="attendances-table-update">
+  <table class="attendances-table">
     <thead>
       <th>依頼主</th>
       <th>工事場所</th>

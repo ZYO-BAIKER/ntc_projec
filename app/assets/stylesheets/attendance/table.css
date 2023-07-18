@@ -24,104 +24,60 @@
   }
 }
 
-.attendances-table-create {
-  width: 100%;
-  table-layout: auto;
-}
-
-.attendances-table-create select {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.attendances-table-create .time-field {
-  margin-top: 10px;
-}
-
-/* 日付、依頼主、工事場所、作業内容 */
-.attendances-table-create th:nth-child(1),
-.attendances-table-create th:nth-child(2),
-.attendances-table-create th:nth-child(3),
-.attendances-table-create th:nth-child(4),
-.attendances-table-create td:nth-child(1),
-.attendances-table-create td:nth-child(2),
-.attendances-table-create td:nth-child(3),
-.attendances-table-create td:nth-child(4) {
-  width: 5%;
-}
-
-/* 発着時間 */
-.attendances-table-create th:nth-child(5),
-.attendances-table-create td:nth-child(5){
-  width: 1%;
-}
-
-/* 作業員 */
-.attendances-table-create th:nth-child(6),
-.attendances-table-create td:nth-child(6) {
-  width: 20%;
-}
-
-.attendances-table-create th,
-.attendances-table-create td {
-  border: 1px solid #000;
-}
-
-
 /* show_date */
-.attendances-table-update {
+.attendances-table {
   width: 100%;
   table-layout: fixed;
   margin-bottom: 50px;
 }
 
 /* 入力欄 */
-.attendances-table-update input,
-.attendances-table-update select {
+.attendances-table input,
+.attendances-table select {
   width: 100%;
   box-sizing: border-box;
 }
 
 /* 時間入力欄 */
-.attendances-table-update .time-field {
+.attendances-table .time-field {
   width: 70px;
   margin-top: 10px;
 }
 
 /* 依頼主、工事場所、作業内容、使用車両 */
-.attendances-table-update th:nth-child(1),
-.attendances-table-update th:nth-child(2),
-.attendances-table-update th:nth-child(3),
-.attendances-table-update th:nth-child(7),
-.attendances-table-update td:nth-child(1),
-.attendances-table-update td:nth-child(2),
-.attendances-table-update td:nth-child(3),
-.attendances-table-update td:nth-child(7) {
+.attendances-table th:nth-child(1),
+.attendances-table th:nth-child(2),
+.attendances-table th:nth-child(3),
+.attendances-table th:nth-child(7),
+.attendances-table td:nth-child(1),
+.attendances-table td:nth-child(2),
+.attendances-table td:nth-child(3),
+.attendances-table td:nth-child(7) {
   width: 7%;
 }
 
 /* 発着時間、削除 */
-.attendances-table-update th:nth-child(4),
-.attendances-table-update th:nth-child(8),
-.attendances-table-update td:nth-child(4),
-.attendances-table-update td:nth-child(8){
+.attendances-table th:nth-child(4),
+.attendances-table th:nth-child(8),
+.attendances-table td:nth-child(4),
+.attendances-table td:nth-child(8){
   width: 5%;
 }
 
 /* 作業員 */
-.attendances-table-update th:nth-child(5),
-.attendances-table-update td:nth-child(5) {
+.attendances-table th:nth-child(5),
+.attendances-table td:nth-child(5) {
   width: 20%;
 }
 
 /* 備考 */
-.attendances-table-update th:nth-child(6),
-.attendances-table-update td:nth-child(6) {
+.attendances-table th:nth-child(6),
+.attendances-table td:nth-child(6) {
   width: 8%;
 }
 
-.attendances-table-update th,
-.attendances-table-update td {
+.attendances-table th,
+.attendances-table td {
   border: 1px solid #000;
 }
 
