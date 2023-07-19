@@ -2,13 +2,26 @@
 
 <div class="calendar container my-3">
   <div class="card">
+  <div class="card-body">
+    <%= form_with url: new_attendance_path, method: :get, class: 'row justify-content-center' do |f| %>
+      <div class="col-12 col-sm-4 col-md-3">
+        <%= f.date_field :date, value: Date.today, class: 'form-control mb-2 mb-sm-0', style: 'max-width: 150px;', id: 'new_date' %>
+      </div>
+      <div class="col-12 col-sm-2">
+        <%= f.submit '勤怠作成', id: 'new_button', class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+  <div class="card">
     <div class="card-body">
       <%= form_with url: show_date_attendances_path, method: :get, class: 'row justify-content-center' do |f| %>
         <div class="col-12 col-sm-4 col-md-3">
-          <%= f.date_field :date, value: Date.today, class: 'form-control mb-2 mb-sm-0', style: 'max-width: 150px;' %>
+          <%= f.date_field :date, value: Date.today, class: 'form-control mb-2 mb-sm-0', style: 'max-width: 150px;', id: 'show_date' %>
         </div>
         <div class="col-12 col-sm-2">
-          <%= f.submit '日付を選択', id: 'show_button', class: 'btn btn-primary' %>
+          <%= f.submit '勤怠更新', id: 'show_button', class: 'btn btn-primary' %>
         </div>
       <% end %>
     </div>

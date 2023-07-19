@@ -7,6 +7,7 @@
         <% unless controller_name == 'materials' && action_name == 'index' %>
           <li><%= link_to "資材一覧", materials_path, class:"fas fa-th-list text-decoration-none link-dark" %></li>
         <% end %>
+        <li><%= link_to "勤怠選択", attendances_path, class: "fas fa-pencil-alt text-decoration-none link-dark" %></li>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt text-decoration-none link-dark" %></li>
       </ul>
     </nav>
@@ -23,6 +24,7 @@
             <% unless controller_name == 'materials' && action_name == 'index' %>
               <li><%= link_to "資材一覧", materials_path, class: "fa-th-list text-decoration-none link-dark" %></li>
             <% end %>
+            <li><%= link_to "勤怠選択", attendances_path, class: "fas fa-pencil-alt text-decoration-none link-dark" %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt text-decoration-none" %></li>
           </ul>
         </nav>

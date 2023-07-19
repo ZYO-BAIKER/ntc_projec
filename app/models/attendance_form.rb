@@ -22,7 +22,7 @@ class AttendanceForm
   def save
     ActiveRecord::Base.transaction do
       @attendances.each do |attendance|
-        next if attendance.attributes.all? {|_, v| v.blank? }
+        next if attendance.attributes.except("date").all? {|_, v| v.blank? }
 
         attendance.save!
       end
