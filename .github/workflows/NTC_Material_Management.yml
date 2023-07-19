@@ -28,8 +28,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gem-
       - name: Install gems
-        run:
+        run: |
           bundle install --path vendor/bundle --jobs 4
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '15.4.0'
+      - name: Install yarn packages
+        run: yarn install
       - name: Setup Database
         run: |
           cp -v config/database.yml.ci config/database.yml
