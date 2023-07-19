@@ -8,7 +8,7 @@ RSpec.describe "Attendances", type: :request do
   end
 
   describe "GET /new" do
-    let(:date) { Date.today.strftime('%Y-%m-%d') }
+    let(:date) { Time.zone.today.strftime("%Y-%m-%d") }
 
     it "returns http success" do
       get new_attendance_path(date: date)
@@ -17,7 +17,7 @@ RSpec.describe "Attendances", type: :request do
   end
 
   describe "POST /create_multiple" do
-    let(:expected_date) { '2023-04-27' }
+    let(:expected_date) { "2023-04-27" }
 
     let(:valid_attendance_attributes) do
       {
