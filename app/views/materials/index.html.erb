@@ -1,4 +1,4 @@
-<%= render "shared/header" %>
+<%= render "header" %>
 <%= render "search" %>
 <div class="container-table">全資産：<%= Material.all.count %> 修理中：<%= Material.where.not(repair_request:nil, repair_count:nil).count %>
   <%= paginate @materials %>

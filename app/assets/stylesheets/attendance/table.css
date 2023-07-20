@@ -1,0 +1,96 @@
+/* new */
+
+.register {
+  margin-top: 20px; /* 上側のマージン */
+  text-align: center;
+  .button {
+    display       : inline-block;
+    border-radius : 5%;          /* 角丸       */
+    font-size     : 18pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 12px 12px;   /* 余白       */
+    background    : #000066;     /* 背景色     */
+    color         : #ffffff;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    transition    : .3s;         /* なめらか変化 */
+    box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+    border        : 2px solid #000066;    /* 枠の指定 */
+  }
+  .button:hover {
+    box-shadow    : none;        /* カーソル時の影消去 */
+    color         : #000066;     /* 背景色     */
+    background    : #ffffff;     /* 文字色     */
+  }
+}
+
+/* show_date */
+.attendances-table {
+  width: 100%;
+  table-layout: fixed;
+  margin-bottom: 50px;
+}
+
+/* 入力欄 */
+.attendances-table input,
+.attendances-table select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 時間入力欄 */
+.attendances-table .time-field {
+  width: 70px;
+  margin-top: 10px;
+}
+
+/* 依頼主、工事場所、作業内容、使用車両 */
+.attendances-table th:nth-child(1),
+.attendances-table th:nth-child(2),
+.attendances-table th:nth-child(3),
+.attendances-table th:nth-child(7),
+.attendances-table td:nth-child(1),
+.attendances-table td:nth-child(2),
+.attendances-table td:nth-child(3),
+.attendances-table td:nth-child(7) {
+  width: 7%;
+}
+
+/* 発着時間、削除 */
+.attendances-table th:nth-child(4),
+.attendances-table th:nth-child(8),
+.attendances-table td:nth-child(4),
+.attendances-table td:nth-child(8){
+  width: 5%;
+}
+
+/* 作業員 */
+.attendances-table th:nth-child(5),
+.attendances-table td:nth-child(5) {
+  width: 20%;
+}
+
+/* 備考 */
+.attendances-table th:nth-child(6),
+.attendances-table td:nth-child(6) {
+  width: 8%;
+}
+
+.attendances-table th,
+.attendances-table td {
+  border: 1px solid #000;
+}
+
+
+.select2-container .select2-search--inline .select2-search__field {
+  min-width: 100px !important;
+}
+
+ul.select2-selection__rendered {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+ul.select2-selection__rendered li {
+  flex: 1 0 20% !important;
+}

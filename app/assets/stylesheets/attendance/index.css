@@ -1,0 +1,8 @@
+/* app/assets/stylesheets/calendar.css */
+.calendar .form-control {
+  margin-right: 0; /* 右マージンをゼロに設定 */
+}
+
+.calendar .btn {
+  margin-left: 0; /* 左マージンをゼロに設定 */
+}

@@ -3,6 +3,10 @@
   <% if user_signed_in? %>
     <nav class="pc-nav">
       <ul class="header-menus">
+        <li><%= link_to "資産管理画面", materials_path, class:"fas fa-pencil-alt text-decoration-none link-dark" %></li>
+        <% unless controller_name == 'attendances' && action_name == 'index' %>
+          <li><%= link_to "日付選択", attendances_path, class:"fas fal fa-calendar-alt text-decoration-none link-dark" %></li>
+        <% end %>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt text-decoration-none link-dark" %></li>
       </ul>
     </nav>
@@ -15,6 +19,10 @@
         </p>
         <nav id="gNav" class="">
           <ul class="gNav-menu">
+            <li><%= link_to "資産管理画面", materials_path, class:"fas fa-pencil-alt text-decoration-none link-dark" %></li>
+            <% unless controller_name == 'attendances' && action_name == 'index' %>
+              <li><%= link_to "日付選択", attendances_path, class: "fas fal fa-calendar-alt text-decoration-none link-dark" %></li>
+            <% end %>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt text-decoration-none" %></li>
           </ul>
         </nav>

@@ -1,0 +1,2 @@
+class AttendanceVehicle < ApplicationRecord
+end
