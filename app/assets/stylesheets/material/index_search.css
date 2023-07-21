@@ -1,0 +1,12 @@
+.filter {
+  margin: 16px;
+  display: flex;
+}
+.filter form#material_search {
+  margin-top: 10px;
+  display: contents;
+}
+.filter form#material_search input[type=submit] {
+  margin-left: 10px;
+}
+/*# sourceMappingURL=index_search.css.map */

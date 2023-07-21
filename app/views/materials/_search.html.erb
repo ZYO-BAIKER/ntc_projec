@@ -1,18 +1,18 @@
 <div class="filter" >
   <%= search_form_for @q, url: result_materials_path do |f| %>
-    <div class="user-search">
+    <div style="margin:5px;">
       <%= f.label :material_name_cont, '資産名：' %>
       <%= f.text_field  :material_name_cont %>
     </div>
-    <div class="user-search">
+    <div style="margin:5px;">
       <%= f.label :maker_cont, 'メーカー：' %>
       <%= f.text_field :maker_cont %>
     </div>
-    <div class="user-search">
+    <div style="margin:5px;">
       <%= f.label :place_or_place2_or_place3_cont, '場所：' %>
       <%= f.text_field :place_or_place2_or_place3_cont %>
     </div>
-    <div class="user-search">
+    <div style="margin:5px;">
       <%= f.label :user_or_user2_or_user3_eq, '使用者：'%>
       <%= f.collection_select :user_or_user2_or_user3_eq, UserSelect.all, :name, :name, {include_blank:'指定なし'} %>
     </div>
