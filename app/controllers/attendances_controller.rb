@@ -61,9 +61,8 @@ class AttendancesController < ApplicationController
     end
 
     def params_for_attendanc(id)
-      params.require(:attendances).permit(id => [:client, :construction_site, :work_content, :departure_time, :arrival_time, :worker_count, :remark, :vehicle, :delete, {
-        worker_ids: [], vehicle_ids: []
-      }])[id]
+      params.require(:attendances).permit(id => [:client, :construction_site, :work_content, :departure_time, :arrival_time, :worker_count, :remark, :vehicle,
+                                                 :delete, { worker_ids: [], vehicle_ids: [] }])[id]
     end
 
     def set_date_and_attendances
