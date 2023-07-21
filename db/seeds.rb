@@ -40,7 +40,6 @@ Worker.find_or_create_by!(name: "鈴木(聖和)", group: 3)
 Worker.find_or_create_by!(name: "大友", group: 4)
 Worker.find_or_create_by!(name: "椎名", group: 4)
 Worker.find_or_create_by!(name: "宇佐美", group: 4)
-Worker.find_or_create_by!(name: "入力", group: 5)
 
 Vehicle.find_or_create_by!(number: "...8", vehicle_type: 0)
 Vehicle.find_or_create_by!(number: "88-78", vehicle_type: 0)
