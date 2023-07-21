@@ -13,7 +13,8 @@ require("../register_select")
 require("../company_count")
 require("../reset")
 require("../date")
-require("../attendance_fields")
+require("../attendance_form_manager")
+require("../form_handler")
 
 import "bootstrap"; //追加
 import "../stylesheets/application"; //追加
