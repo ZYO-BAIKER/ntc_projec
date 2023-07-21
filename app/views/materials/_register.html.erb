@@ -1,7 +1,7 @@
 <%= render 'shared/error_messages', model: f.object %>
 <p class="attention"><%= flash[:alert] %></p>
 <table class="full-width" >
-  <tr><td>資産名（※）</td>
+  <tr><td>資産名<span style="color:red;">（※）</span></td>
     <td colspan="3">
       <%= f.text_field :material_name, maxlength: "20", placeholder:"資産名入力" %>
     </td>
@@ -11,7 +11,7 @@
       <%= f.text_field :maker, maxlength: "20",  placeholder:"メーカー名入力" %>
     </td>
   </tr>
-  <tr><td>全数量（※）</td>
+  <tr><td>全数量<span style="color:red;">（※）</span></td>
     <td colspan="3">
       <%= f.text_field :all_count,  placeholder:"全数量入力", min:"0", readonly: current_user.authority == 1 %>
     </td>

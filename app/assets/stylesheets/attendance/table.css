@@ -1,5 +1,4 @@
 /* new */
-
 .register {
   margin-top: 20px; /* 上側のマージン */
   text-align: center;
@@ -38,41 +37,49 @@
   box-sizing: border-box;
 }
 
-/* 時間入力欄 */
+/* 発着時間入力欄 */
 .attendances-table .time-field {
   width: 70px;
   margin-top: 10px;
 }
 
-/* 依頼主、工事場所、作業内容、使用車両 */
+/* 人数入力欄 */
+.attendances-table .count-field {
+  width: 70px;
+  margin-top: 10px;
+}
+
+/* 1:依頼主、2:工事場所、3:作業内容、8:使用車両 */
 .attendances-table th:nth-child(1),
 .attendances-table th:nth-child(2),
 .attendances-table th:nth-child(3),
-.attendances-table th:nth-child(7),
+.attendances-table th:nth-child(8),
 .attendances-table td:nth-child(1),
 .attendances-table td:nth-child(2),
 .attendances-table td:nth-child(3),
-.attendances-table td:nth-child(7) {
+.attendances-table td:nth-child(8) {
   width: 7%;
 }
 
-/* 発着時間、削除 */
+/* 4:発着時間、5:人数、9:削除 */
 .attendances-table th:nth-child(4),
-.attendances-table th:nth-child(8),
+.attendances-table th:nth-child(5),
+.attendances-table th:nth-child(9),
 .attendances-table td:nth-child(4),
-.attendances-table td:nth-child(8){
+.attendances-table td:nth-child(5),
+.attendances-table td:nth-child(9){
   width: 5%;
 }
 
-/* 作業員 */
-.attendances-table th:nth-child(5),
-.attendances-table td:nth-child(5) {
+/* 6作業員 */
+.attendances-table th:nth-child(6),
+.attendances-table td:nth-child(6) {
   width: 20%;
 }
 
-/* 備考 */
-.attendances-table th:nth-child(6),
-.attendances-table td:nth-child(6) {
+/* 7備考 */
+.attendances-table th:nth-child(7),
+.attendances-table td:nth-child(7) {
   width: 8%;
 }
 
