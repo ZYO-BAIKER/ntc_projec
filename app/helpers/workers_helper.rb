@@ -11,8 +11,6 @@ module WorkersHelper
       "アルバイト"
     when "seiwah"
       "聖和"
-    when "other"
-      "その他"
     else
       "Unknown Group"
     end
