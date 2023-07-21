@@ -3,24 +3,24 @@
   <% if user_signed_in? %>
     <nav class="pc-nav">
       <ul class="header-menus">
-        <li>
-          <%= link_to "資産管理画面", materials_path, class:"fas fa-pencil-alt text-decoration-none link-dark" %>
-        </li>
         <% unless controller_name == 'attendances' && action_name == 'index' %>
           <li>
-            <%= link_to "日付選択", attendances_path, class:"fas fal fa-calendar-alt text-decoration-none link-dark" %>
+            <%= link_to "日付選択", attendances_path, class:"fas fa-calendar-alt text-decoration-none link-dark" %>
           </li>
         <% end %>
         <% unless controller_name == 'workers' && action_name == 'new' %>
           <li>
-            <%= link_to "作業員追加", new_worker_path, class:"fas fa-sign-out-alt text-decoration-none link-dark" %>
+            <%= link_to "作業員追加", new_worker_path, class:"fas fa-user-friends text-decoration-none link-dark" %>
           </li>
         <% end %>
         <% unless controller_name == 'vehicles' && action_name == 'new' %>
           <li>
-            <%= link_to "車両追加", new_vehicle_path, class:"fas fa-sign-out-alt text-decoration-none link-dark" %>
+            <%= link_to "車両追加", new_vehicle_path, class:"fas fa-truck text-decoration-none link-dark" %>
           </li>
         <% end %>
+        <li>
+          <%= link_to "資産管理", materials_path, class:"fas fa-gem text-decoration-none link-dark" %>
+        </li>
         <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt text-decoration-none link-dark" %>
         </li>
@@ -35,9 +35,6 @@
         </p>
         <nav id="gNav" class="">
           <ul class="gNav-menu">
-            <li>
-              <%= link_to "資産管理画面", materials_path, class:"fas fa-pencil-alt text-decoration-none" %>
-            </li>
             <% unless controller_name == 'attendances' && action_name == 'index' %>
               <li>
                 <%= link_to "日付選択", attendances_path, class: "fas fal fa-calendar-alt text-decoration-none" %>
@@ -45,14 +42,17 @@
             <% end %>
             <% unless controller_name == 'workers' && action_name == 'new' %>
               <li>
-                <%= link_to "作業員追加", new_worker_path, class:"fas fa-sign-out-alt text-decoration-none" %>
+                <%= link_to "作業員追加", new_worker_path, class:"fas fa-user-friends text-decoration-none" %>
               </li>
             <% end %>
             <% unless controller_name == 'vehicles' && action_name == 'new' %>
               <li>
-                <%= link_to "車両追加", new_vehicle_path, class:"fas fa-sign-out-alt text-decoration-none" %>
+                <%= link_to "車両追加", new_vehicle_path, class:"fas fa-truck text-decoration-none" %>
               </li>
             <% end %>
+            <li>
+              <%= link_to "資産管理", materials_path, class:"fas fa-gem text-decoration-none" %>
+            </li>
             <li>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt text-decoration-none" %>
             </li>
