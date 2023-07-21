@@ -4,13 +4,14 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <%= form_with(model: @worker, local: true) do |form| %>
+        <%= render 'shared/error_messages', model: form.object %>
         <div class="mb-3">
           <%= form.label :name, "作業者名", class: "form-label" %>
           <%= form.text_field :name, class: "form-control" %>
         </div>
 
         <div class="mb-3">
-          <%= form.label :group, "会社", class: "form-label" %>
+          <%= form.label :group, "所属会社", class: "form-label" %>
           <%= form.select :group, Worker.groups.keys.map { |k| [group_label(k), k] }, {}, class: "form-select" %>
         </div>
 
