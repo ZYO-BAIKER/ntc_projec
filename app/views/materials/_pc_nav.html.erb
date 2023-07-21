@@ -1,0 +1,8 @@
+<nav class="pc-nav">
+  <ul class="header-menus">
+    <%= header_link('資材情報登録', new_material_path, 'fa-wrench', controller_name == 'materials' && action_name == 'new') %>
+    <%= header_link('資材一覧', materials_path, 'fa-th-list', controller_name == 'materials' && action_name == 'index') %>
+    <%= header_link('勤怠選択', attendances_path, 'fa-pencil-alt') %>
+    <%= header_link('ログアウト', destroy_user_session_path, 'fa-sign-out-alt', false, method: :delete) %>
+  </ul>
+</nav>
