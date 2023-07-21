@@ -13,13 +13,6 @@ class AttendanceForm
 
   def attendances_attributes=(attributes)
     @attendances = attributes.values.map do |attendance_attributes|
-      # 新しいWorkerのnameが存在する場合には新しいWorkerを作成
-      new_worker_name = attendance_attributes.delete("new_worker_name")
-      if new_worker_name.present?
-        new_worker = Worker.create!(name: new_worker_name, group: :other)
-        attendance_attributes["worker_ids"] << new_worker.id.to_s  # 新しいWorkerのidをworker_idsに追加
-      end
-
       attendance_attributes["worker_ids"] = attendance_attributes["worker_ids"].map(&:to_i)
       attendance_attributes["vehicle_ids"] = attendance_attributes["vehicle_ids"].map(&:to_i)
       Attendance.new(attendance_attributes)

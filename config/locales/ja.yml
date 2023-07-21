@@ -27,3 +27,6 @@ ja:
         arrival_time: 到着時間
         remark: 備考欄
         vehicle: 使用車両
+      worker:
+        name: 作業者名
+        group: 所属会社
