@@ -15,7 +15,7 @@ class WorkersController < ApplicationController
 
   private
 
-  def worker_params
-    params.require(:worker).permit(:name, :group)
-  end
+    def worker_params
+      params.require(:worker).permit(:name, :group)
+    end
 end
