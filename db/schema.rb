@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2023_06_22_121022) do
     t.string "work_content", null: false
     t.time "departure_time"
     t.time "arrival_time"
+    t.integer "worker_count"
     t.string "remark"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
