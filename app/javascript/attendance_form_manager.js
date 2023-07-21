@@ -1,6 +1,19 @@
 import $ from 'jquery';
 import 'select2';
 
+$(document).on('change', 'select[name$="[worker_ids]"]', function(e) {
+  let selectElement = $(this);
+  let selectedOption = selectElement.find('option:selected');
+
+  if (selectedOption.text() == "入力") {
+    let inputElement = $('<input>')
+      .attr('name', selectElement.attr('name'))
+      .attr('type', 'text')
+      .addClass('form-control');
+    selectElement.replaceWith(inputElement);
+  }
+});
+
 $(document).ready(function () {
   // 定数の定義： FORMS_CONTAINER、ADD_ROW_BUTTON、SELECT2_ELEMENTS はページ内の特定の要素を参照するためのセレクタ。
   // rowIndex は新しい行を追加するためのインデックス。
@@ -16,6 +29,15 @@ $(document).ready(function () {
       theme: 'bootstrap5',
       allowClear: true,
       multiple: true
+    }).on('change', function(e) {
+      let selectedOption = $(this).find('option:selected');
+      if (selectedOption.text() == "入力") {
+        let inputElement = $('<input>')
+          .attr('name', $(this).attr('name').replace('worker_ids', 'new_worker_name'))
+          .attr('type', 'text')
+          .addClass('form-control');
+        $(this).replaceWith(inputElement);
+      }
     });
   }
 
