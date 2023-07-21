@@ -51,7 +51,7 @@ class AttendancesController < ApplicationController
     def attendance_form_params
       params.require(:attendance_form).permit(
         attendances_attributes: [:date, :client, :construction_site, :work_content, :departure_time, :arrival_time, :remark, :vehicle,
-                                 { worker_ids: [], vehicle_ids: [] }],
+                                 { worker_ids: [], vehicle_ids: [], new_worker_name: [] }],
       ).tap do |whitelisted|
         whitelisted[:attendances_attributes].each do |_, attributes|
           attributes[:worker_ids] = (attributes[:worker_ids] || []).reject(&:blank?)
