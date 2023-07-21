@@ -16,4 +16,6 @@ Rails.application.routes.draw do
       patch :update_multiple
     end
   end
+
+  resources :workers, only: [:new, :create]
 end
