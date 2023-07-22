@@ -35,6 +35,7 @@
 .attendances-table select {
   width: 100%;
   box-sizing: border-box;
+  text-align: center;
 }
 
 /* 発着時間入力欄 */

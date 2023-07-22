@@ -12,9 +12,7 @@ $(document).ready(function () {
   // すべての行にSelect2を適用
   function reapplySelect2ToAllRows() {
     $(SELECT2_ELEMENTS).select2({
-      dropdownAutoWidth: true,
       theme: 'bootstrap5',
-      allowClear: true,
       multiple: true
     });
   }
