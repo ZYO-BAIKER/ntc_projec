@@ -1,4 +1,9 @@
-<%= link_to '<i class="fas fa-arrow-left fa-lg"></i>'.html_safe, prev_path, class: "align-self-center me-3 px-3" %>
-<h1><%= @date %></h1>
-<%= link_to '<i class="fas fa-arrow-right fa-lg"></i>'.html_safe, next_path, class: "align-self-center ms-3 px-3" %>
-<%= link_to action_name, action_path, class: "btn btn-primary align-self-center ms-3 px-3" %>
+<div class="d-flex flex-column flex-md-row justify-content-md-center text-center mb-3 mb-md-0">
+  <div class="d-flex justify-content-center mb-2 mb-md-0">
+    <%= link_to '<i class="fas fa-arrow-left fa-lg"></i>'.html_safe, prev_path, class: "align-self-center me-3 px-3" %>
+    <h1 class="my-2"><%= @date %></h1>
+    <%= link_to '<i class="fas fa-arrow-right fa-lg"></i>'.html_safe, next_path, class: "align-self-center ms-3 px-3" %>
+  </div>
+  <%= link_to action_name, action_path, class: "btn btn-primary align-self-center ms-3 px-3 mt-2 mt-md-0" %>
+</div>
+
