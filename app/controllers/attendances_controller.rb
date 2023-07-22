@@ -10,7 +10,7 @@ class AttendancesController < ApplicationController
     @attendance_form.attendances << Attendance.new(date: @date)
   end
 
-  def create_multiple
+  def create
     @attendance_form = AttendanceForm.new(attendance_form_params)
     if @attendance_form.save
       date = @attendance_form.attendances[0].date

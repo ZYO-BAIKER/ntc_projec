@@ -16,7 +16,7 @@ RSpec.describe "Attendances", type: :request do
     end
   end
 
-  describe "POST /create_multiple" do
+  describe "POST /create" do
     let(:expected_date) { "2023-04-27" }
 
     let(:valid_attendance_attributes) do
@@ -44,7 +44,7 @@ RSpec.describe "Attendances", type: :request do
     context "when the request is valid" do
       it "creates new attendances" do
         expect {
-          post create_multiple_attendances_path, params: valid_attendance_attributes
+          post attendances_path, params: valid_attendance_attributes
         }.to change { Attendance.count }.by(2)
         expect(response).to redirect_to show_date_attendances_path(date: expected_date)
       end
@@ -53,7 +53,7 @@ RSpec.describe "Attendances", type: :request do
     context "when the request is invalid" do
       it "does not create new attendances" do
         expect {
-          post create_multiple_attendances_path, params: invalid_attendance_attributes
+          post attendances_path, params: invalid_attendance_attributes
         }.not_to change { Attendance.count }
       end
     end
