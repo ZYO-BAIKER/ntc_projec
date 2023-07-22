@@ -19,8 +19,10 @@ module WorkersHelper
   end
 
   def grouped_workers_for_select
+    all_workers = Worker.all.pluck(:group, :name, :id)
     Worker.groups.keys.map do |group|
-      [group_label(group), Worker.where(group: group).pluck(:name, :id)]
+      workers = all_workers.select {|w| w[0] == group }.map {|w| [w[1], w[2]] }
+      [group_label(group), workers]
     end
   end
 end
