@@ -1,10 +1,10 @@
 <div class="card">
   <div class="card-body">
     <%= form_with url: url, method: :get, class: 'row justify-content-center' do |f| %>
-      <div class="col-12 col-sm-4 col-md-3">
+      <div class="col-6 col-sm-4 col-md-3">
         <%= f.date_field :date, value: Date.today, class: 'form-control mb-2 mb-sm-0', style: 'max-width: 150px;', id: id %>
       </div>
-      <div class="col-12 col-sm-2">
+      <div class="col-6 col-sm-2">
         <%= f.submit button_text, id: button_id, class: button_class %>
       </div>
     <% end %>
