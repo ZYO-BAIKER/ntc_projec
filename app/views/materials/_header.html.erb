@@ -1,7 +1,38 @@
-<header>
-  <%= link_to image_tag("logo.png", class:"logo"), '/' %>
-  <% if user_signed_in? %>
-    <%= render 'pc_nav' %>
-    <%= render 'sp_nav' %>
-  <% end %>
-</header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <%= link_to image_tag("logo.png", class:"logo"), '/' %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <% unless controller_name == 'materials' && action_name == 'index' %>
+          <li class="nav-item">
+            <%= link_to materials_path, class: "nav-link" do %>
+              <i class="fas fa-th-list"></i> 資材一覧
+            <% end %>
+          </li>
+        <% end %>
+        <% unless controller_name == 'materials' && action_name == 'new' %>
+          <li class="nav-item">
+            <%= link_to new_material_path, class: "nav-link" do %>
+              <i class="fas fa-wrench"></i> 資材登録
+            <% end %>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to attendances_path, class: "nav-link" do %>
+            <i class="fas fa-paste"></i> 作業記録
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+            <i class="fas fa-sign-out-alt"></i> ログアウト
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
