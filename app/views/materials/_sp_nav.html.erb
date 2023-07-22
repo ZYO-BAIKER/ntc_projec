@@ -7,10 +7,10 @@
     </p>
     <nav id="gNav" class="">
       <ul class="gNav-menu">
-        <%= header_link('資材登録', new_material_path, 'fa-wrench', controller_name == 'materials' && action_name == 'new') %>
-        <%= header_link('資材一覧', materials_path, 'fa-th-list', controller_name == 'materials' && action_name == 'index') %>
-        <%= header_link('作業記録', attendances_path, 'fa-paste') %>
-        <%= header_link('ログアウト', destroy_user_session_path, 'fa-sign-out-alt', false, method: :delete) %>
+        <%= header_link('資材登録', new_material_path, 'fa-wrench', controller_name == 'materials' && action_name == 'new', {}, "link-light") %>
+        <%= header_link('資材一覧', materials_path, 'fa-th-list', controller_name == 'materials' && action_name == 'index', {}, "link-light") %>
+        <%= header_link('作業記録', attendances_path, 'fa-paste', {}, "link-light") %>
+        <%= header_link('ログアウト', destroy_user_session_path, 'fa-sign-out-alt', false, {method: :delete}, "link-light") %>
       </ul>
     </nav>
   </div>
