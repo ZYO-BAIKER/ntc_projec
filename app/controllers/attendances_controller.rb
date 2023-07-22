@@ -67,7 +67,7 @@ class AttendancesController < ApplicationController
 
     def set_date_and_attendances
       @date = Date.parse(params[:date])
-      @attendances = Attendance.includes(:workers, :vehicles).where(date: @date)
+      @attendances = Attendance.where(date: @date).order(:id)
     end
 
     def failed_attendances(attendances)
