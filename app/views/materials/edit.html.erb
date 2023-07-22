@@ -1,14 +1,14 @@
 <%= render "header" %>
 
-<div class="material-new-main container my-3">
+<div class="material-form container my-3">
   <h2 style="text-align: center;">資材の情報を入力</h2>
-  <p class="attention">（※）は必須項目です</p>
+  <p style="color:red;">（※）は必須項目です</p>
 
   <%= form_with(model: @material, local: true) do |f| %>
-    <%= render partial: "register", locals: {f: f} %> <%# 部分テンプレート %>
-    <div class="register">
-      <%= f.submit "変更", class:"button" %>
-      <%= link_to "削除", material_path, method: :delete, data: { confirm: "この資材情報を消しますか？" }, class: "delete" %>
+    <%= render partial: "form", locals: {f: f} %>
+    <div class="d-flex justify-content-center">
+      <%= f.submit "変更", class: "btn btn-primary btn-lg me-3", style: "margin: 15px;" %>
+      <%= link_to "削除", material_path, method: :delete, data: { confirm: "この資材情報を消しますか？" }, class: "btn btn-danger btn-lg", style: "margin: 15px;" %>
     </div>
   <% end %>
 </div>

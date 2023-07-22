@@ -1,0 +1,52 @@
+.material-form input:not([type=submit]) {
+  margin: 8px;
+  padding: 5px;
+}
+
+.material-form input[type=number] {
+  border: solid 1px #ddd;
+  color: #444;
+}
+.material-form textarea#material_inspection_content {
+  margin: 8px;
+  padding: 5px;
+  width: 300px;
+  height: 100px;
+}
+.material-form textarea#material_memo {
+  margin: 8px;
+  padding: 5px;
+  width: 300px;
+  height: 100px;
+}
+.material-form select {
+  margin: 8px;
+  padding: 5px;
+}
+.material-form table {
+  background-color: #cdefff; /* 背景色指定 */
+  border-collapse: collapse; /* セルの線を重ねる */
+  margin: 0 auto;
+  width: 100%; /* 幅指定 */
+}
+.material-form table th, .material-form table td {
+  border: solid 1px; /* 枠線指定 */
+  padding: 10px; /* 余白指定 */
+}
+.material-form table th {
+  background-color: #00e2cf; /* 背景色指定 */
+  width: 100px; /* 幅指定 */
+  text-align: left; /* 文字の揃え位置指定 */
+}
+.material-form table td {
+  text-align: left; /* 文字の揃え位置指定 */
+}
+.material-form form input#material_period {
+  width: 200px;
+}
+.material-form form input#material_purchase_date {
+  width: auto;
+}
+.material-form form input#material_inspection_date {
+  width: auto;
+}

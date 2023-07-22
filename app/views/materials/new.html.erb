@@ -1,11 +1,13 @@
 <%= render "header" %>
 
-<div class="material-new-main container my-3">
+<div class="material-form container my-3">
   <h2 style="text-align: center;">資材の情報を入力</h2>
   <p style="color:red;">（※）は必須項目です</p>
 
   <%= form_with(model: @material, local: true) do |f| %>
-    <%= render partial: "register", locals: {f: f} %>
-    <div class="register"><%= f.submit "登録", class:"button" %></div>
+    <%= render partial: "form", locals: {f: f} %>
+    <div class="d-flex justify-content-center">
+      <%= f.submit "登録", class: "btn btn-primary btn-lg me-3", style: "margin-top: 15px;" %>
+    </div>
   <% end %>
 </div>
