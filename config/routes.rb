@@ -8,10 +8,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :attendances, only: [:index, :new] do
+  resources :attendances, only: [:index, :new, :create] do
     collection do
       get :top
-      post :create_multiple
       get :show_date
       patch :update_multiple
     end

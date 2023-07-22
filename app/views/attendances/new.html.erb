@@ -9,7 +9,7 @@
     <% end %>
   </div>
 
-  <%= form_with(model: @attendance_form, url: create_multiple_attendances_path, local: true) do |f| %>
+  <%= form_with(model: @attendance_form, url: attendances_path, method: :post ,local: true) do |f| %>
     <div class="table-responsive">
       <table class="attendances-table">
         <%= render 'attendance_table_header', delete_column: false %>
