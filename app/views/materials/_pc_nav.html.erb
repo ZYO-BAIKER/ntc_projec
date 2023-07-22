@@ -2,7 +2,7 @@
   <ul class="header-menus">
     <%= header_link('資材登録', new_material_path, 'fa-wrench', controller_name == 'materials' && action_name == 'new', {}, "link-dark") %>
     <%= header_link('資材一覧', materials_path, 'fa-th-list', controller_name == 'materials' && action_name == 'index', {}, "link-dark") %>
-    <%= header_link('作業記録', attendances_path, 'fa-paste', {}, "link-dark") %>
+    <%= header_link('作業記録', attendances_path, 'fa-paste', false, {}, "link-dark") %>
     <%= header_link('ログアウト', destroy_user_session_path, 'fa-sign-out-alt', false, {method: :delete}, "link-dark") %>
   </ul>
 </nav>
