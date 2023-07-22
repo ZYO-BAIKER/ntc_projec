@@ -19,8 +19,10 @@ module VehiclesHelper
   end
 
   def grouped_vehicles_for_select
+    all_vehicles = Vehicle.all.pluck(:vehicle_type, :number, :id)
     Vehicle.vehicle_types.keys.map do |vehicle_type|
-      [vehicle_type_label(vehicle_type), Vehicle.where(vehicle_type: vehicle_type).pluck(:number, :id)]
+      vehicles = all_vehicles.select { |v| v[0] == vehicle_type }.map { |v| [v[1], v[2]] }
+      [vehicle_type_label(vehicle_type), vehicles]
     end
   end
 end
