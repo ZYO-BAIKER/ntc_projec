@@ -1,6 +1,8 @@
 <%= render "header" %>
 
-<%= paginate @materials %>
-<div class="container-table">該当件数：<%= @materials.all.count %>
-  <%= render "table" %>
+<div class="calendar container my-3">
+  <%= paginate @materials %>
+  <div class="container-table">該当件数：<%= @materials.all.count %>
+    <%= render "table" %>
+  </div>
 </div>

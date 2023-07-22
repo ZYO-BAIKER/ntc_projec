@@ -1,6 +1,6 @@
 class MaterialsController < ApplicationController
   before_action :set_material, only: [:edit, :update, :destroy]
-  before_action :search_material, only: [:index, :result]  # 検索オブジェクトを生成
+  before_action :search_material, only: [:index, :result]
 
   def index
     @materials = Material.all.order("created_at DESC").page(params[:page]).per(10)
@@ -15,21 +15,20 @@ class MaterialsController < ApplicationController
     other_users
     if @material.valid?
       @material.save!
-      redirect_to root_path
+      redirect_to materials_path
     else
       render :new
     end
   end
 
   def edit
-    @@request_referer = request.referer
   end
 
   def update
     if @material.update(material_params)
       other_users
       @material.save!
-      redirect_to @@request_referer
+      redirect_to materials_path
     else
       render :edit
     end
@@ -37,7 +36,7 @@ class MaterialsController < ApplicationController
 
   def destroy
     @material.destroy!
-    redirect_to @@request_referer
+    redirect_to materials_path
   end
 
   def result
