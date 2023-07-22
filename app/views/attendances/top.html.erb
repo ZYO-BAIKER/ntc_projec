@@ -1,13 +1,15 @@
 <%= render "shared/header" %>
 
 <div class="py-5">
-  <h1 class="text-center mb-5">トップページ</h1>
+  <h1 class="text-center mb-5" style="font-family: 'Arial Black', Gadget, sans-serif; color: cyan; text-shadow: 2px 2px 4px #000000;">
+  NTC PROGECT</h1>
+
   <div class="row justify-content-center">
-    <div class="col-md-12 text-center mb-3">
-      <%= link_to "資産管理", materials_path, class: 'btn btn-success btn-lg' %>
+    <div class="col-md-12 text-center mb-5">
+      <%= link_to "資産管理", materials_path, class: 'btn btn-success btn-lg btn-block py-3 mb-4', style: 'font-size:1.5rem;' %>
     </div>
     <div class="col-md-12 text-center">
-      <%= link_to "作業記録", attendances_path, class: 'btn btn-primary btn-lg' %>
+      <%= link_to "作業記録", attendances_path, class: 'btn btn-primary btn-lg btn-block py-3', style: 'font-size:1.5rem;' %>
     </div>
   </div>
 </div>
