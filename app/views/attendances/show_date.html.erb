@@ -1,6 +1,6 @@
 <%= render "header" %>
 
-<div class="container my-3">
+<div class="container-fluid my-3">
   <div class="d-flex flex-column flex-md-row justify-content-md-center text-center">
     <% if !@rendered_from_create %>
       <%= render 'navigation_links', prev_path: show_date_attendances_path(date: @date.prev_day), next_path: show_date_attendances_path(date: @date.next_day), action_name: '新規作成', action_path: new_attendance_path(date: @date) %>

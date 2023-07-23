@@ -57,12 +57,10 @@
   width: 20%;
 }
 
-
 .attendances-table th,
 .attendances-table td {
   border: 1px solid #000;
 }
-
 
 .select2-container .select2-search--inline .select2-search__field {
   min-width: 100px !important;

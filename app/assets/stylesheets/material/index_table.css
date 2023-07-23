@@ -1,7 +1,7 @@
 table {
   background-color: #cdefff;  /* 背景色指定 */
   margin: 0 auto;
-  min-width: 1080px;     /* 幅指定 */
+  min-width: 800px;     /* 幅指定 */
 }
 
 tr {
