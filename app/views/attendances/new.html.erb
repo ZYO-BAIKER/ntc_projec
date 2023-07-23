@@ -14,7 +14,7 @@
       <p style="color:red;">（※）は必須項目です</p>
       <table class="attendances-table">
         <%= render 'attendance_table_header', delete_column: false %>
-        <tbody>
+        <tbody id="attendance-forms">
           <% @attendance_form.attendances.each_with_index do |attendance, index| %>
             <%= render 'attendance_fields', f: f, attendance: attendance, index: index %>
           <% end %>
