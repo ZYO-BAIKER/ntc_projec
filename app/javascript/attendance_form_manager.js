@@ -16,6 +16,10 @@ $(document).ready(function () {
       multiple: true,
       width: '100%'
     });
+
+    $(SELECT2_ELEMENTS).on('select2:opening', function(e) {
+      $('input.select2-search__field').prop('readonly', true);
+    });
   }
 
   // すべての行からSelect2を削除
