@@ -13,7 +13,8 @@ $(document).ready(function () {
   function reapplySelect2ToAllRows() {
     $(SELECT2_ELEMENTS).select2({
       theme: 'bootstrap5',
-      multiple: true
+      multiple: true,
+      width: 'resolve'
     });
   }
 
