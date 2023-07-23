@@ -2,7 +2,7 @@ test:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: NTC_Material_Managment_test
+  database: ntc_project_test
   username: postgres
   password: postgres
   host: localhost

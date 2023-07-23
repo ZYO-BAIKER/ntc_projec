@@ -24,14 +24,14 @@ default: &default
 
 development:
   <<: *default
-  database: NTC_Material_Managment_development
+  database: ntc_project_development
 
 test:
   <<: *default
-  database: NTC_Material_Managment_test
+  database: ntc_project_test
 
 production:
   <<: *default
-  database: postgresql_ntc_material_managment_8q9s
-  username: postgresql_ntc_material_managment_8q9s_user
-  password: <%= ENV['NTC_MATERIAL_MANAGMENT_DATABASE_PASSWORD'] %>
+  database: postgresql_ntc_project_8q9s
+  username: postgresql_ntc_project_8q9s_user
+  password: <%= ENV['ntc_project_DATABASE_PASSWORD'] %>
