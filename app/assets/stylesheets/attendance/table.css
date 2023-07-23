@@ -81,10 +81,3 @@ ul.select2-selection__rendered[id*="worker_ids"] {
 ul.select2-selection__rendered[id*="worker_ids"] li {
   flex: 1 0 20% !important;
 }
-
-@media (max-width: 575.98px) {
-  .attendances-table {
-    max-width: 600px;
-    overflow-x: scroll;
-  }
-}
