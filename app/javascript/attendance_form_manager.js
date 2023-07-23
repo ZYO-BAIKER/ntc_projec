@@ -15,6 +15,8 @@ $(document).ready(function () {
       theme: 'bootstrap5',
       multiple: true,
       width: '100%'
+    }).on('select2:open', function(e) {
+      $('.select2-search__field').attr('readonly', true);
     });
   }
 
