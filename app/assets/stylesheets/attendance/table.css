@@ -15,40 +15,36 @@
 
 /* 発着時間入力欄 */
 .attendances-table .time-field {
-  width: 100%;
+  width: 70px;
   margin-top: 10px;
 }
 
-/* 1:依頼主、2:工事場所、3:作業内容 */
+/* 人数入力欄 */
+.attendances-table .count-field {
+  width: 70px;
+  margin-top: 10px;
+}
+
+/* 1:依頼主、2:工事場所、3:作業内容、8:使用車両 */
 .attendances-table th:nth-child(1),
 .attendances-table th:nth-child(2),
 .attendances-table th:nth-child(3),
+.attendances-table th:nth-child(8),
 .attendances-table td:nth-child(1),
 .attendances-table td:nth-child(2),
-.attendances-table td:nth-child(3){
+.attendances-table td:nth-child(3),
+.attendances-table td:nth-child(8) {
   width: 7%;
 }
 
-/* 7備考 、8:使用車両 */
-.attendances-table th:nth-child(7),
-.attendances-table th:nth-child(8),
-.attendances-table td:nth-child(7),
-.attendances-table td:nth-child(8) {
-  width: 8%;
-}
-
-/* 4:発着時間、5:人数 */
+/* 4:発着時間、5:人数、9:削除 */
 .attendances-table th:nth-child(4),
 .attendances-table th:nth-child(5),
-.attendances-table td:nth-child(4),
-.attendances-table td:nth-child(5){
-  width: 6%;
-}
-
-/* 9:削除 */
 .attendances-table th:nth-child(9),
+.attendances-table td:nth-child(4),
+.attendances-table td:nth-child(5),
 .attendances-table td:nth-child(9){
-  width: 2%;
+  width: 5%;
 }
 
 /* 6作業員 */
@@ -57,6 +53,11 @@
   width: 20%;
 }
 
+/* 7備考 */
+.attendances-table th:nth-child(7),
+.attendances-table td:nth-child(7) {
+  width: 8%;
+}
 
 .attendances-table th,
 .attendances-table td {
@@ -73,11 +74,11 @@
   overflow-y: auto;
 }
 
-ul.select2-selection__rendered[id*="worker_ids"] {
+ul.select2-selection__rendered {
   display: flex !important;
   flex-wrap: wrap !important;
 }
 
-ul.select2-selection__rendered[id*="worker_ids"] li {
+ul.select2-selection__rendered li {
   flex: 1 0 20% !important;
 }
