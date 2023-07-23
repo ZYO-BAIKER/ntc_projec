@@ -14,7 +14,7 @@ $(document).ready(function () {
     $(SELECT2_ELEMENTS).select2({
       theme: 'bootstrap5',
       multiple: true,
-      width: 'resolve'
+      width: '100%'
     });
   }
 
