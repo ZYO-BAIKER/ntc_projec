@@ -63,7 +63,7 @@
 }
 
 .select2-container .select2-search--inline .select2-search__field {
-  min-width: 100px !important;
+  min-width: 100% !important;
 }
 
 .select2-results > .select2-results__options {
