@@ -1,47 +1,45 @@
 <%= render "header" %>
 
-<div class="container-fluid my-3">
-  <div class="d-flex flex-column flex-md-row justify-content-md-center text-center">
-    <% if !@rendered_from_create %>
-      <%= render 'navigation_links', prev_path: show_date_attendances_path(date: @date.prev_day), next_path: show_date_attendances_path(date: @date.next_day), action_name: '新規作成', action_path: new_attendance_path(date: @date) %>
-    <% else %>
-      <h1 class="my-2"><%= @date %></h1>
-    <% end %>
-  </div>
-
-  <%= form_with(url: update_multiple_attendances_path, method: :patch, local: true) do |f| %>
-    <div class="table-responsive">
-      <p style="color:red;">（※）は必須項目です</p>
-      <table class="attendances-table">
-        <%= render 'attendance_table_header', delete_column: true %>
-        <tbody>
-          <% @attendances.each do |attendance| %>
-            <%= fields_for "attendances[#{attendance.id}]", attendance do |attendance_fields| %>
-              <%= render 'shared/error_messages', model: attendance %>
-              <tr>
-                <td><%= attendance_fields.text_field :client %></td>
-                <td><%= attendance_fields.text_field :construction_site %></td>
-                <td><%= attendance_fields.text_field :work_content %></td>
-                <td>
-                  <%= attendance_fields.time_field :departure_time, step: 60, class: 'time-field' %><%= attendance_fields.time_field :arrival_time, step: 60, class: 'time-field' %>
-                </td>
-                <td>
-                  <%= attendance_fields.number_field :worker_count, min: 1, step: 1 %>
-                </td>
-                <td>
-                  <%= attendance_fields.select :worker_ids, grouped_workers_for_select, {}, { class: 'js-searchable-multiple', multiple: true } %>
-                </td>
-                <td><%= attendance_fields.text_field :remark %></td>
-                <td>
-                  <%= attendance_fields.select :vehicle_ids, grouped_vehicles_for_select, {}, { class: 'js-searchable-multiple', multiple: true } %>
-                </td>
-                <td><%= attendance_fields.check_box :_destroy %></td>
-              </tr>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <%= f.submit '更新', class: "btn btn-primary btn-lg position-fixed bottom-0 end-0 m-3" %>
+<div class="d-flex flex-column flex-md-row justify-content-md-center text-center">
+  <% if !@rendered_from_create %>
+    <%= render 'navigation_links', prev_path: show_date_attendances_path(date: @date.prev_day), next_path: show_date_attendances_path(date: @date.next_day), action_name: '新規作成', action_path: new_attendance_path(date: @date) %>
+  <% else %>
+    <h1 class="my-2"><%= @date %></h1>
   <% end %>
 </div>
+
+<%= form_with(url: update_multiple_attendances_path, method: :patch, local: true) do |f| %>
+  <div class="table-responsive">
+    <p style="color:red;">（※）は必須項目です</p>
+    <table class="attendances-table">
+      <%= render 'attendance_table_header', delete_column: true %>
+      <tbody>
+        <% @attendances.each do |attendance| %>
+          <%= fields_for "attendances[#{attendance.id}]", attendance do |attendance_fields| %>
+            <%= render 'shared/error_messages', model: attendance %>
+            <tr>
+              <td><%= attendance_fields.text_field :client %></td>
+              <td><%= attendance_fields.text_field :construction_site %></td>
+              <td><%= attendance_fields.text_field :work_content %></td>
+              <td>
+                <%= attendance_fields.time_field :departure_time, step: 60, class: 'time-field' %><%= attendance_fields.time_field :arrival_time, step: 60, class: 'time-field' %>
+              </td>
+              <td>
+                <%= attendance_fields.number_field :worker_count, min: 1, step: 1 %>
+              </td>
+              <td>
+                <%= attendance_fields.select :worker_ids, grouped_workers_for_select, {}, { class: 'js-searchable-multiple', multiple: true } %>
+              </td>
+              <td><%= attendance_fields.text_field :remark %></td>
+              <td>
+                <%= attendance_fields.select :vehicle_ids, grouped_vehicles_for_select, {}, { class: 'js-searchable-multiple', multiple: true } %>
+              </td>
+              <td><%= attendance_fields.check_box :_destroy %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= f.submit '更新', class: "btn btn-primary btn-lg position-fixed bottom-0 end-0 m-3" %>
+<% end %>
