@@ -9,15 +9,15 @@ class Material < ApplicationRecord
     validates :all_count, :company_count
   end
 
-  validate :sum_count
+  # validate :sum_count
 
-  def sum_count
-    locations_sum = self.locations.map(&:use_count).compact.sum
-    repair_count = self.repair&.repair_count || 0
-    sum = locations_sum + repair_count
+  # def sum_count
+  #   locations_sum = self.locations.map(&:use_count).compact.sum
+  #   repair_count = self.repair&.repair_count || 0
+  #   sum = locations_sum + repair_count
 
-    if all_count != sum
-      errors.add(:all_count, "と各数量の合計が合っていません")
-    end
-  end
+  #   if all_count != sum
+  #     errors.add(:all_count, "と各数量の合計が合っていません")
+  #   end
+  # end
 end

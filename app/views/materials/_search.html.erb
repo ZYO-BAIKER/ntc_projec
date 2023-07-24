@@ -8,15 +8,10 @@
     <%= f.text_field :maker_cont, class: 'form-control' %>
   </div>
   <div class="col-sm-6 col-md-3">
-    <%= f.label :place_or_place2_or_place3_cont, '場所：' %>
-    <%= f.text_field :place_or_place2_or_place3_cont, class: 'form-control' %>
-  </div>
-  <div class="col-sm-6 col-md-3">
-    <%= f.label :user_or_user2_or_user3_eq, '使用者：'%>
-    <%= f.collection_select :user_or_user2_or_user3_eq, UserSelect.all, :name, :name, {include_blank:'指定なし'}, class: 'form-select' %>
+    <%= f.label :locations_place_cont, '場所：' %>
+    <%= f.text_field :locations_place_cont, class: 'form-control' %>
   </div>
   <div class="col-12">
     <%= f.submit '絞り込み', class: 'btn btn-primary' %>
   </div>
 <% end %>
-

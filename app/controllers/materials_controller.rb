@@ -59,4 +59,3 @@ class MaterialsController < ApplicationController
     @q = Material.ransack(params[:q])
   end
 end
-
