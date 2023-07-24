@@ -13,6 +13,7 @@
         <%= material.company_count %>  <%# 会社 %>
       </td>
 
+      <%# 現場 %>
       <% locations = material.locations.first(3) %>
       <% 3.times do |i| %>
         <% location = locations[i] %>
@@ -36,7 +37,7 @@
         </td>
       <% end %>
 
-    <%# 修理中 %>
+      <%# 修理中 %>
       <td class="border border-dark">
         <%= material.repair&.repair_count %> <%# 修理数 %>
       </td>
