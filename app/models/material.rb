@@ -1,11 +1,11 @@
 class Material < ApplicationRecord
-  has_many :locations
+  has_many :locations, dependent: :destroy
   accepts_nested_attributes_for :locations, allow_destroy: true
 
-  has_one :repair
+  has_one :repair, dependent: :destroy
   accepts_nested_attributes_for :repair
 
-  has_one :purchase
+  has_one :purchase, dependent: :destroy
   accepts_nested_attributes_for :purchase
 
   validates :material_name, :all_count, presence: true

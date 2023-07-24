@@ -1,34 +1,35 @@
 <%= render 'shared/error_messages', model: f.object %>
+
 <div class="container">
 
-<!-- materialテーブル -->
-  <div class="form-group row">
-    <label for="material_name" class="col-sm-2 col-form-label">資産名<span class="text-danger">（※）</span></label>
-    <div class="col-sm-10">
-      <%= f.text_field :material_name, class: "form-control", maxlength: "20", placeholder:"資産名入力" %>
+  <!-- materialテーブル -->
+    <div class="form-group row">
+      <label for="material_name" class="col-sm-2 col-form-label">資産名<span class="text-danger">（※）</span></label>
+      <div class="col-sm-10">
+        <%= f.text_field :material_name, class: "form-control", maxlength: "20", placeholder:"資産名入力" %>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group row">
-    <label for="maker" class="col-sm-2 col-form-label">メーカー</label>
-    <div class="col-sm-10">
-      <%= f.text_field :maker, class: "form-control", maxlength: "20", placeholder:"メーカー名入力" %>
+    <div class="form-group row">
+      <label for="maker" class="col-sm-2 col-form-label">メーカー</label>
+      <div class="col-sm-10">
+        <%= f.text_field :maker, class: "form-control", maxlength: "20", placeholder:"メーカー名入力" %>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group row">
-    <label for="all_count" class="col-sm-2 col-form-label">全数量<span class="text-danger">（※）</span></label>
-    <div class="col-sm-10">
-      <%= f.text_field :all_count, class: "form-control", placeholder:"全数量入力", min:"0", readonly: current_user.authority == 1 %>
+    <div class="form-group row">
+      <label for="all_count" class="col-sm-2 col-form-label">全数量<span class="text-danger">（※）</span></label>
+      <div class="col-sm-10">
+        <%= f.text_field :all_count, class: "form-control", placeholder:"全数量入力", min:"0", readonly: current_user.authority == 1 %>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group row">
-    <label for="company_count" class="col-sm-2 col-form-label">会社数量</label>
-    <div class="col-sm-10">
-      <%= f.text_field :company_count, class: "form-control", placeholder:"入力不可", min:"0", readonly:"readonly" %>
+    <div class="form-group row">
+      <label for="company_count" class="col-sm-2 col-form-label">会社数量</label>
+      <div class="col-sm-10">
+        <%= f.text_field :company_count, class: "form-control", placeholder:"入力不可", min:"0", readonly:"readonly" %>
+      </div>
     </div>
-  </div>
 
   <!--locationテーブル -->
   <%= f.fields_for :locations do |location_fields| %>
@@ -45,7 +46,7 @@
           <div class="form-group row">
             <%= location_fields.label :use_count, class: 'col-sm-2 col-form-label' %>
             <div class="col-sm-10">
-              <%= location_fields.text_field :use_count,  placeholder:"数量入力", min:"0" %>
+              <%= location_fields.number_field :use_count,  placeholder:"数量入力", min:0 %>
             </div>
           </div>
 
@@ -53,7 +54,7 @@
             <%= location_fields.label :user, class: 'col-sm-2 col-form-label' %>
             <div class="col-sm-10">
               <%= location_fields.collection_select :user, UserSelect.all, :name, :name, {include_blank:'使用者選択'} %>
-              <% if current_page?(new_material_path) ||  @material.user != "その他" %>
+              <% if current_page?(new_material_path) || @material.locations.any? { |location| location.user != "その他" } %>
                 <%= location_fields.text_field :other_users, class: 'other_users-input', placeholder: 'その他入力', style:"display: none" %>
               <% elsif  @material.user == "その他" %>
                 <%= location_fields.text_field :other_users, class: 'other_users-input', placeholder: 'その他入力' %>
@@ -127,7 +128,7 @@
       <div class="form-group row">
         <%= purchase.label :purchase_price, class: 'col-sm-2 col-form-label' %>
         <div class="col-sm-10">
-          <%= purchase.text_field :purchase_price, class: 'form-control price-input', placeholder: '例）3000', min: '0' %>円
+          <%= purchase.number_field :purchase_price, class: 'form-control price-input', placeholder: '例）3000', min: 0 %>円
         </div>
       </div>
 

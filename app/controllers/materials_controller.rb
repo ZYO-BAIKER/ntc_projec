@@ -15,7 +15,7 @@ class MaterialsController < ApplicationController
 
   def create
     @material = Material.new(material_params)
-    if @material.save!
+    if @material.save
       redirect_to materials_path
     else
       render :new

@@ -3,7 +3,4 @@ class Location < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user_select, foreign_key: :user_name_id
-
-  validates :place, :use_count, presence: true
-  validates :use_count, numericality: { only_integer: true, greater_than: 0 }
 end
