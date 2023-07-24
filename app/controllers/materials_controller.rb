@@ -44,18 +44,18 @@ class MaterialsController < ApplicationController
 
   private
 
-  def material_params
-    params.require(:material).permit(:material_name, :maker, :all_count, :company_count, :memo,
-                                      locations_attributes: [:place, :user, :other_users, :use_count, :period_start, :period_end],
-                                      repair_attributes: [:repair_request, :repair_count, :inspection_date, :inspection_content],
-                                      purchase_attributes: [:purchase_date, :purchase_price, :purchase_place])
-  end
+    def material_params
+      params.require(:material).permit(:material_name, :maker, :all_count, :company_count, :memo,
+                                       locations_attributes: [:place, :user, :other_users, :use_count, :period_start, :period_end],
+                                       repair_attributes: [:repair_request, :repair_count, :inspection_date, :inspection_content],
+                                       purchase_attributes: [:purchase_date, :purchase_price, :purchase_place])
+    end
 
-  def set_material
-    @material = Material.find(params[:id])
-  end
+    def set_material
+      @material = Material.find(params[:id])
+    end
 
-  def search_material
-    @q = Material.ransack(params[:q])
-  end
+    def search_material
+      @q = Material.ransack(params[:q])
+    end
 end
