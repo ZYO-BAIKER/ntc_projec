@@ -33,82 +33,49 @@
 
   <!--locationテーブル -->
   <%= f.fields_for :locations do |location_fields| %>
-    <div class="card mb-4">
-      <div class="card-header">現場①</div>
-        <div class="card-body">
-          <div class="form-group row">
-            <%= location_fields.label :place, class: 'col-sm-2 col-form-label' %>
-            <div class="col-sm-10">
-              <%= location_fields.text_field :place, class: 'form-control', placeholder: '現場名を入力' %>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <%= location_fields.label :use_count, class: 'col-sm-2 col-form-label' %>
-            <div class="col-sm-10">
-              <%= location_fields.number_field :use_count,  placeholder:"数量入力", min:0 %>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <%= location_fields.label :user, class: 'col-sm-2 col-form-label' %>
-            <div class="col-sm-10">
-              <%= location_fields.collection_select :user, UserSelect.all, :name, :name, {include_blank:'使用者選択'} %>
-              <% if current_page?(new_material_path) || @material.locations.any? { |location| location.user != "その他" } %>
-                <%= location_fields.text_field :other_users, class: 'other_users-input', placeholder: 'その他入力', style:"display: none" %>
-              <% elsif  @material.user == "その他" %>
-                <%= location_fields.text_field :other_users, class: 'other_users-input', placeholder: 'その他入力' %>
-              <% end %>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <%= location_fields.label :period_start, class: 'col-sm-2 col-form-label' %>
-            <div class="col-sm-10">
-              <%= location_fields.date_field :period_start, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <%= location_fields.label :period_end, class: 'col-sm-2 col-form-label' %>
-            <div class="col-sm-10">
-              <%= location_fields.date_field :period_end, class: "form-control" %>
-            </div>
-          </div>
-        </div>
+    <% unless location_fields.object.new_record? %>
+      <div class="form-check">
+        <%= location_fields.check_box :_destroy, class: 'form-check-input' %>
+        <%= location_fields.label :_destroy, "この現場を削除する", class: 'form-check-label' %>
       </div>
-    </div>
+    <% end %>
+    <%= render 'location_fields', f: location_fields, index: location_fields.index + 1 %>
   <% end %>
 
   <!-- repairテーブル -->
   <%= f.fields_for :repair do |repair| %>
-    <!-- 修理中 -->
-    <div class="form-group row">
-      <%= repair.label :repair_request, class: 'col-sm-2 col-form-label' %>
-      <div class="col-sm-10">
-        <%= repair.text_field :repair_request, class: 'form-control', placeholder: '修理依頼先入力' %>
+    <div class="card mb-4">
+      <div class="card-header">
+        修理
       </div>
-    </div>
+      <div class="card-body">
+        <div class="form-group row">
+          <%= repair.label :repair_request, class: 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= repair.text_field :repair_request, class: 'form-control', placeholder: '修理依頼先入力' %>
+          </div>
+        </div>
 
-    <div class="form-group row">
-      <%= repair.label :repair_count, class: 'col-sm-2 col-form-label' %>
-      <div class="col-sm-10">
-        <%= repair.text_field :repair_count, class: 'form-control', placeholder: '修理数量入力', min: "0" %>
-      </div>
-    </div>
+        <div class="form-group row">
+          <%= repair.label :repair_count, class: 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= repair.number_field :repair_count, class: 'form-control', placeholder: '修理数量入力', min: "0" %>
+          </div>
+        </div>
 
-    <!-- 修理履歴 -->
-    <div class="form-group row">
-      <%= repair.label :inspection_date, class: 'col-sm-2 col-form-label' %>
-      <div class="col-sm-10">
-        <%= repair.date_field :inspection_date, class: 'form-control' %>
-      </div>
-    </div>
+        <div class="form-group row">
+          <%= repair.label :inspection_date, class: 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= repair.date_field :inspection_date, class: 'form-control' %>
+          </div>
+        </div>
 
-    <div class="form-group row">
-      <%= repair.label :inspection_content, class: 'col-sm-2 col-form-label' %>
-      <div class="col-sm-10">
-        <%= repair.text_area :inspection_content, class: 'form-control', maxlength: "200", placeholder: '修理内容入力' %>
+        <div class="form-group row">
+          <%= repair.label :inspection_content, class: 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= repair.text_area :inspection_content, class: 'form-control', maxlength: "200", placeholder: '修理内容入力' %>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>
@@ -116,27 +83,30 @@
   <!-- purchaseテーブル -->
   <% if current_user.authority == 0 %>
     <%= f.fields_for :purchase do |purchase| %>
-      <!-- 購入日 -->
-      <div class="form-group row">
-        <%= purchase.label :purchase_date, class: 'col-sm-2 col-form-label' %>
-        <div class="col-sm-10">
-          <%= purchase.date_field :purchase_date, class: 'form-control' %>
+      <div class="card mb-4">
+        <div class="card-header">
+          購入
         </div>
-      </div>
+        <div class="card-body">
+          <div class="form-group row">
+            <%= purchase.label :purchase_date, class: 'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+              <%= purchase.date_field :purchase_date, class: 'form-control' %>
+            </div>
+          </div>
 
-      <!-- 購入金額 -->
-      <div class="form-group row">
-        <%= purchase.label :purchase_price, class: 'col-sm-2 col-form-label' %>
-        <div class="col-sm-10">
-          <%= purchase.number_field :purchase_price, class: 'form-control price-input', placeholder: '例）3000', min: 0 %>円
-        </div>
-      </div>
+          <div class="form-group row">
+            <%= purchase.label :purchase_price, class: 'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+              <%= purchase.number_field :purchase_price, class: 'form-control price-input', placeholder: '例）3000', min: 0 %>円
+            </div>
+          </div>
 
-      <!-- 購入場所 -->
-      <div class="form-group row">
-        <%= purchase.label :purchase_place, class: 'col-sm-2 col-form-label' %>
-        <div class="col-sm-10">
-          <%= purchase.text_field :purchase_place, class: 'form-control', maxlength: '30' %>
+          <div class="form-group row">
+          <%= purchase.label :purchase_place, class: 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= purchase.text_field :purchase_place, class: 'form-control', maxlength: '30' %>
+          </div>
         </div>
       </div>
     <% end %>

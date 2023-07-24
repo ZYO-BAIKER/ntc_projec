@@ -8,7 +8,7 @@ class MaterialsController < ApplicationController
 
   def new
     @material = Material.new
-    @material.locations.build
+    3.times { @material.locations.build }
     @material.build_repair
     @material.build_purchase
   end
@@ -23,6 +23,7 @@ class MaterialsController < ApplicationController
   end
 
   def edit
+    (3 - @material.locations.size).times { @material.locations.build }
   end
 
   def update
@@ -46,7 +47,7 @@ class MaterialsController < ApplicationController
 
     def material_params
       params.require(:material).permit(:material_name, :maker, :all_count, :company_count, :memo,
-                                       locations_attributes: [:place, :user, :other_users, :use_count, :period_start, :period_end],
+                                       locations_attributes: [:id, :place, :user, :other_users, :use_count, :period_start, :period_end, :_destroy],
                                        repair_attributes: [:repair_request, :repair_count, :inspection_date, :inspection_content],
                                        purchase_attributes: [:purchase_date, :purchase_price, :purchase_place])
     end

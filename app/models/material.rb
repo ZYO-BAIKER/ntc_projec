@@ -1,6 +1,6 @@
 class Material < ApplicationRecord
   has_many :locations, dependent: :destroy
-  accepts_nested_attributes_for :locations, allow_destroy: true
+  accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :all_blank
 
   has_one :repair, dependent: :destroy
   accepts_nested_attributes_for :repair
