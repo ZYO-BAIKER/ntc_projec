@@ -19,42 +19,21 @@
   margin-top: 10px;
 }
 
-/* 1:依頼主、2:工事場所、3:作業内容 */
-.attendances-table th:nth-child(1),
-.attendances-table th:nth-child(2),
-.attendances-table th:nth-child(3),
-.attendances-table td:nth-child(1),
-.attendances-table td:nth-child(2),
-.attendances-table td:nth-child(3){
-  width: 7%;
-}
-
-/* 7備考 、8:使用車両 */
-.attendances-table th:nth-child(7),
-.attendances-table th:nth-child(8),
-.attendances-table td:nth-child(7),
-.attendances-table td:nth-child(8) {
-  width: 8%;
-}
-
-/* 4:発着時間、5:人数 */
-.attendances-table th:nth-child(4),
-.attendances-table th:nth-child(5),
-.attendances-table td:nth-child(4),
-.attendances-table td:nth-child(5){
-  width: 6%;
+/* 6:作業者 */
+.attendances-table th:nth-child(6),
+.attendances-table td:nth-child(6) {
+  width: 18%;
 }
 
 /* 9:削除 */
 .attendances-table th:nth-child(9),
 .attendances-table td:nth-child(9){
-  width: 2%;
+  width: 5%;
 }
 
-/* 6作業員 */
-.attendances-table th:nth-child(6),
-.attendances-table td:nth-child(6) {
-  width: 20%;
+.attendances-table th,
+.attendances-table td {
+  width: auto;
 }
 
 .attendances-table th,
