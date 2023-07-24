@@ -1,32 +1,11 @@
-// 現場1
 $(function() {
   // 「その他」選択時、その他使用者の入力欄表示
-  $('#material_user').change(function() {
-    if ($("#material_user").val() === 'その他')
-      $(".other_users-input").show();
+  $('.user_select').change(function() {
+    const id = $(this).attr('id');
+    const other_users_input = "#" + id.replace("user_name_id", "other_users");
+    if ($(this).val() === '18') // 'その他'のidが18だと仮定
+      $(other_users_input).show();
     else
-      $(".other_users-input").hide();
-  });
-});
-
-// 現場2
-$(function() {
-  // 「その他」選択時、その他使用者の入力欄表示
-  $('#material_user2').change(function() {
-    if ($("#material_user2").val() === 'その他')
-      $(".other_users-input2").show();
-    else
-      $(".other_users-input2").hide();
-  });
-});
-
-// 現場3
-$(function() {
-  // 「その他」選択時、その他使用者の入力欄表示
-  $('#material_user3').change(function() {
-    if ($("#material_user3").val() === 'その他')
-      $(".other_users-input3").show();
-    else
-      $(".other_users-input3").hide();
+      $(other_users_input).hide();
   });
 });

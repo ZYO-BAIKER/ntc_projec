@@ -8,13 +8,14 @@ class MaterialsController < ApplicationController
 
   def new
     @material = Material.new
+    @material.locations.build
+    @material.build_repair
+    @material.build_purchase
   end
 
   def create
     @material = Material.new(material_params)
-    other_users
-    if @material.valid?
-      @material.save!
+    if @material.save
       redirect_to materials_path
     else
       render :new
@@ -26,8 +27,6 @@ class MaterialsController < ApplicationController
 
   def update
     if @material.update(material_params)
-      other_users
-      @material.save!
       redirect_to materials_path
     else
       render :edit
@@ -45,30 +44,19 @@ class MaterialsController < ApplicationController
 
   private
 
-    def material_params
-      params.require(:material).permit(:material_name, :maker, :all_count, :company_count, :place, :place2, :place3,
-                                       :user, :user2, :user3, :other_users, :other_users2, :other_users3, :use_count, :use_count2, :use_count3,
-                                       :period_start, :period_end, :period_start2, :period_end2, :period_start3, :period_end3, :repair_request, :repair_count,
-                                       :purchase_date, :purchase_price, :purchase_place, :inspection_date, :inspection_content, :memo)
-    end
+  def material_params
+    params.require(:material).permit(:material_name, :maker, :all_count, :company_count, :memo,
+                                      locations_attributes: [:place, :user, :other_users, :use_count, :period_start, :period_end],
+                                      repair_attributes: [:repair_request, :repair_count, :inspection_date, :inspection_content],
+                                      purchase_attributes: [:purchase_date, :purchase_price, :purchase_place])
+  end
 
-    def set_material
-      @material = Material.find(params[:id])
-    end
+  def set_material
+    @material = Material.find(params[:id])
+  end
 
-    def search_material
-      @q = Material.ransack(params[:q])
-    end
-
-    def other_users
-      if @material.user != "その他" # 使用者が「その他」でないなら、「その他」の値を消去
-        @material.other_users = ""
-      end
-      if @material.user2 != "その他"
-        @material.other_users2 = ""
-      end
-      if @material.user3 != "その他"
-        @material.other_users3 = ""
-      end
-    end
+  def search_material
+    @q = Material.ransack(params[:q])
+  end
 end
+
