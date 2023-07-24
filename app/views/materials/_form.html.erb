@@ -1,118 +1,150 @@
 <%= render 'shared/error_messages', model: f.object %>
+<div class="container">
 
-<table>
-  <tr><td>資産名<span style="color:red;">（※）</span></td>
-    <td colspan="3">
-      <%= f.text_field :material_name, maxlength: "20", placeholder:"資産名入力" %>
-    </td>
-  </tr>
-  <tr><td>メーカー</td>
-    <td colspan="3">
-      <%= f.text_field :maker, maxlength: "20",  placeholder:"メーカー名入力" %>
-    </td>
-  </tr>
-  <tr><td>全数量<span style="color:red;">（※）</span></td>
-    <td colspan="3">
-      <%= f.text_field :all_count,  placeholder:"全数量入力", min:"0", readonly: current_user.authority == 1 %>
-    </td>
-  </tr>
-  <tr><td>会社数量</td>
-    <td colspan="3">
-      <%= f.text_field :company_count,  placeholder:"入力不可", min:"0", readonly:"readonly" %>
-    </td>
-  </tr>
-  <tr><td>現場①</td>
-    <td colspan="3">
-      <div><%= f.text_field :place, placeholder: '現場名を入力' %></div>
-      <div><%= f.text_field :use_count,  placeholder:"数量入力", min:"0" %></div>
-      <div>
-        <%= f.collection_select :user, UserSelect.all, :name, :name, {include_blank:'使用者選択'} %>
-        <% if current_page?(new_material_path) ||  @material.user != "その他" %>
-          <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他入力', style:"display: none" %>
-        <% elsif  @material.user == "その他" %>
-          <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他入力' %>
-        <% end %>
-      </div>
-      <div>
-        <%= f.label :使用開始： %> <%= f.date_field :period_start %><br>
-        <%= f.label :使用終了： %> <%= f.date_field :period_end %>
-      </div>
-      <input class="clearForm" type="button" value="日付リセット">
-    </td>
-  </tr>
-  <tr><td>現場②</td>
-    <td colspan="3">
-      <div><%= f.text_field :place2, placeholder: '現場名を入力' %></div>
-      <div><%= f.text_field :use_count2,  placeholder:"数量入力", min:"0" %></div>
-      <div>
-        <%= f.collection_select :user2, UserSelect.all, :name, :name, {include_blank:'使用者選択'} %>
-        <% if current_page?(new_material_path) ||  @material.user2 != "その他" %>
-          <%= f.text_field :other_users2, class: 'other_users-input2', placeholder: 'その他入力', style:"display: none" %>
-        <% elsif  @material.user2 == "その他" %>
-          <%= f.text_field :other_users2, class: 'other_users-input2', placeholder: 'その他入力' %>
-        <% end %>
-      </div>
-      <div>
-        <%= f.label :使用開始： %> <%= f.date_field :period_start2 %><br>
-        <%= f.label :使用終了： %> <%= f.date_field :period_end2 %>
-      </div>
-      <input class="clearForm2" type="button" value="日付リセット">
-    </td>
-  </tr>
-  <tr><td>現場③</td>
-    <td colspan="3">
-      <div><%= f.text_field :place3, placeholder: '現場名を入力' %></div>
-      <div><%= f.text_field :use_count3,  placeholder:"数量入力", min:"0" %></div>
-      <div>
-        <%= f.collection_select :user3, UserSelect.all, :name, :name, {include_blank:'使用者選択'} %>
-        <% if current_page?(new_material_path) ||  @material.user3 != "その他" %>
-          <%= f.text_field :other_users3, class: 'other_users-input3', placeholder: 'その他入力', style:"display: none" %>
-        <% elsif  @material.user3 == "その他" %>
-          <%= f.text_field :other_users3, class: 'other_users-input3', placeholder: 'その他入力' %>
-        <% end %>
-      </div>
-      <div>
-        <%= f.label :使用開始： %> <%= f.date_field :period_start3 %><br>
-        <%= f.label :使用終了： %> <%= f.date_field :period_end3 %>
-      </div>
-      <input class="clearForm3" type="button" value="日付リセット">
-    </td>
-  </tr>
-  <tr><td>修理中</td>
-    <td colspan="3">
-      <%= f.text_field :repair_request, placeholder: '修理依頼先入力' %>
-      <%= f.text_field :repair_count, placeholder: "修理数量入力", min:"0" %>
-    </td>
-  </tr>
+<!-- materialテーブル -->
+  <div class="form-group row">
+    <label for="material_name" class="col-sm-2 col-form-label">資産名<span class="text-danger">（※）</span></label>
+    <div class="col-sm-10">
+      <%= f.text_field :material_name, class: "form-control", maxlength: "20", placeholder:"資産名入力" %>
+    </div>
+  </div>
 
-  <% if current_user.authority == 0 %>
-    <tr><td>購入日</td>
-      <td colspan="3">
-        <%= f.date_field :purchase_date %>
-      </td>
-    </tr>
-    <tr><td>購入金額</td>
-      <td colspan="3">
-        <%= f.text_field :purchase_price , class:"price-input", placeholder:"例）3000", min:"0" %>円
-      </td>
-    </tr>
-    <tr><td>購入場所</td>
-      <td colspan="3">
-        <%= f.text_field :purchase_place, maxlength: "30" %>
-      </td>
-    </tr>
+  <div class="form-group row">
+    <label for="maker" class="col-sm-2 col-form-label">メーカー</label>
+    <div class="col-sm-10">
+      <%= f.text_field :maker, class: "form-control", maxlength: "20", placeholder:"メーカー名入力" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="all_count" class="col-sm-2 col-form-label">全数量<span class="text-danger">（※）</span></label>
+    <div class="col-sm-10">
+      <%= f.text_field :all_count, class: "form-control", placeholder:"全数量入力", min:"0", readonly: current_user.authority == 1 %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="company_count" class="col-sm-2 col-form-label">会社数量</label>
+    <div class="col-sm-10">
+      <%= f.text_field :company_count, class: "form-control", placeholder:"入力不可", min:"0", readonly:"readonly" %>
+    </div>
+  </div>
+
+  <!--locationテーブル -->
+  <%= f.fields_for :locations do |location_fields| %>
+    <div class="card mb-4">
+      <div class="card-header">現場①</div>
+        <div class="card-body">
+          <div class="form-group row">
+            <%= location_fields.label :place, class: 'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+              <%= location_fields.text_field :place, class: 'form-control', placeholder: '現場名を入力' %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <%= location_fields.label :use_count, class: 'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+              <%= location_fields.text_field :use_count,  placeholder:"数量入力", min:"0" %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <%= location_fields.label :user, class: 'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+              <%= location_fields.collection_select :user, UserSelect.all, :name, :name, {include_blank:'使用者選択'} %>
+              <% if current_page?(new_material_path) ||  @material.user != "その他" %>
+                <%= location_fields.text_field :other_users, class: 'other_users-input', placeholder: 'その他入力', style:"display: none" %>
+              <% elsif  @material.user == "その他" %>
+                <%= location_fields.text_field :other_users, class: 'other_users-input', placeholder: 'その他入力' %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <%= location_fields.label :period_start, class: 'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+              <%= location_fields.date_field :period_start, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <%= location_fields.label :period_end, class: 'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+              <%= location_fields.date_field :period_end, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 
-  <tr><td>修理履歴</td>
-    <td colspan="3">
-      <div><%= f.date_field :inspection_date %></div>
-      <div><%= f.text_area :inspection_content, maxlength: "200", placeholder:"修理内容入力" %></div>
-    </td>
-  </tr>
+  <!-- repairテーブル -->
+  <%= f.fields_for :repair do |repair| %>
+    <!-- 修理中 -->
+    <div class="form-group row">
+      <%= repair.label :repair_request, class: 'col-sm-2 col-form-label' %>
+      <div class="col-sm-10">
+        <%= repair.text_field :repair_request, class: 'form-control', placeholder: '修理依頼先入力' %>
+      </div>
+    </div>
 
-  <tr><td>メモ</td>
-    <td colspan="3">
-      <%= f.text_area :memo, maxlength: "200" %>
-    </td>
-  </tr>
-</table>
+    <div class="form-group row">
+      <%= repair.label :repair_count, class: 'col-sm-2 col-form-label' %>
+      <div class="col-sm-10">
+        <%= repair.text_field :repair_count, class: 'form-control', placeholder: '修理数量入力', min: "0" %>
+      </div>
+    </div>
+
+    <!-- 修理履歴 -->
+    <div class="form-group row">
+      <%= repair.label :inspection_date, class: 'col-sm-2 col-form-label' %>
+      <div class="col-sm-10">
+        <%= repair.date_field :inspection_date, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= repair.label :inspection_content, class: 'col-sm-2 col-form-label' %>
+      <div class="col-sm-10">
+        <%= repair.text_area :inspection_content, class: 'form-control', maxlength: "200", placeholder: '修理内容入力' %>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- purchaseテーブル -->
+  <% if current_user.authority == 0 %>
+    <%= f.fields_for :purchase do |purchase| %>
+      <!-- 購入日 -->
+      <div class="form-group row">
+        <%= purchase.label :purchase_date, class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= purchase.date_field :purchase_date, class: 'form-control' %>
+        </div>
+      </div>
+
+      <!-- 購入金額 -->
+      <div class="form-group row">
+        <%= purchase.label :purchase_price, class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= purchase.text_field :purchase_price, class: 'form-control price-input', placeholder: '例）3000', min: '0' %>円
+        </div>
+      </div>
+
+      <!-- 購入場所 -->
+      <div class="form-group row">
+        <%= purchase.label :purchase_place, class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= purchase.text_field :purchase_place, class: 'form-control', maxlength: '30' %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="form-group row">
+    <label for="memo" class="col-sm-2 col-form-label">メモ</label>
+    <div class="col-sm-10">
+      <%= f.text_area :memo, class: "form-control", maxlength: "200", placeholder:"メモ入力" %>
+    </div>
+  </div>
+</div>

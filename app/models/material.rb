@@ -1,7 +1,12 @@
 class Material < ApplicationRecord
   has_many :locations
+  accepts_nested_attributes_for :locations, allow_destroy: true
+
   has_one :repair
+  accepts_nested_attributes_for :repair
+
   has_one :purchase
+  accepts_nested_attributes_for :purchase
 
   validates :material_name, :all_count, presence: true
 
