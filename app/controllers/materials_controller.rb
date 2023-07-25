@@ -24,6 +24,8 @@ class MaterialsController < ApplicationController
 
   def edit
     (3 - @material.locations.size).times { @material.locations.build }
+    @material.repair ||= @material.build_repair
+    @material.purchase ||= @material.build_purchase
   end
 
   def update
