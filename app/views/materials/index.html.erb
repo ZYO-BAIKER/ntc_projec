@@ -2,7 +2,10 @@
 
 <div class="container-fluid my-3">
   <%= render "search" %>
-  <p>全資産：<%= Material.all.count %> 修理中：<%= Repair.where.not(repair_request: nil, repair_count: nil).count %></p>
+  <div>
+    全資産：<%= Material.all.count %>
+    修理中：<%= Repair.where.not(repair_request: nil, repair_count: nil).count %>
+  </div>
   <%= paginate @materials %>
   <div class="table-responsive">
     <%= render "table" %>
