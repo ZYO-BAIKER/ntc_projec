@@ -17,7 +17,7 @@ class Location < ApplicationRecord
 
     def other_user_if_needed
       if user == "その他" && other_users.blank?
-        errors.add(:other_users, I18n.t('activerecord.errors.models.location.attributes.other_users.blank'))
+        errors.add(:other_users, "その他のユーザー名が必要です")
       end
     end
 end
