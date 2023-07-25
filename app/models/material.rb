@@ -9,28 +9,24 @@ class Material < ApplicationRecord
   accepts_nested_attributes_for :purchase
 
   validates :material_name, :all_count, presence: true
-
-  with_options numericality: { allow_blank: true, only_integer: true, greater_than_or_equal_to: 0, message: "は半角で入力して下さい" } do
-    validates :all_count, :company_count
-  end
-
   validate :location_count_within_limit
-
-  def location_count_within_limit
-    if self.locations.size > 3
-      errors.add(:base, "最大3つの現場しか保存できません")
-    end
-  end
-
   # validate :sum_count
 
-  # def sum_count
-  #   locations_sum = self.locations.map(&:use_count).compact.sum
-  #   repair_count = self.repair&.repair_count || 0
-  #   sum = locations_sum + repair_count
+  private
 
-  #   if all_count != sum
-  #     errors.add(:all_count, "と各数量の合計が合っていません")
-  #   end
-  # end
+    def location_count_within_limit
+      if self.locations.size > 3
+        errors.add(:base, "最大3つの現場しか保存できません")
+      end
+    end
+
+    def sum_count
+      locations_sum = self.locations.sum(:use_count)
+      repair_count = self.repair&.repair_count || 0
+      sum = locations_sum + repair_count
+
+      if company_count != all_count - sum
+        errors.add(:company_count, "と各数量の合計が合っていません")
+      end
+    end
 end

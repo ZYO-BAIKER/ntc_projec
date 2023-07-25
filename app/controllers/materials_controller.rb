@@ -15,7 +15,9 @@ class MaterialsController < ApplicationController
 
   def create
     @material = Material.new(material_params)
-    if @material.save
+    if @material.valid?
+      other_users
+      @material.save!
       redirect_to materials_path
     else
       render :new
@@ -30,7 +32,12 @@ class MaterialsController < ApplicationController
 
   def update
     if @material.update(material_params)
-      redirect_to materials_path
+      other_users
+      if @material.save
+        redirect_to materials_path
+      else
+        render :edit
+      end
     else
       render :edit
     end
@@ -60,5 +67,13 @@ class MaterialsController < ApplicationController
 
     def search_material
       @q = Material.ransack(params[:q])
+    end
+
+    def other_users
+      @material.locations.each do |location|
+        if location.user != "その他"
+          location.other_users = ""
+        end
+      end
     end
 end
