@@ -14,6 +14,14 @@ class Material < ApplicationRecord
     validates :all_count, :company_count
   end
 
+  validate :location_count_within_limit
+
+  def location_count_within_limit
+    if self.locations.size > 3
+      errors.add(:base, "最大3つの現場しか保存できません")
+    end
+  end
+
   # validate :sum_count
 
   # def sum_count
