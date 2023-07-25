@@ -8,7 +8,7 @@ class Material < ApplicationRecord
   has_one :purchase, dependent: :destroy
   accepts_nested_attributes_for :purchase
 
-  validates :material_name, :all_count, presence: true
+  validates :material_name, :maker, :all_count, :company_count, presence: true
   validate :location_count_within_limit
   # validate :sum_count
 

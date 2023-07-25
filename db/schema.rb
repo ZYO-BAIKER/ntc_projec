@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(version: 2023_07_24_024459) do
 
   create_table "materials", force: :cascade do |t|
     t.string "material_name", null: false
-    t.string "maker"
+    t.string "maker", null: false
     t.integer "all_count", null: false
-    t.integer "company_count"
+    t.integer "company_count", null: false
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

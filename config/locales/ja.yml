@@ -13,6 +13,7 @@ ja:
         account: アカウント名
       material:
         material_name: 資産名
+        maker: メーカー
         all_count: 全数量
         company_count: 会社数量
       location:
