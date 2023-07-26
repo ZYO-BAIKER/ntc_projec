@@ -1,7 +1,6 @@
 table {
   background-color: #cdefff;  /* 背景色指定 */
   margin: 0 auto;
-  min-width: 750px;     /* 幅指定 */
 }
 
 tr {
@@ -23,12 +22,4 @@ th {
 
 tr:hover {
   background: gray;
-}
-
-td.period {
-  font-size: 10px;
-}
-
-th.border.border-dark.mat {
-  width: 300px;
 }

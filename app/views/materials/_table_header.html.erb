@@ -1,0 +1,28 @@
+<tr class="first_row">
+  <th colspan="3" class="border border-dark">
+    <button class="btn btn-primary show-button-1" style="display: none;">現場①表示</button>
+    <button class="btn btn-warning show-button-2" style="display: none;">現場②表示</button>
+    <button class="btn btn-danger show-button-3" style="display: none;">現場③表示</button>
+  </th>
+  <th colspan="4" class="border border-dark toggle-location location-1" id="toggle-location-1">現場①</th>
+  <th colspan="4" class="border border-dark toggle-location location-2" id="toggle-location-2">現場②</th>
+  <th colspan="4" class="border border-dark toggle-location location-3" id="toggle-location-3">現場③</th>
+  <th class="border border-dark">修理中</th>
+</tr>
+<tr class="second_row">
+  <th class="border border-dark" style="min-width:150px;">資産名</th>
+  <th class="border border-dark">メーカー</th>
+  <th class="border border-dark">会社数量</th>
+
+  <%# 現場 %>
+  <% 3.times do |i| %>
+    <th class="border border-dark location-<%= i+1 %>">現場名</th>
+    <th class="border border-dark location-<%= i+1 %>">使用数</th>
+    <th class="border border-dark location-<%= i+1 %>">使用者</th>
+    <th class="border border-dark location-<%= i+1 %>">使用期間</th>
+  <% end %>
+
+  <%# 修理中 %>
+  <th class="border border-dark">数量</th>
+</tr>
+

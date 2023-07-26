@@ -11,7 +11,7 @@
 <%= form_with(url: update_multiple_attendances_path, method: :patch, local: true) do |f| %>
   <div class="table-responsive">
     <p style="color:red;">（※）は必須項目です</p>
-    <table class="attendances-table">
+    <table class="attendances-table" style="min-width: 750px;">
       <%= render 'attendance_table_header', delete_column: true %>
       <tbody>
         <% @attendances.each do |attendance| %>

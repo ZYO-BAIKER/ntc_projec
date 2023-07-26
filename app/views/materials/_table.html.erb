@@ -1,5 +1,5 @@
-<table>
-  <%= render partial: "tr" %>
+<table style="min-width: 1080px;">
+  <%= render partial: "table_header" %>
   <% @materials.each do |material| %>
     <tr class="border border-dark record" onclick= window.location="<%= "/materials/" + material.id.to_s + "/edit" %>"  role="link">
       <td class="border border-dark">
@@ -17,20 +17,20 @@
       <% locations = material.locations.first(3) %>
       <% 3.times do |i| %>
         <% location = locations[i] %>
-        <td class="border border-dark">
+        <td class="border border-dark location-<%= i+1 %>">
           <%= location&.place %>  <%# 現場名 %>
         </td>
-        <td class="border border-dark">
+        <td class="border border-dark location-<%= i+1 %>">
           <%= location&.usage_count %>  <%# 使用数 %>
         </td>
-        <td class="border border-dark">
+        <td class="border border-dark location-<%= i+1 %>">
           <% if location&.location_user == "その他" && location&.location_other_user != nil %>
             <%= location&.location_other_user %>  <%# その他使用者 %>
           <% else %>
             <%= location&.location_user %>  <%# 使用者 %>
           <% end %>
         </td>
-        <td class="period">
+        <td class="border border-dark location-<%= i+1 %>">
           <%= location&.period_start %><br>
           ~<br>
           <%= location&.period_end %>  <%# 使用期間 %>

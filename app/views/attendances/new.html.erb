@@ -11,7 +11,7 @@
 <%= form_with(model: @attendance_form, url: attendances_path, method: :post ,local: true) do |f| %>
   <div class="table-responsive">
     <p style="color:red;">（※）は必須項目です</p>
-    <table class="attendances-table">
+    <table class="attendances-table" style="min-width: 750px;">
       <%= render 'attendance_table_header', delete_column: false %>
       <tbody id="attendance-forms">
         <% @attendance_form.attendances.each_with_index do |attendance, index| %>
