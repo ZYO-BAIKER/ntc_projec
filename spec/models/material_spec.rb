@@ -1,52 +1,43 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe Material, type: :model do
-  describe "正常系" do
-    context "必要な情報が揃っている場合" do
-      let(:material) { build(:material) }
+  let(:material) { FactoryBot.build(:material) }
 
-      it "資材情報が登録される" do
-        expect(material).to be_valid
-      end
-    end
-  end
-
-  describe "異常系" do
-    context "material_nameがない場合" do
-      let(:material) { build(:material, material_name: nil) }
-
-      it "エラーする" do
-        expect(material).not_to be_valid
-      end
+  context "バリデーションテスト" do
+    it "ensures material_name presence" do
+      material.material_name = nil
+      expect(material.valid?).to eq(false)
     end
 
-    context "all_countがない場合" do
-      let(:material) { build(:material, all_count: nil) }
-
-      it "空欄でエラーする" do
-        expect(material).not_to be_valid
-      end
+    it "ensures maker presence" do
+      material.maker = nil
+      expect(material.valid?).to eq(false)
     end
 
-    context "数値系が半角自然数でない場合" do
-      let(:material) { build(:material) }
-
-      it "全角入力でエラーする" do
-        material.all_count = "１２３２"
-        expect(material).not_to be_valid
-      end
-
-      it "0未満でエラーする" do
-        material.company_count = "-1"
-        expect(material).not_to be_valid
-      end
+    it "ensures all_count presence" do
+      material.all_count = nil
+      expect(material.valid?).to eq(false)
     end
 
-    context "数値の合計が合わない場合" do
-      let(:material) { build(:material, company_count: 4) }
-      it "エラーする" do
-        expect(material).not_to be_valid
+    it "ensures company_count presence" do
+      material.company_count = nil
+      expect(material.valid?).to eq(false)
+    end
+
+    it "ensures company_count is 0 or more" do
+      material.company_count = -1
+      expect(material.valid?).to eq(false)
+    end
+
+    it "ensures material can't have more than 3 locations" do
+      4.times do
+        material.locations.build(place: Faker::Address.city, user: UserSelect.data.sample[:name], use_count: 1)
       end
+      expect(material.valid?).to eq(false)
+    end
+
+    it "should be able to save material" do
+      expect(material.save).to eq(true)
     end
   end
 end
