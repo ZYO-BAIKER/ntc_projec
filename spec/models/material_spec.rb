@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Material, type: :model do
   let(:material) { FactoryBot.build(:material) }
@@ -36,7 +36,7 @@ RSpec.describe Material, type: :model do
       expect(material.valid?).to eq(false)
     end
 
-    it "should be able to save material" do
+    it "is able to save material" do
       expect(material.save).to eq(true)
     end
   end
