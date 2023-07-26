@@ -8,16 +8,14 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 require('jquery')
-require("../header")
-require("../register_select")
+require("../location_user_select")
 require("../company_count")
-require("../reset")
-require("../date")
+require("../date_select")
 require("../attendance_form_manager")
 require("../form_handler")
 
-import "bootstrap"; //追加
-import "../stylesheets/application"; //追加
+import "bootstrap";
+import "../stylesheets/application";
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
