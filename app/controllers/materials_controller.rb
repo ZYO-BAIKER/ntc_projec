@@ -3,7 +3,7 @@ class MaterialsController < ApplicationController
   before_action :search_material, only: [:index, :result]
 
   def index
-    @materials = Material.includes(:locations, :repair, :purchase).order("created_at DESC").page(params[:page]).per(10)
+    @materials = Material.includes(:locations, :repair, :purchase).order("materials.created_at DESC").page(params[:page]).per(10)
   end
 
   def new
@@ -49,7 +49,7 @@ class MaterialsController < ApplicationController
   end
 
   def result
-    @materials = @q.result.order("created_at DESC").page(params[:page]).per(10)
+    @materials = @q.result.order("materials.created_at DESC").page(params[:page]).per(10)
   end
 
   private
