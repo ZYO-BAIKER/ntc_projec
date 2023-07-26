@@ -13,3 +13,7 @@
   margin: 8px;
   padding: 5px;
 }
+
+.card-body-hidden {
+  display: none;
+}

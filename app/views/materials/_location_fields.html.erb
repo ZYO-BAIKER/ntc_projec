@@ -5,9 +5,9 @@
   </div>
 <% end %>
 <div class="card mb-4">
-  <p class="card-header">現場(<%= index %>)</p>
+  <p class="card-header toggle-form">現場(<%= index %>)</p>
 
-  <div class="card-body">
+  <div class="<%= [f.object.place, f.object.usage_count, f.object.location_user, f.object.period_start, f.object.period_end].any?(&:present?) ? 'card-body' : 'card-body card-body-hidden' %>">
     <div class="form-group row">
       <%= f.label :place, class: 'col-sm-2 col-form-label' %>
       <div class="col-sm-10">

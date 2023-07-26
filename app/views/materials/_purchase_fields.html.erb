@@ -1,6 +1,7 @@
 <div class="card mb-4">
-  <p class="card-header">購入</p>
-  <div class="card-body">
+  <p class="card-header toggle-form">購入</p>
+
+  <div class="<%= [f.object.purchase_date, f.object.purchase_price, f.object.purchase_place].any?(&:present?) ? 'card-body' : 'card-body card-body-hidden' %>">
     <div class="form-group row">
       <%= f.label :purchase_date, class: 'col-sm-2 col-form-label' %>
       <div class="col-sm-10">
