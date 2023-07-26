@@ -9,24 +9,14 @@ class Material < ApplicationRecord
   accepts_nested_attributes_for :purchase
 
   validates :material_name, :maker, :all_count, :company_count, presence: true
+  validates :company_count, numericality: { greater_than_or_equal_to: 0, message: "は0以上である必要があります" }
   validate :location_count_within_limit
-  # validate :sum_count
 
   private
 
     def location_count_within_limit
       if self.locations.size > 3
         errors.add(:base, "最大3つの現場しか保存できません")
-      end
-    end
-
-    def sum_count
-      locations_sum = self.locations.sum(:use_count)
-      repair_count = self.repair&.repair_count || 0
-      sum = locations_sum + repair_count
-
-      if company_count != all_count - sum
-        errors.add(:company_count, "と各数量の合計が合っていません")
       end
     end
 end

@@ -2,7 +2,11 @@
 
 <div class="material-form container my-3">
   <h2 style="text-align: center;">資材情報を追加</h2>
-  <p style="color:red;">（※）は必須項目です。<br>数量や金額は半角で入力して下さい</p>
+  <p style="color:red;">
+    ・（※）は必須項目です。
+    <br>・数量や金額は半角で入力して下さい
+    <br>・「会社数量 = 全数量 - (各現場の使用数の合計 + 修理数)」で計算されます
+  </p>
 
   <%= form_with(model: @material, local: true) do |f| %>
     <%= render partial: "form", locals: {f: f} %>
