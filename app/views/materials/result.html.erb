@@ -1,6 +1,6 @@
 <%= render "header" %>
 
-<div class="container my-3">
+<div class="container-fluid my-3">
   <%= paginate @materials %>
   <p>該当件数：<%= @materials.all.count %></p>
   <div class="table-responsive">

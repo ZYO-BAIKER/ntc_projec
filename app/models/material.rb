@@ -1,20 +1,22 @@
 class Material < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :user_select
+  has_many :locations, dependent: :destroy
+  accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :all_blank
 
-  validates :material_name, :all_count, presence: true # 必須設定
+  has_one :repair, dependent: :destroy
+  accepts_nested_attributes_for :repair
 
-  with_options numericality: { allow_blank: true, only_integer: true, greater_than_or_equal_to: 0, message: "は半角で入力して下さい" } do
-    validates :all_count, :company_count, :use_count, :use_count2, :use_count3, :repair_count
-  end
+  has_one :purchase, dependent: :destroy
+  accepts_nested_attributes_for :purchase
 
-  validate :sum_count
+  validates :material_name, :maker, :all_count, :company_count, presence: true
+  validates :company_count, numericality: { greater_than_or_equal_to: 0, message: "は0以上である必要があります" }
+  validate :location_count_within_limit
 
-  def sum_count
-    sum = [company_count, use_count, use_count2, use_count3, repair_count]
+  private
 
-    if all_count != sum.compact.inject(:+)
-      errors.add(:all_count, "と各数量の合計が合っていません")
+    def location_count_within_limit
+      if self.locations.size > 3
+        errors.add(:base, "最大3つの現場しか保存できません")
+      end
     end
-  end
 end

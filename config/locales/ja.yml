@@ -13,11 +13,25 @@ ja:
         account: アカウント名
       material:
         material_name: 資産名
+        maker: メーカー
         all_count: 全数量
         company_count: 会社数量
+      location:
         place: 場所
-        user: 使用者
-        use_count: 使用数
+        location_user: 使用者
+        location_other_user: その他使用者
+        usage_count: 使用数
+        period_start: 使用開始
+        period_end: 使用終了
+      repair:
+        repair_request: 修理依頼先
+        repair_count: 修理数
+        inspection_date: 修理点検日
+        inspection_content: 修理点検内容
+      purchase:
+        purchase_date: 購入日
+        purchase_price: 購入金額
+        purchase_place: 購入場所
       attendance:
         date: 日付
         client: 依頼主

@@ -1,0 +1,51 @@
+<% unless f.object.new_record? %>
+  <div class="form-check">
+    <%= f.check_box :_destroy, class: 'form-check-input' %>
+    <%= f.label :_destroy, "この現場を削除する", class: 'form-check-label' %>
+  </div>
+<% end %>
+<div class="card mb-4">
+  <p class="card-header toggle-form">現場(<%= index %>)</p>
+
+  <div class="<%= [f.object.place, f.object.usage_count, f.object.location_user, f.object.period_start, f.object.period_end].any?(&:present?) ? 'card-body' : 'card-body card-body-hidden' %>">
+    <div class="form-group row">
+      <%= f.label :place, class: 'col-sm-2 col-form-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :place, class: 'form-control', style:"max-width:200px;" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :usage_count, class: 'col-sm-2 col-form-label' %>
+      <div class="col-sm-10">
+        <%= f.number_field :usage_count, style:"max-width:100px;", placeholder:"半角数字", min:0 %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :location_user, class: 'col-sm-2 col-form-label' %>
+      <div class="col-sm-10">
+        <%= f.collection_select :location_user, UserSelect.all, :name, :name, {include_blank:'使用者選択'} %>
+        <% if current_page?(new_material_path) || f.object.location_user != "その他" %>
+          <%= f.text_field :location_other_user, class: 'other_users-input', placeholder: 'その他の使用者を入力', style:"display: none" %>
+        <% elsif  f.object.location_user == "その他" %>
+          <%= f.text_field :location_other_user, class: 'other_users-input', placeholder: 'その他の使用者を入力' %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :period_start, class: 'col-sm-2 col-form-label' %>
+      <div class="col-sm-10">
+        <%= f.date_field :period_start, class: "form-control", style:"max-width:150px;" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :period_end, class: 'col-sm-2 col-form-label' %>
+      <div class="col-sm-10">
+        <%= f.date_field :period_end, class: "form-control", style:"max-width:150px;" %>
+      </div>
+    </div>
+  </div>
+</div>

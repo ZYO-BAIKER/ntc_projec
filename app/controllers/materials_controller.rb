@@ -3,17 +3,20 @@ class MaterialsController < ApplicationController
   before_action :search_material, only: [:index, :result]
 
   def index
-    @materials = Material.all.order("created_at DESC").page(params[:page]).per(10)
+    @materials = Material.includes(:locations, :repair, :purchase).order("materials.created_at DESC").page(params[:page]).per(10)
   end
 
   def new
     @material = Material.new
+    3.times { @material.locations.build }
+    @material.build_repair
+    @material.build_purchase
   end
 
   def create
     @material = Material.new(material_params)
-    other_users
     if @material.valid?
+      clear_other_users_if_not_selected
       @material.save!
       redirect_to materials_path
     else
@@ -22,13 +25,19 @@ class MaterialsController < ApplicationController
   end
 
   def edit
+    (3 - @material.locations.size).times { @material.locations.build }
+    @material.repair ||= @material.build_repair
+    @material.purchase ||= @material.build_purchase
   end
 
   def update
     if @material.update(material_params)
-      other_users
-      @material.save!
-      redirect_to materials_path
+      clear_other_users_if_not_selected
+      if @material.save
+        redirect_to materials_path
+      else
+        render :edit
+      end
     else
       render :edit
     end
@@ -40,16 +49,20 @@ class MaterialsController < ApplicationController
   end
 
   def result
-    @materials = @q.result.order("created_at DESC").page(params[:page]).per(10)
+    @materials = @q.result.order("materials.created_at DESC").page(params[:page]).per(10)
   end
 
   private
 
     def material_params
-      params.require(:material).permit(:material_name, :maker, :all_count, :company_count, :place, :place2, :place3,
-                                       :user, :user2, :user3, :other_users, :other_users2, :other_users3, :use_count, :use_count2, :use_count3,
-                                       :period_start, :period_end, :period_start2, :period_end2, :period_start3, :period_end3, :repair_request, :repair_count,
-                                       :purchase_date, :purchase_price, :purchase_place, :inspection_date, :inspection_content, :memo)
+      params.require(:material).permit(
+        :material_name, :maker, :all_count, :company_count, :memo,
+        locations_attributes: [
+          :id, :place, :location_user, :location_other_user, :usage_count, :period_start, :period_end, :_destroy
+        ],
+        repair_attributes: [:repair_request, :repair_count, :inspection_date, :inspection_content],
+        purchase_attributes: [:purchase_date, :purchase_price, :purchase_place]
+      )
     end
 
     def set_material
@@ -60,15 +73,11 @@ class MaterialsController < ApplicationController
       @q = Material.ransack(params[:q])
     end
 
-    def other_users
-      if @material.user != "その他" # 使用者が「その他」でないなら、「その他」の値を消去
-        @material.other_users = ""
-      end
-      if @material.user2 != "その他"
-        @material.other_users2 = ""
-      end
-      if @material.user3 != "その他"
-        @material.other_users3 = ""
+    def clear_other_users_if_not_selected
+      @material.locations.each do |location|
+        if location.location_user != "その他"
+          location.location_other_user = ""
+        end
       end
     end
 end

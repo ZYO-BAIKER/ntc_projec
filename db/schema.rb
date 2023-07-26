@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_22_121022) do
+ActiveRecord::Schema.define(version: 2023_07_24_024459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,39 +46,48 @@ ActiveRecord::Schema.define(version: 2023_06_22_121022) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "materials", force: :cascade do |t|
-    t.string "material_name", null: false
-    t.string "maker"
-    t.integer "all_count", null: false
-    t.integer "company_count"
+  create_table "locations", force: :cascade do |t|
     t.string "place"
-    t.string "user"
-    t.string "other_users"
-    t.integer "use_count"
+    t.string "location_user"
+    t.string "location_other_user"
+    t.integer "usage_count"
     t.date "period_start"
     t.date "period_end"
-    t.string "place2"
-    t.string "user2"
-    t.string "other_users2"
-    t.integer "use_count2"
-    t.date "period_start2"
-    t.date "period_end2"
-    t.string "place3"
-    t.string "user3"
-    t.string "other_users3"
-    t.integer "use_count3"
-    t.date "period_start3"
-    t.date "period_end3"
-    t.string "repair_request"
-    t.integer "repair_count"
-    t.date "purchase_date"
-    t.integer "purchase_price"
-    t.string "purchase_place"
-    t.date "inspection_date"
-    t.string "inspection_content"
+    t.bigint "material_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["material_id"], name: "index_locations_on_material_id"
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.string "material_name", null: false
+    t.string "maker", null: false
+    t.integer "all_count", null: false
+    t.integer "company_count", null: false
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.date "purchase_date"
+    t.integer "purchase_price"
+    t.string "purchase_place"
+    t.bigint "material_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["material_id"], name: "index_purchases_on_material_id"
+  end
+
+  create_table "repairs", force: :cascade do |t|
+    t.string "repair_request"
+    t.integer "repair_count"
+    t.date "inspection_date"
+    t.string "inspection_content"
+    t.bigint "material_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["material_id"], name: "index_repairs_on_material_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -108,4 +117,7 @@ ActiveRecord::Schema.define(version: 2023_06_22_121022) do
   add_foreign_key "attendance_vehicles", "vehicles"
   add_foreign_key "attendance_workers", "attendances"
   add_foreign_key "attendance_workers", "workers"
+  add_foreign_key "locations", "materials"
+  add_foreign_key "purchases", "materials"
+  add_foreign_key "repairs", "materials"
 end

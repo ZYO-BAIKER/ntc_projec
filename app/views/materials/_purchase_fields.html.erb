@@ -1,0 +1,26 @@
+<div class="card mb-4">
+  <p class="card-header toggle-form">購入</p>
+
+  <div class="<%= [f.object.purchase_date, f.object.purchase_price, f.object.purchase_place].any?(&:present?) ? 'card-body' : 'card-body card-body-hidden' %>">
+    <div class="form-group row">
+      <%= f.label :purchase_date, class: 'col-sm-2 col-form-label' %>
+      <div class="col-sm-10">
+        <%= f.date_field :purchase_date, class: 'form-control', style:"max-width:150px;" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :purchase_price, class: 'col-sm-2 col-form-label' %>
+      <div class="col-sm-10 d-flex align-items-center">
+        <%= f.number_field :purchase_price, class: 'form-control price-input', style:"max-width:150px;", placeholder:"半角数字", min: 0 %>
+        <span class="ml-2">円</span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :purchase_place, class: 'col-sm-2 col-form-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :purchase_place, class: 'form-control', style:"max-width:200px;" %>
+      </div>
+  </div>
+</div>
