@@ -1,9 +1,9 @@
 $(function() {
-  $('select[id^="material_locations_attributes_"][id$="_user"]').change(function() {
-    const other_users_input = $(this).attr('id').replace("user", "other_users");
+  $('select[id^="material_locations_attributes_"][id$="_location_user"]').change(function() {
+    const location_other_user_input = $(this).attr('id').replace("location_user", "location_other_user");
     if ($(this).val() === 'その他')
-      $("#" + other_users_input).show();
+      $("#" + location_other_user_input).show();
     else
-      $("#" + other_users_input).hide();
+      $("#" + location_other_user_input).hide();
   });
 });

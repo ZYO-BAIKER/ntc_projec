@@ -21,13 +21,13 @@
           <%= location&.place %>  <%# 現場名 %>
         </td>
         <td class="border border-dark">
-          <%= location&.use_count %>  <%# 使用数 %>
+          <%= location&.usage_count %>  <%# 使用数 %>
         </td>
         <td class="border border-dark">
-          <% if location&.user == "その他" && location&.other_users != nil %>
-            <%= location&.other_users %>  <%# その他使用者 %>
+          <% if location&.location_user == "その他" && location&.location_other_user != nil %>
+            <%= location&.location_other_user %>  <%# その他使用者 %>
           <% else %>
-            <%= location&.user %>  <%# 使用者 %>
+            <%= location&.location_user %>  <%# 使用者 %>
           <% end %>
         </td>
         <td class="period">

@@ -16,20 +16,20 @@
     </div>
 
     <div class="form-group row">
-      <%= f.label :use_count, class: 'col-sm-2 col-form-label' %>
+      <%= f.label :usage_count, class: 'col-sm-2 col-form-label' %>
       <div class="col-sm-10">
-        <%= f.number_field :use_count, style:"max-width:100px;", placeholder:"半角数字", min:0 %>
+        <%= f.number_field :usage_count, style:"max-width:100px;", placeholder:"半角数字", min:0 %>
       </div>
     </div>
 
     <div class="form-group row">
-      <%= f.label :user, class: 'col-sm-2 col-form-label' %>
+      <%= f.label :location_user, class: 'col-sm-2 col-form-label' %>
       <div class="col-sm-10">
-        <%= f.collection_select :user, UserSelect.all, :name, :name, {include_blank:'使用者選択'} %>
-        <% if current_page?(new_material_path) || f.object.user != "その他" %>
-          <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他の使用者を入力', style:"display: none" %>
-        <% elsif  f.object.user == "その他" %>
-          <%= f.text_field :other_users, class: 'other_users-input', placeholder: 'その他の使用者を入力' %>
+        <%= f.collection_select :location_user, UserSelect.all, :name, :name, {include_blank:'使用者選択'} %>
+        <% if current_page?(new_material_path) || f.object.location_user != "その他" %>
+          <%= f.text_field :location_other_user, class: 'other_users-input', placeholder: 'その他の使用者を入力', style:"display: none" %>
+        <% elsif  f.object.location_user == "その他" %>
+          <%= f.text_field :location_other_user, class: 'other_users-input', placeholder: 'その他の使用者を入力' %>
         <% end %>
       </div>
     </div>

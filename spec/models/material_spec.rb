@@ -31,7 +31,7 @@ RSpec.describe Material, type: :model do
 
     it "ensures material can't have more than 3 locations" do
       4.times do
-        material.locations.build(place: Faker::Address.city, user: UserSelect.data.sample[:name], use_count: 1)
+        material.locations.build(place: Faker::Address.city, user: UserSelect.data.sample[:name], usage_count: 1)
       end
       expect(material.valid?).to eq(false)
     end

@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 2023_07_24_024459) do
 
   create_table "locations", force: :cascade do |t|
     t.string "place"
-    t.string "user"
-    t.string "other_users"
-    t.integer "use_count"
+    t.string "location_user"
+    t.string "location_other_user"
+    t.integer "usage_count"
     t.date "period_start"
     t.date "period_end"
     t.bigint "material_id", null: false

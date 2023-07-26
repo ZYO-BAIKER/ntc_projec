@@ -16,7 +16,7 @@ class MaterialsController < ApplicationController
   def create
     @material = Material.new(material_params)
     if @material.valid?
-      other_users
+      clear_other_users_if_not_selected
       @material.save!
       redirect_to materials_path
     else
@@ -32,7 +32,7 @@ class MaterialsController < ApplicationController
 
   def update
     if @material.update(material_params)
-      other_users
+      clear_other_users_if_not_selected
       if @material.save
         redirect_to materials_path
       else
@@ -55,10 +55,14 @@ class MaterialsController < ApplicationController
   private
 
     def material_params
-      params.require(:material).permit(:material_name, :maker, :all_count, :company_count, :memo,
-                                       locations_attributes: [:id, :place, :user, :other_users, :use_count, :period_start, :period_end, :_destroy],
-                                       repair_attributes: [:repair_request, :repair_count, :inspection_date, :inspection_content],
-                                       purchase_attributes: [:purchase_date, :purchase_price, :purchase_place])
+      params.require(:material).permit(
+        :material_name, :maker, :all_count, :company_count, :memo,
+        locations_attributes: [
+          :id, :place, :location_user, :location_other_user, :usage_count, :period_start, :period_end, :_destroy
+        ],
+        repair_attributes: [:repair_request, :repair_count, :inspection_date, :inspection_content],
+        purchase_attributes: [:purchase_date, :purchase_price, :purchase_place]
+      )
     end
 
     def set_material
@@ -69,10 +73,10 @@ class MaterialsController < ApplicationController
       @q = Material.ransack(params[:q])
     end
 
-    def other_users
+    def clear_other_users_if_not_selected
       @material.locations.each do |location|
-        if location.user != "その他"
-          location.other_users = ""
+        if location.location_user != "その他"
+          location.location_other_user = ""
         end
       end
     end

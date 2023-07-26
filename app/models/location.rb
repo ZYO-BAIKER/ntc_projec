@@ -9,8 +9,8 @@ class Location < ApplicationRecord
   private
 
     def other_user_if_needed
-      if user == "その他" && other_users.blank?
-        errors.add(:other_users, "その他のユーザー名が必要です")
+      if location_user == "その他" && location_other_user.blank?
+        errors.add(:location_other_user, "その他のユーザー名が必要です")
       end
     end
 end
