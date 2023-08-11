@@ -56,8 +56,8 @@ class MaterialsController < ApplicationController
         locations_attributes: [
           :id, :place, :location_user, :location_other_user, :usage_count, :period_start, :period_end, :_destroy
         ],
-        repair_attributes: [:repair_request, :repair_count, :inspection_date, :inspection_content],
-        purchase_attributes: [:purchase_date, :purchase_price, :purchase_place]
+        repair_attributes: [:id, :repair_request, :repair_count, :inspection_date, :inspection_content, :_destroy],
+        purchase_attributes: [:id, :purchase_date, :purchase_price, :purchase_place, :_destroy]
       )
     end
 

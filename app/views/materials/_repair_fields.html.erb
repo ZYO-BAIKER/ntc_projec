@@ -1,3 +1,9 @@
+<% unless f.object.new_record? %>
+  <div class="form-check">
+    <%= f.check_box :_destroy, class: 'form-check-input' %>
+    <%= f.label :_destroy, "修理情報を削除する", class: 'form-check-label' %>
+  </div>
+<% end %>
 <div class="card mb-4">
   <p class="card-header toggle-form">修理</p>
 
