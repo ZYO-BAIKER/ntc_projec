@@ -1,10 +1,10 @@
-require_relative 'seeds/workers_data'
-require_relative 'seeds/vehicle_data'
-require_relative 'seeds/material_data.rb'
+require_relative "seeds/workers_data"
+require_relative "seeds/vehicle_data"
+require_relative "seeds/material_data"
 
 def create_users
-  User.create!(account:"admin", authority:0, password:"admin001")
-  User.create!(account:"ntc", authority:1, password:"227141")
+  User.create!(account: "admin", authority: 0, password: "admin001")
+  User.create!(account: "ntc", authority: 1, password: "227141")
 end
 
 def create_workers

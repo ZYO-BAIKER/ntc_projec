@@ -3,10 +3,10 @@ class Material < ApplicationRecord
   accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :all_blank
 
   has_one :repair, dependent: :destroy
-  accepts_nested_attributes_for :repair
+  accepts_nested_attributes_for :repair, allow_destroy: true, reject_if: :all_blank
 
   has_one :purchase, dependent: :destroy
-  accepts_nested_attributes_for :purchase
+  accepts_nested_attributes_for :purchase, allow_destroy: true, reject_if: :all_blank
 
   validates :material_name, :maker, :all_count, :company_count, presence: true
   validates :company_count, numericality: { greater_than_or_equal_to: 0, message: "は0以上である必要があります" }

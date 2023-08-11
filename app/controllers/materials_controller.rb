@@ -26,18 +26,14 @@ class MaterialsController < ApplicationController
 
   def edit
     (3 - @material.locations.size).times { @material.locations.build }
-    @material.repair ||= @material.build_repair
-    @material.purchase ||= @material.build_purchase
+    @material.build_repair unless @material.repair
+    @material.build_purchase unless @material.purchase
   end
 
   def update
+    clear_other_users_if_not_selected
     if @material.update(material_params)
-      clear_other_users_if_not_selected
-      if @material.save
-        redirect_to materials_path
-      else
-        render :edit
-      end
+      redirect_to materials_path
     else
       render :edit
     end
@@ -60,8 +56,8 @@ class MaterialsController < ApplicationController
         locations_attributes: [
           :id, :place, :location_user, :location_other_user, :usage_count, :period_start, :period_end, :_destroy
         ],
-        repair_attributes: [:repair_request, :repair_count, :inspection_date, :inspection_content],
-        purchase_attributes: [:purchase_date, :purchase_price, :purchase_place]
+        repair_attributes: [:id, :repair_request, :repair_count, :inspection_date, :inspection_content, :_destroy],
+        purchase_attributes: [:id, :purchase_date, :purchase_price, :purchase_place, :_destroy]
       )
     end
 
