@@ -2,94 +2,70 @@ import $ from 'jquery';
 import 'select2';
 
 $(document).ready(function () {
-  // 定数の定義： FORMS_CONTAINER、ADD_ROW_BUTTON、SELECT2_ELEMENTS はページ内の特定の要素を参照するためのセレクタ。
-  // rowIndex は新しい行を追加するためのインデックス。
   const FORMS_CONTAINER = '#attendance-forms';
   const ADD_ROW_BUTTON = '#add-row';
   const SELECT2_ELEMENTS = '.js-searchable-multiple';
   let rowIndex = $(ADD_ROW_BUTTON).data('index');
 
-  // すべての行にSelect2を適用
-  function reapplySelect2ToAllRows() {
-    $(SELECT2_ELEMENTS).select2({
+  function reapplySelect2(element) {
+    $(element).select2({
       theme: 'bootstrap5',
       multiple: true,
       width: '100%'
-    }).on('select2:opening', function(e) {
-      // ここで検索フィールドを読み取り専用に設定
-      $('.select2-search__field').attr('readonly', true);
-    });
+    }).on('select2:opening', () => $('.select2-search__field').attr('readonly', true));
   }
 
-  // すべての行からSelect2を削除
-  function removeSelect2FromAllRows() {
-    $(SELECT2_ELEMENTS).each(function() {
-      if ($.fn.select2 && $(this).data('select2')) {
-        $(this).select2('destroy');
-      }
-    });
+  function resetSelect2(element) {
+    if ($.fn.select2 && $(element).data('select2')) {
+      $(element).select2('destroy');
+    }
   }
 
   function adjustTextareaHeight(textareaElement) {
     $(textareaElement).height(0).height(textareaElement.scrollHeight);
   }
 
-  // 入力時にtextareaの高さを調整
-  $(document).on('input', 'textarea', function () {
-    adjustTextareaHeight(this);
-  });
-
-  // ページ読み込み時にも全てのtextareaの高さを調整
-  $(document).ready(function() {
-    $('textarea').each(function() {
-        adjustTextareaHeight(this);
-    });
-  });
-
-  //新しい行を作成し、フォームに追加
   function createAndAppendRow() {
-    let newRow = $("#attendance_" + rowIndex).clone().show();
+    let newRow = $(`#attendance_${rowIndex}`).clone().show();
+    newRow.attr("id", `attendance_${rowIndex + 1}`);
 
-    newRow.attr("id", "attendance_" + (rowIndex + 1));
     newRow.find('input, select, textarea').each(function() {
-      if (!$(this).hasClass('js-searchable-multiple')) {
-        if (!$(this).is('[name$="[date]"]')) {
-          $(this).val('');  // reset the value
-        }
-      } else {
-        $(this).val([]);  // reset the value for multiple select elements
-      }
-      let name = $(this).attr('name').replace(/\[\d+\]/, '[' + (rowIndex + 1) + ']');
-      $(this).attr('name', name);
+      let isSelect2Multiple = $(this).hasClass('js-searchable-multiple');
+      let isDateField = $(this).is('[name$="[date]"]');
+
+      if (!isSelect2Multiple && !isDateField) $(this).val('');
+      if (isSelect2Multiple) $(this).val([]);
+
+      let updatedName = $(this).attr('name').replace(/\[\d+\]/, `[${rowIndex + 1}]`);
+      $(this).attr('name', updatedName);
 
       if ($(this).attr('id')) {
-        let id = $(this).attr('id').replace(/\d+/, (rowIndex + 1));
-        $(this).attr('id', id);
+        let updatedId = $(this).attr('id').replace(/\d+/, rowIndex + 1);
+        $(this).attr('id', updatedId);
       }
     });
 
     $(FORMS_CONTAINER).append(newRow);
     rowIndex += 1;
 
-    // 新しい行のすべてのtextareaの内容をリセット
-    newRow.find('textarea').val('');
-
-    // 新しい行のすべてのtextareaの高さをリセット
-    newRow.find('textarea').each(function() {
-      $(this).css('height', '');
+    // Reset textarea contents and adjust their height
+    newRow.find('textarea').val('').each(function() {
       adjustTextareaHeight(this);
     });
   }
 
-  // イベントリスナーの設定： $(ADD_ROW_BUTTON).click は "Add Row" ボタンがクリックされたときのイベントリスナー。
-  // ボタンがクリックされたとき、すべての行からSelect2を削除し、新しい行を作成して追加し、すべての行に再度Select2を適用。
-  $(ADD_ROW_BUTTON).click(function () {
-    removeSelect2FromAllRows();
-    createAndAppendRow();
-    reapplySelect2ToAllRows();
+  // Event listeners
+  $(document).on('input', 'textarea', function () {
+    adjustTextareaHeight(this);
   });
 
-  // 初期アクションの実行： これはページが読み込まれたときに最初に行われるアクション。
-  // ここでは、ページが読み込まれたときにすべての行にSelect2を適用しています。
-  reapplySelect2ToAllRows();
+  $(ADD_ROW_BUTTON).click(function () {
+    $(SELECT2_ELEMENTS).each((_, el) => resetSelect2(el));
+    createAndAppendRow();
+    $(SELECT2_ELEMENTS).each((_, el) => reapplySelect2(el));
+  });
+
+  // Initial actions
+  $(SELECT2_ELEMENTS).each((_, el) => reapplySelect2(el));
+  $('textarea').each((_, el) => adjustTextareaHeight(el));
 });
