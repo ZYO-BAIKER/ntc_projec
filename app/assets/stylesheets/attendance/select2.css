@@ -1,0 +1,17 @@
+.select2-container .select2-search--inline .select2-search__field {
+  min-width: 100% !important;
+}
+
+.select2-results > .select2-results__options {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+ul.select2-selection__rendered[id*="worker_ids"] {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+ul.select2-selection__rendered[id*="worker_ids"] li {
+  flex: 1 0 20% !important;
+}

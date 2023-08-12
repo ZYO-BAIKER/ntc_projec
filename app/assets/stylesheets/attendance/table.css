@@ -12,12 +12,25 @@
   width: 100%;
   box-sizing: border-box;
   text-align: center;
+  overflow-y: hidden;
+  resize: none; /* ユーザーがテキストエリアのサイズを変更するのを防ぐため */
+
 }
 
 /* 発着時間入力欄 */
 .attendances-table .time-field {
   width: 70px;
   margin-top: 10px;
+}
+
+.time-field::-webkit-inner-spin-button,
+.time-field::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.time-field::-webkit-calendar-picker-indicator {
+  display: none;
 }
 
 /* 4:発着時間 *//* 5:人数 */
@@ -69,22 +82,4 @@
   .attendances-table td:nth-child(5) {
     width: auto;
   }
-}
-
-.select2-container .select2-search--inline .select2-search__field {
-  min-width: 100% !important;
-}
-
-.select2-results > .select2-results__options {
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-ul.select2-selection__rendered[id*="worker_ids"] {
-  display: flex !important;
-  flex-wrap: wrap !important;
-}
-
-ul.select2-selection__rendered[id*="worker_ids"] li {
-  flex: 1 0 20% !important;
 }
