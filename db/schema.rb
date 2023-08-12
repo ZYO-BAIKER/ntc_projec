@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2023_07_24_024459) do
   enable_extension "plpgsql"
 
   create_table "attendance_vehicles", force: :cascade do |t|
-    t.bigint "attendance_id", null: false
-    t.bigint "vehicle_id", null: false
+    t.bigint "attendance_id", null: false, comment: "記録"
+    t.bigint "vehicle_id", null: false, comment: "車両"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["attendance_id"], name: "index_attendance_vehicles_on_attendance_id"
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2023_07_24_024459) do
   end
 
   create_table "attendance_workers", force: :cascade do |t|
-    t.bigint "attendance_id", null: false
-    t.bigint "worker_id", null: false
+    t.bigint "attendance_id", null: false, comment: "記録"
+    t.bigint "worker_id", null: false, comment: "作業員"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["attendance_id"], name: "index_attendance_workers_on_attendance_id"
@@ -34,57 +34,57 @@ ActiveRecord::Schema.define(version: 2023_07_24_024459) do
   end
 
   create_table "attendances", force: :cascade do |t|
-    t.date "date", null: false
-    t.string "client", null: false
-    t.string "construction_site", null: false
-    t.string "work_content", null: false
-    t.time "departure_time"
-    t.time "arrival_time"
-    t.integer "worker_count"
-    t.string "remark"
+    t.date "date", null: false, comment: "日付"
+    t.string "client", null: false, comment: "依頼主"
+    t.string "construction_site", null: false, comment: "工事場所"
+    t.string "work_content", null: false, comment: "作業内容"
+    t.time "departure_time", comment: "出発時間"
+    t.time "arrival_time", comment: "到着時間"
+    t.integer "worker_count", comment: "作業員数"
+    t.string "remark", comment: "備考"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "locations", force: :cascade do |t|
-    t.string "place"
-    t.string "location_user"
-    t.string "location_other_user"
-    t.integer "usage_count"
-    t.date "period_start"
-    t.date "period_end"
-    t.bigint "material_id", null: false
+    t.string "place", comment: "工事場所"
+    t.string "location_user", comment: "使用者"
+    t.string "location_other_user", comment: "その他の使用者"
+    t.integer "usage_count", comment: "使用数"
+    t.date "period_start", comment: "使用開始時"
+    t.date "period_end", comment: "使用終了時"
+    t.bigint "material_id", null: false, comment: "資産"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["material_id"], name: "index_locations_on_material_id"
   end
 
   create_table "materials", force: :cascade do |t|
-    t.string "material_name", null: false
-    t.string "maker", null: false
-    t.integer "all_count", null: false
-    t.integer "company_count", null: false
+    t.string "material_name", null: false, comment: "資産名"
+    t.string "maker", null: false, comment: "メーカー"
+    t.integer "all_count", null: false, comment: "全数量"
+    t.integer "company_count", null: false, comment: "社内数"
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.date "purchase_date"
-    t.integer "purchase_price"
-    t.string "purchase_place"
-    t.bigint "material_id", null: false
+    t.date "purchase_date", comment: "購入日"
+    t.integer "purchase_price", comment: "購入金額"
+    t.string "purchase_place", comment: "購入場所"
+    t.bigint "material_id", null: false, comment: "資産"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["material_id"], name: "index_purchases_on_material_id"
   end
 
   create_table "repairs", force: :cascade do |t|
-    t.string "repair_request"
-    t.integer "repair_count"
-    t.date "inspection_date"
-    t.string "inspection_content"
-    t.bigint "material_id", null: false
+    t.string "repair_request", comment: "修理依頼先"
+    t.integer "repair_count", comment: "修理数"
+    t.date "inspection_date", comment: "修理点検日"
+    t.string "inspection_content", comment: "修理点検内容"
+    t.bigint "material_id", null: false, comment: "資産"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["material_id"], name: "index_repairs_on_material_id"
@@ -100,15 +100,15 @@ ActiveRecord::Schema.define(version: 2023_07_24_024459) do
   end
 
   create_table "vehicles", force: :cascade do |t|
-    t.string "number", null: false
-    t.integer "vehicle_type", null: false
+    t.string "number", null: false, comment: "車両番号"
+    t.integer "vehicle_type", null: false, comment: "車種"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "workers", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "group", null: false
+    t.string "name", null: false, comment: "作業員"
+    t.integer "group", null: false, comment: "所属会社"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
