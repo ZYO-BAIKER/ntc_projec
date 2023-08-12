@@ -18,11 +18,11 @@
           <%= fields_for "attendances[#{attendance.id}]", attendance do |attendance_fields| %>
             <%= render 'shared/error_messages', model: attendance %>
             <tr>
-              <td><%= attendance_fields.text_field :client %></td>
-              <td><%= attendance_fields.text_field :construction_site %></td>
-              <td><%= attendance_fields.text_field :work_content %></td>
+              <td><%= attendance_fields.text_area :client %></td>
+              <td><%= attendance_fields.text_area :construction_site %></td>
+              <td><%= attendance_fields.text_area :work_content %></td>
               <td>
-                <%= attendance_fields.time_field :departure_time, step: 60, class: 'time-field' %><%= attendance_fields.time_field :arrival_time, step: 60, class: 'time-field' %>
+                <%= attendance_fields.time_field :departure_time, step: 600, class: 'time-field' %><%= attendance_fields.time_field :arrival_time, step: 600, class: 'time-field' %>
               </td>
               <td>
                 <%= attendance_fields.number_field :worker_count, min: 1, step: 1 %>
@@ -30,7 +30,7 @@
               <td>
                 <%= attendance_fields.select :worker_ids, grouped_workers_for_select, {}, { class: 'js-searchable-multiple', multiple: true } %>
               </td>
-              <td><%= attendance_fields.text_field :remark %></td>
+              <td><%= attendance_fields.text_area :remark %></td>
               <td>
                 <%= attendance_fields.select :vehicle_ids, grouped_vehicles_for_select, {}, { class: 'js-searchable-multiple', multiple: true } %>
               </td>
