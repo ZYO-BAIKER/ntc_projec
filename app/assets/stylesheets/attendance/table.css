@@ -7,22 +7,50 @@
 
 /* 入力欄 */
 .attendances-table input,
+.attendances-table textarea,
 .attendances-table select {
   width: 100%;
   box-sizing: border-box;
   text-align: center;
+  overflow-y: hidden;
+  resize: none; /* ユーザーがテキストエリアのサイズを変更するのを防ぐため */
+
 }
 
 /* 発着時間入力欄 */
 .attendances-table .time-field {
-  width: 100%;
+  width: 70px;
   margin-top: 10px;
+}
+
+.time-field::-webkit-inner-spin-button,
+.time-field::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.time-field::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+/* 4:発着時間 *//* 5:人数 */
+.attendances-table th:nth-child(4),
+.attendances-table td:nth-child(4),
+.attendances-table th:nth-child(5),
+.attendances-table td:nth-child(5) {
+  width: 5%;
 }
 
 /* 6:作業者 */
 .attendances-table th:nth-child(6),
 .attendances-table td:nth-child(6) {
   width: 18%;
+}
+
+/* 8:車両 */
+.attendances-table th:nth-child(8),
+.attendances-table td:nth-child(8){
+  width: 10%;
 }
 
 /* 9:削除 */
@@ -41,20 +69,17 @@
   border: 1px solid #000;
 }
 
-.select2-container .select2-search--inline .select2-search__field {
-  min-width: 100% !important;
-}
+/* スマホでのビューに合わせたスタイル変更 */
+@media (max-width: 1700px) {
+  .attendances-table {
+    min-width: auto;
+  }
 
-.select2-results > .select2-results__options {
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-ul.select2-selection__rendered[id*="worker_ids"] {
-  display: flex !important;
-  flex-wrap: wrap !important;
-}
-
-ul.select2-selection__rendered[id*="worker_ids"] li {
-  flex: 1 0 20% !important;
+  /* 4:発着時間, 5:人数 の幅を再調整 */
+  .attendances-table th:nth-child(4),
+  .attendances-table td:nth-child(4),
+  .attendances-table th:nth-child(5),
+  .attendances-table td:nth-child(5) {
+    width: auto;
+  }
 }

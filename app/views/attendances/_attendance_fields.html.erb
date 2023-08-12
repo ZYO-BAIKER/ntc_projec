@@ -5,12 +5,12 @@
   <%= f.fields_for "attendances_attributes[#{index}]", attendance do |attendance_fields| %>
     <%= render 'shared/error_messages', model: attendance %>
     <%= attendance_fields.hidden_field :date, value: @date unless attendance.persisted? %>
-    <td><%= attendance_fields.text_field :client, disabled_field_options(attendance) %></td>
-    <td><%= attendance_fields.text_field :construction_site, disabled_field_options(attendance) %></td>
-    <td><%= attendance_fields.text_field :work_content, disabled_field_options(attendance) %></td>
+    <td><%= attendance_fields.text_area :client, disabled_field_options(attendance) %></td>
+    <td><%= attendance_fields.text_area :construction_site, disabled_field_options(attendance) %></td>
+    <td><%= attendance_fields.text_area :work_content, disabled_field_options(attendance) %></td>
     <td>
-      <%= attendance_fields.time_field :departure_time, step: 60, class: 'time-field', **disabled_field_options(attendance) %>
-      <%= attendance_fields.time_field :arrival_time, step: 60, class: 'time-field', **disabled_field_options(attendance) %>
+      <%= attendance_fields.time_field :departure_time, step: 600, class: 'time-field', **disabled_field_options(attendance) %>
+      <%= attendance_fields.time_field :arrival_time, step: 600, class: 'time-field', **disabled_field_options(attendance) %>
     </td>
     <td>
       <%= attendance_fields.number_field :worker_count, min: 1, step: 1, **disabled_field_options(attendance) %>
@@ -18,7 +18,7 @@
     <td>
       <%= attendance_fields.select :worker_ids, grouped_workers_for_select, {}, { class: 'js-searchable-multiple', multiple: true, **disabled_field_options(attendance) } %>
     </td>
-    <td><%= attendance_fields.text_field :remark, disabled_field_options(attendance) %></td>
+    <td><%= attendance_fields.text_area :remark, disabled_field_options(attendance) %></td>
     <td>
       <%= attendance_fields.select :vehicle_ids, grouped_vehicles_for_select, {}, { class: 'js-searchable-multiple', multiple: true, **disabled_field_options(attendance) } %>
     </td>
