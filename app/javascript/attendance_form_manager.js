@@ -49,10 +49,9 @@ $(document).ready(function () {
   //新しい行を作成し、フォームに追加
   function createAndAppendRow() {
     let newRow = $("#attendance_" + rowIndex).clone().show();
-    console.log(newRow.find('input[name$="[date]"]').val());  // ここで日付フィールドの値をログに出力
-  
+
     newRow.attr("id", "attendance_" + (rowIndex + 1));
-    newRow.find('input, select').each(function() {
+    newRow.find('input, select, textarea').each(function() {
       if (!$(this).hasClass('js-searchable-multiple')) {
         if (!$(this).is('[name$="[date]"]')) {
           $(this).val('');  // reset the value
