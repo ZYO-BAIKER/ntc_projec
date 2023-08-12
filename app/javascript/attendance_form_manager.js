@@ -30,10 +30,27 @@ $(document).ready(function () {
     });
   }
 
+  function adjustTextareaHeight(textareaElement) {
+    $(textareaElement).height(0).height(textareaElement.scrollHeight);
+  }
+
+  // 入力時にtextareaの高さを調整
+  $(document).on('input', 'textarea', function () {
+    adjustTextareaHeight(this);
+  });
+
+  // ページ読み込み時にも全てのtextareaの高さを調整
+  $(document).ready(function() {
+    $('textarea').each(function() {
+        adjustTextareaHeight(this);
+    });
+  });
+
   //新しい行を作成し、フォームに追加
   function createAndAppendRow() {
     let newRow = $("#attendance_" + rowIndex).clone().show();
-
+    console.log(newRow.find('input[name$="[date]"]').val());  // ここで日付フィールドの値をログに出力
+  
     newRow.attr("id", "attendance_" + (rowIndex + 1));
     newRow.find('input, select').each(function() {
       if (!$(this).hasClass('js-searchable-multiple')) {
@@ -54,6 +71,15 @@ $(document).ready(function () {
 
     $(FORMS_CONTAINER).append(newRow);
     rowIndex += 1;
+
+    // 新しい行のすべてのtextareaの内容をリセット
+    newRow.find('textarea').val('');
+
+    // 新しい行のすべてのtextareaの高さをリセット
+    newRow.find('textarea').each(function() {
+      $(this).css('height', '');
+      adjustTextareaHeight(this);
+    });
   }
 
   // イベントリスナーの設定： $(ADD_ROW_BUTTON).click は "Add Row" ボタンがクリックされたときのイベントリスナー。
