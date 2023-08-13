@@ -9,8 +9,9 @@
     <td><%= attendance_fields.text_area :construction_site, disabled_field_options(attendance) %></td>
     <td><%= attendance_fields.text_area :work_content, disabled_field_options(attendance) %></td>
     <td>
-      <%= attendance_fields.time_field :departure_time, step: 600, class: 'time-field', **disabled_field_options(attendance) %>
-      <%= attendance_fields.time_field :arrival_time, step: 600, class: 'time-field', **disabled_field_options(attendance) %>
+      <%= attendance_fields.time_field :departure_time, step: 60, class: 'time-field', **disabled_field_options(attendance) %>
+      <br>
+      <%= attendance_fields.time_field :arrival_time, step: 60, class: 'time-field', **disabled_field_options(attendance) %>
     </td>
     <td>
       <%= attendance_fields.number_field :worker_count, min: 1, step: 1, **disabled_field_options(attendance) %>

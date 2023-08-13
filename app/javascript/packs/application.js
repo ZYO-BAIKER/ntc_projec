@@ -9,7 +9,6 @@ require("../toggle_form")
 require("../date_select")
 require("../attendance_form_manager")
 require("../form_handler")
-require("../textarea")
 
 import "bootstrap";
 import "../stylesheets/application";
