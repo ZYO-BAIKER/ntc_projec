@@ -19,4 +19,42 @@
       <% end %>
     </div>
   </div>
+
+  <!-- 一覧の表示 -->
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <h2>車両一覧</h2>
+      <select id="groupSelector" class="form-select">
+          <option value="">車種で絞り込み表示</option>
+          <% Vehicle.vehicle_types.keys.each do |vehicle_type| %>
+              <option value="<%= vehicle_type %>"><%= vehicle_type_label(vehicle_type) %></option>
+          <% end %>
+      </select>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ナンバー</th>
+            <th>車種</th>
+            <% if current_user.authority == 0 %>
+              <th>車両削除(管理者のみ)</th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @vehicles.each do |vehicle| %>
+            <tr data-group="<%= vehicle.vehicle_type %>">
+              <td><%= vehicle.number %></td>
+              <td><%= vehicle_type_label(vehicle.vehicle_type) %></td>
+              <% if current_user.authority == 0 %>
+                <td>
+                  <%= link_to '削除', vehicle_path(vehicle), method: :delete, data: { confirm: "#{vehicle_type_label(vehicle.vehicle_type)}の#{vehicle.number}を削除してもよろしいですか？" }, class: 'btn btn-danger btn-sm' %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
