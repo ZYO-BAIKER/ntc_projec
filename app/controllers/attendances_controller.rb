@@ -20,6 +20,7 @@ class AttendancesController < ApplicationController
       @attendances = Attendance.where(date: @date).order(:id)
       failed_attendances = failed_attendances(@attendance_form.attendances)
       @attendance_form.attendances = @attendances + failed_attendances
+      @attendance_form.attendances.reject!(&:empty_attributes?)
       @rendered_from_create = true
       render :new
     end
