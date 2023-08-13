@@ -35,7 +35,7 @@ class AttendancesController < ApplicationController
       if destroy_requested_for?(attendance)
         attendance.destroy!
       else
-        attendance.update!(params_for_attendanc(attendance.id.to_s))
+        attendance.update!(params_for_attendance(attendance.id.to_s))
       end
     end
 
@@ -61,7 +61,7 @@ class AttendancesController < ApplicationController
       end
     end
 
-    def params_for_attendanc(id)
+    def params_for_attendance(id)
       params.require(:attendances).permit(id => [:client, :construction_site, :work_content, :departure_time, :arrival_time, :worker_count, :remark, :vehicle,
                                                  :delete, { worker_ids: [], vehicle_ids: [] }])[id]
     end
