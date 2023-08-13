@@ -13,10 +13,10 @@ class AttendancesController < ApplicationController
   def create
     @attendance_form = AttendanceForm.new(attendance_form_params)
     if @attendance_form.save
-      date = @attendance_form.attendances[0].date
+      date = form_first_date
       redirect_to show_date_attendances_path(date: date)
     else
-      @date = @attendance_form.attendances.first.date
+      @date = form_first_date
       @attendances = Attendance.where(date: @date).order(:id)
       failed_attendances = failed_attendances(@attendance_form.attendances)
       @attendance_form.attendances = @attendances + failed_attendances
@@ -32,7 +32,7 @@ class AttendancesController < ApplicationController
   def update_multiple
     @attendances = Attendance.where(id: params[:attendances].keys)
     @attendances.each do |attendance|
-      if destroy_requested_for?(attendance)
+      if should_destroy_attendance?(attendance)
         attendance.destroy!
       else
         attendance.update!(params_for_attendance(attendance.id.to_s))
@@ -49,15 +49,24 @@ class AttendancesController < ApplicationController
 
   private
 
+    def form_first_date
+      @attendance_form.attendances.first.date
+    end
+
     def attendance_form_params
       params.require(:attendance_form).permit(
-        attendances_attributes: [:date, :client, :construction_site, :work_content, :departure_time, :arrival_time, :worker_count, :remark, :vehicle,
-                                 { worker_ids: [], vehicle_ids: [] }],
-      ).tap do |whitelisted|
-        whitelisted[:attendances_attributes].each do |_, attributes|
-          attributes[:worker_ids] = (attributes[:worker_ids] || []).reject(&:blank?)
-          attributes[:vehicle_ids] = (attributes[:vehicle_ids] || []).reject(&:blank?)
-        end
+        attendances_attributes: [
+          :date, :client, :construction_site, :work_content,
+          :departure_time, :arrival_time, :worker_count, :remark, :vehicle,
+          { worker_ids: [], vehicle_ids: [] }
+        ]
+      ).tap { |whitelisted| sanitize_worker_and_vehicle_ids(whitelisted) }
+    end
+
+    def sanitize_worker_and_vehicle_ids(whitelisted)
+      whitelisted[:attendances_attributes].each do |_, attributes|
+        attributes[:worker_ids] = (attributes[:worker_ids] || []).reject(&:blank?)
+        attributes[:vehicle_ids] = (attributes[:vehicle_ids] || []).reject(&:blank?)
       end
     end
 
@@ -75,7 +84,7 @@ class AttendancesController < ApplicationController
       attendances.reject {|a| @attendances.include?(a) }
     end
 
-    def destroy_requested_for?(attendance)
+    def should_destroy_attendance?(attendance)
       params[:attendances][attendance.id.to_s][:_destroy] == "1"
     end
 end

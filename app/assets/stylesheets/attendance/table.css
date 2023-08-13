@@ -38,7 +38,7 @@
 .attendances-table td:nth-child(4),
 .attendances-table th:nth-child(5),
 .attendances-table td:nth-child(5) {
-  width: 5%;
+  width: 6%;
 }
 
 /* 6:作業者 */
