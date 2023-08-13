@@ -30,6 +30,9 @@
           <tr>
             <th>作業者名</th>
             <th>所属会社</th>
+            <% if current_user.authority == 0 %>
+              <th>作業員削除(管理者のみ)</th>
+            <% end %>
           </tr>
         </thead>
         <tbody>
@@ -37,6 +40,11 @@
             <tr>
               <td><%= worker.name %></td>
               <td><%= group_label(worker.group) %></td>
+              <% if current_user.authority == 0 %>
+                <td>
+                  <%= link_to '削除', worker_path(worker), method: :delete, data: { confirm: "#{group_label(worker.group)}の#{worker.name}を削除してもよろしいですか？" }, class: 'btn btn-danger btn-sm' %>
+                </td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>

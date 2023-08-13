@@ -16,6 +16,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :workers, only: [:new, :create]
-  resources :vehicles, only: [:new, :create]
+  resources :workers, only: [:new, :create, :destroy]
+  resources :vehicles, only: [:new, :create, :destroy]
 end

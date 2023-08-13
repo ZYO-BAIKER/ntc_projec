@@ -8,10 +8,16 @@ class WorkersController < ApplicationController
     @worker = Worker.new(worker_params)
     if @worker.valid?
       @worker.save!
-      redirect_to attendances_path
+      redirect_to new_worker_path
     else
       render :new
     end
+  end
+
+  def destroy
+    @worker = Worker.find(params[:id])
+    @worker.destroy!
+    redirect_to new_worker_path
   end
 
   private
