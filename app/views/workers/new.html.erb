@@ -1,6 +1,7 @@
 <%= render "attendances/header" %>
 
 <div class="container">
+  <!-- 登録フォーム -->
   <div class="row justify-content-center">
     <div class="col-md-6">
       <%= form_with(model: @worker, local: true) do |form| %>
@@ -19,4 +20,28 @@
       <% end %>
     </div>
   </div>
+
+  <!-- 一覧の表示 -->
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <h2>作業者一覧</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>作業者名</th>
+            <th>所属会社</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @workers.each do |worker| %>
+            <tr>
+              <td><%= worker.name %></td>
+              <td><%= group_label(worker.group) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>

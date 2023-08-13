@@ -1,6 +1,7 @@
 class VehiclesController < ApplicationController
   def new
     @vehicle = Vehicle.new
+    @vehicles = Vehicle.all
   end
 
   def create

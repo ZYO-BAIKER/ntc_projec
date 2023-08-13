@@ -1,6 +1,7 @@
 class WorkersController < ApplicationController
   def new
     @worker = Worker.new
+    @workers = Worker.all
   end
 
   def create

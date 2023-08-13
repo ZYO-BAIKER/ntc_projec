@@ -19,4 +19,28 @@
       <% end %>
     </div>
   </div>
+
+  <!-- 一覧の表示 -->
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <h2>車両一覧</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ナンバー</th>
+            <th>車種</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @vehicles.each do |vehicle| %>
+            <tr>
+              <td><%= vehicle.number %></td>
+              <td><%= vehicle_type_label(vehicle.vehicle_type) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
