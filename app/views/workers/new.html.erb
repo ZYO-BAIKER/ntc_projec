@@ -25,6 +25,12 @@
   <div class="row justify-content-center mt-5">
     <div class="col-md-6">
       <h2>作業者一覧</h2>
+        <select id="groupSelector" class="form-select">
+            <option value="">所属会社で絞り込み表示</option>
+            <% Worker.groups.keys.each do |group| %>
+                <option value="<%= group %>"><%= group_label(group) %></option>
+            <% end %>
+        </select>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -37,7 +43,7 @@
         </thead>
         <tbody>
           <% @workers.each do |worker| %>
-            <tr>
+            <tr data-group="<%= worker.group %>">
               <td><%= worker.name %></td>
               <td><%= group_label(worker.group) %></td>
               <% if current_user.authority == 0 %>

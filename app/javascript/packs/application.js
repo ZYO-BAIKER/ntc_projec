@@ -9,6 +9,7 @@ require("../toggle_form")
 require("../date_select")
 require("../attendance_form_manager")
 require("../form_handler")
+require("../grouped_list_filter.js")
 
 import "bootstrap";
 import "../stylesheets/application";

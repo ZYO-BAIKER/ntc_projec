@@ -24,6 +24,12 @@
   <div class="row justify-content-center mt-5">
     <div class="col-md-6">
       <h2>車両一覧</h2>
+      <select id="groupSelector" class="form-select">
+          <option value="">車種で絞り込み表示</option>
+          <% Vehicle.vehicle_types.keys.each do |vehicle_type| %>
+              <option value="<%= vehicle_type %>"><%= vehicle_type_label(vehicle_type) %></option>
+          <% end %>
+      </select>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -36,7 +42,7 @@
         </thead>
         <tbody>
           <% @vehicles.each do |vehicle| %>
-            <tr>
+            <tr data-group="<%= vehicle.vehicle_type %>">
               <td><%= vehicle.number %></td>
               <td><%= vehicle_type_label(vehicle.vehicle_type) %></td>
               <% if current_user.authority == 0 %>
