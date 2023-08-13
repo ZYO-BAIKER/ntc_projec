@@ -59,8 +59,8 @@ class AttendancesController < ApplicationController
           :date, :client, :construction_site, :work_content,
           :departure_time, :arrival_time, :worker_count, :remark, :vehicle,
           { worker_ids: [], vehicle_ids: [] }
-        ]
-      ).tap { |whitelisted| sanitize_worker_and_vehicle_ids(whitelisted) }
+        ],
+      ).tap {|whitelisted| sanitize_worker_and_vehicle_ids(whitelisted) }
     end
 
     def sanitize_worker_and_vehicle_ids(whitelisted)
