@@ -13,15 +13,9 @@
       <br>
       <%= attendance_fields.time_field :arrival_time, step: 60, class: 'time-field', **disabled_field_options(attendance) %>
     </td>
-    <td>
-      <%= attendance_fields.number_field :worker_count, min: 1, step: 1, **disabled_field_options(attendance) %>
-    </td>
-    <td>
-      <%= attendance_fields.select :worker_ids, grouped_workers_for_select, {}, { class: 'js-searchable-multiple', multiple: true, **disabled_field_options(attendance) } %>
-    </td>
+    <td><%= attendance_fields.number_field :worker_count, min: 1, step: 1, **disabled_field_options(attendance) %></td>
+    <td><%= attendance_fields.select :worker_ids, grouped_workers_for_select, {}, { class: 'js-searchable-multiple', multiple: true, **disabled_field_options(attendance) } %></td>
     <td><%= attendance_fields.text_area :remark, disabled_field_options(attendance) %></td>
-    <td>
-      <%= attendance_fields.select :vehicle_ids, grouped_vehicles_for_select, {}, { class: 'js-searchable-multiple', multiple: true, **disabled_field_options(attendance) } %>
-    </td>
+    <td><%= attendance_fields.select :vehicle_ids, grouped_vehicles_for_select, {}, { class: 'js-searchable-multiple', multiple: true, **disabled_field_options(attendance) } %></td>
   <% end %>
 </tr>
