@@ -1,16 +1,16 @@
 source "https://rubygems.org"
 git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.2"
+ruby "3.3.4"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 6.0.3", ">= 6.0.3.7"
 # Use postgresql as the database for Active Record
-gem "pg", ">= 0.18", "< 2.0"
+gem "pg"
 # Use Puma as the app server
-gem "puma", "~> 4.1"
+gem "puma"
 # Use SCSS for stylesheets
-gem "sass-rails", ">= 6"
+gem "sass-rails"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem "webpacker", "~> 4.0"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -26,7 +26,7 @@ gem "jbuilder", "~> 2.7"
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", ">= 1.4.2", require: false
+gem "bootsnap"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -58,3 +58,7 @@ gem "devise" # ログイン機能の実装を簡単にするGem追加
 gem "kaminari" # ページネーション
 gem "rails-i18n" # 日本語の言語設定
 gem "ransack" # 検索機能の実装を実現できるGem
+
+gem "mutex_m"
+gem "base64"
+gem "bigdecimal"
