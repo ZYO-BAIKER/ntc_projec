@@ -59,6 +59,6 @@ gem "kaminari" # ページネーション
 gem "rails-i18n" # 日本語の言語設定
 gem "ransack" # 検索機能の実装を実現できるGem
 
-gem "mutex_m"
 gem "base64"
 gem "bigdecimal"
+gem "mutex_m"

@@ -64,7 +64,7 @@ class AttendancesController < ApplicationController
     end
 
     def sanitize_worker_and_vehicle_ids(whitelisted)
-      whitelisted[:attendances_attributes].each do |_, attributes|
+      whitelisted[:attendances_attributes].each_value do |attributes|
         attributes[:worker_ids] = (attributes[:worker_ids] || []).reject(&:blank?)
         attributes[:vehicle_ids] = (attributes[:vehicle_ids] || []).reject(&:blank?)
       end
