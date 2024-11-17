@@ -33,7 +33,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18.x'
+          node-version: '14.19.0'
       - name: Install yarn packages
         run: yarn install
       - name: Setup Database
