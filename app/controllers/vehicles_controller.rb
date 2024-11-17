@@ -1,7 +1,7 @@
 class VehiclesController < ApplicationController
   def new
     @vehicle = Vehicle.new
-    @vehicles = Vehicle.all
+    @vehicles = Vehicle.order(:vehicle_type, :created_at)
   end
 
   def create

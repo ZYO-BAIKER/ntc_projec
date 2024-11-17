@@ -1,7 +1,7 @@
 class WorkersController < ApplicationController
   def new
     @worker = Worker.new
-    @workers = Worker.all
+    @workers = Worker.order(:group, :created_at)
   end
 
   def create
