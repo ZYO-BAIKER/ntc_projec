@@ -10,7 +10,7 @@ FactoryBot.define do
     vehicles { build_list(:vehicle, 3) }
     workers { build_list(:worker, 3) }
     trait :invalid do
-      date { nil }  # 例: dateをnilに設定
+      date { nil } # 例: dateをnilに設定
     end
   end
 end
